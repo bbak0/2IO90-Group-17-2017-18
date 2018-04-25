@@ -30,6 +30,11 @@ public class NFDHAlgo extends AbstractAlgorithm {
                 rectangle.placeRectangle(currentLevelWidth, currentFloorHeight);
             }
         }
+
+        for (Rectangle r: rectangleCollection) {
+            System.out.println(r);
+        }
+
     }
 
 
