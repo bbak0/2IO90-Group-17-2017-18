@@ -13,10 +13,39 @@ public class NFDHAlgo extends AbstractAlgorithm {
         super(in);
     }
 
+    int currentLevelWidth = 0;
+    int currentFloorHeight = 0;
+
     @Override
     public void solve() {
         ArrayList<Rectangle> rectangleCollection = input.getRectangles();
         Collections.sort(rectangleCollection, new HeightComparator());
         System.out.print("xd");
+        for (Rectangle rectangle : rectangleCollection) {
+            if (floor_feasible(rectangle) == true) {
+                rectangle.placeRectangle(currentLevelWidth, currentFloorHeight);
+            }
+            else {
+                createNewLevel(rectangle);
+                rectangle.placeRectangle(currentLevelWidth, currentFloorHeight);
+            }
+        }
     }
+
+
+    boolean floor_feasible(Rectangle r){
+        if (r.getWidth() <= currentLevelWidth){
+            return true;
+        }
+		else {
+            return false;
+        }
+    }
+
+    void createNewLevel(Rectangle r) {
+        currentLevelWidth = 0;
+        currentFloorHeight = currentFloorHeight + r.getHeight();
+    }
+
+
 }

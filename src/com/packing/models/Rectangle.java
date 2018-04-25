@@ -18,7 +18,11 @@ public class Rectangle {
          area = (long) width * (long) height;
      }
 
-     public boolean placeRectangle(int x, int y){return false;}
+     public boolean placeRectangle(int x, int y){
+         this.x = x;
+         this.y = y;
+         return false;
+     }
 
     public int getWidth() {
         return width;
