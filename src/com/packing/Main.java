@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
         InputReader inputReader = new InputReader();
         Data input = inputReader.read();
-        System.out.println(input);
+        //System.out.println(input);
         AbstractAlgorithm solver;
         solver = new NFDHAlgo(input);
 

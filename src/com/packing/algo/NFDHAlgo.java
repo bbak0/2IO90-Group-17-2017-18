@@ -20,7 +20,6 @@ public class NFDHAlgo extends AbstractAlgorithm {
     public void solve() {
         ArrayList<Rectangle> rectangleCollection = input.getRectangles();
         Collections.sort(rectangleCollection, new HeightComparator());
-        System.out.print("xd");
         for (Rectangle rectangle : rectangleCollection) {
             if (floor_feasible(rectangle) == true) {
                 rectangle.placeRectangle(currentLevelWidth, currentFloorHeight);
@@ -30,7 +29,7 @@ public class NFDHAlgo extends AbstractAlgorithm {
                 rectangle.placeRectangle(currentLevelWidth, currentFloorHeight);
             }
         }
-
+        System.out.println("placement of rectangles");
         for (Rectangle r: rectangleCollection) {
             System.out.println(r);
         }
