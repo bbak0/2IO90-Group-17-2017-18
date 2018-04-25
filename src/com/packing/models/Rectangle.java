@@ -4,7 +4,7 @@ public class Rectangle {
 
     int a; //first length
     int b; //second length
-    long area;
+    int area;
     boolean isPlaced = false;
 
     //coordinates
@@ -15,7 +15,7 @@ public class Rectangle {
      public Rectangle(int a, int b){
          this.a = a;
          this.b = b;
-         area = (long) a * (long) b ;
+         area = a * b;
      }
 
      public boolean placeRectangle(int x, int y){return false;}
