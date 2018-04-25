@@ -3,6 +3,7 @@ package com.packing.algo;
 import com.packing.models.Data;
 import com.packing.models.Rectangle;
 import com.packing.sorting.HeightComparator;
+import com.packing.sorting.IndexComparator;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,6 +30,7 @@ public class NFDHAlgo extends AbstractAlgorithm {
                 rectangle.placeRectangle(currentLevelWidth, currentFloorHeight);
             }
         }
+        Collections.sort(rectangleCollection, new IndexComparator());
         System.out.println("placement of rectangles");
         for (Rectangle r: rectangleCollection) {
             System.out.println(r);

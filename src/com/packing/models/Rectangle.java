@@ -2,6 +2,7 @@ package com.packing.models;
 
 public class Rectangle {
 
+    int index;
     int width; //first length
     int height; //second length
     long area;
@@ -12,9 +13,10 @@ public class Rectangle {
     int y = 0;
 
 
-     public Rectangle(int width, int height){
+     public Rectangle(int index, int width, int height){
          this.width = width;
          this.height = height;
+         this.index = index;
          area = (long) width * (long) height;
      }
 
@@ -23,6 +25,10 @@ public class Rectangle {
          this.y = y;
          return false;
      }
+
+    public int getIndex() {
+        return index;
+    }
 
     public int getWidth() {
         return width;

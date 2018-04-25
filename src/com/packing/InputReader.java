@@ -35,7 +35,7 @@ public class InputReader {
         result.setRectangleAmount(n);
 
         for (int j = 0; j < n; j++){
-            result.addRectangle(new Rectangle(sc.nextInt(), sc.nextInt()));
+            result.addRectangle(new Rectangle(j, sc.nextInt(), sc.nextInt()));
         }
         return result;
     }
