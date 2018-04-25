@@ -2,8 +2,8 @@ package com.packing.models;
 
 public class Rectangle {
 
-    int a; //first length
-    int b; //second length
+    int width; //first length
+    int height; //second length
     long area;
     boolean isPlaced = false;
 
@@ -12,13 +12,35 @@ public class Rectangle {
     int y = 0;
 
 
-     public Rectangle(int a, int b){
-         this.a = a;
-         this.b = b;
-         area = (long) a * (long) b ;
+     public Rectangle(int width, int height){
+         this.width = width;
+         this.height = height;
+         area = (long) width * (long) height;
      }
 
      public boolean placeRectangle(int x, int y){return false;}
 
+    public int getWidth() {
+        return width;
+    }
 
+    public int getHeight() {
+        return height;
+    }
+
+    public long getArea() {
+        return area;
+    }
+
+    public boolean isPlaced() {
+        return isPlaced;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 }

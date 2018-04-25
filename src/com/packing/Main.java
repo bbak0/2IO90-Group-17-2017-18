@@ -2,6 +2,7 @@ package com.packing;
 
 import com.packing.algo.AbstractAlgorithm;
 import com.packing.algo.ExampleAlgo;
+import com.packing.algo.NFDHAlgo;
 import com.packing.algo.OtherAlgo;
 import com.packing.models.Data;
 
@@ -14,14 +15,15 @@ public class Main {
         Data input = inputReader.read();
         System.out.println(input);
         AbstractAlgorithm solver;
+        solver = new NFDHAlgo(input);
 
-        Random random = new Random();
+        /*Random random = new Random();
 
         if (random.nextBoolean()){
             solver = new ExampleAlgo(input);
         } else {
             solver = new OtherAlgo(input);
-        }
+        }*/
 
         solver.solve();
     }

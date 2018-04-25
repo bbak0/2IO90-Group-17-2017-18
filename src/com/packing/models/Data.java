@@ -10,6 +10,10 @@ public class Data {
     int rectangleAmount;
     ArrayList<Rectangle> rectangles = new ArrayList<>();
 
+    public ArrayList<Rectangle> getRectangles() {
+        return rectangles;
+    }
+
     public boolean isContainerHeightFixed() {
         return containerHeightFixed;
     }
