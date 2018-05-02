@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.company;
+package com.packing;
 import java.util.*;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Main {
+public class Checker {
 
 
 
@@ -80,7 +79,7 @@ public class Main {
         for(i=1; i <= numberOfRectangles; i++)
         {
             counter++;
-            if(rotationsAllowed == true)
+            if(rotationsAllowed)
             {
 
                 bool = sc.next();
@@ -170,7 +169,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ( new Main() ).run();
+        ( new Checker() ).run();
 
     }
 }

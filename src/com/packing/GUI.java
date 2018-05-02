@@ -1,14 +1,12 @@
-package com.company;
+package com.packing;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.io.IOException;
 import java.util.Scanner;
 import java.io.File;
-import java.io.*;
 
-public class Main  {
+public class GUI  {
 
 
     JFrame frame = new JFrame(); //creates frame
@@ -30,7 +28,7 @@ public class Main  {
 
     static int xf, yf;
 
-    public Main(int length, int width, int bigBox[][]) {//constructor with 2
+    public GUI(int length, int width, int bigBox[][]) {//constructor with 2
 
         panel_1 = new JPanel();
         panel_1.setLayout(new GridLayout(length, width)); //set layout of frame
@@ -119,7 +117,7 @@ public class Main  {
 
         System.out.println(xf + " "  + yf);
 
-        new Main(xf, yf, bigBox);//makes new ButtonGrid with 2 parameters
+        new GUI(xf, yf, bigBox);//makes new ButtonGrid with 2 parameters
     }
 }
 
