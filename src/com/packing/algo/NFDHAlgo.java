@@ -17,11 +17,12 @@ public class NFDHAlgo extends AbstractAlgorithm {
 
     int currentLevelWidth = 0;
     int currentFloorHeight = 0;
-    int containerHeight = 22;
+    int containerHeight;
     int formerFirstRectangleWidth = 0;
 
     @Override
     public void solve() {
+        containerHeight = input.getContainerHeight();
         ArrayList<Rectangle> rectangleCollection = input.getRectangles();
         Collections.sort(rectangleCollection, new WidthComparator());
         for (Rectangle rectangle : rectangleCollection) {
