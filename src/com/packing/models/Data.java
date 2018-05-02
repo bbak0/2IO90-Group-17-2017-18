@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class Data {
 
-    private boolean containerHeightFixed;
-    private int containerHeight = Integer.MAX_VALUE;
-    private boolean rotationsAllowed;
-    private int rectangleAmount;
-    private ArrayList<Rectangle> rectangles = new ArrayList<>();
+    boolean containerHeightFixed;
+    int containerHeight = Integer.MAX_VALUE;
+    boolean rotationsAllowed;
+    int rectangleAmount;
+    ArrayList<Rectangle> rectangles = new ArrayList<>();
 
     public ArrayList<Rectangle> getRectangles() {
         return rectangles;
