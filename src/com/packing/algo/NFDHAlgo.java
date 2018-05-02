@@ -2,7 +2,6 @@ package com.packing.algo;
 
 import com.packing.models.Data;
 import com.packing.models.Rectangle;
-import com.packing.sorting.HeightComparator;
 import com.packing.sorting.IndexComparator;
 import com.packing.sorting.WidthComparator;
 
@@ -17,12 +16,15 @@ public class NFDHAlgo extends AbstractAlgorithm {
 
     int currentLevelWidth = 0;
     int currentFloorHeight = 0;
-    int containerHeight = 22;
+    int containerHeight;
     int formerFirstRectangleWidth = 0;
+
+    ArrayList<Rectangle> rectangleCollection;
 
     @Override
     public void solve() {
-        ArrayList<Rectangle> rectangleCollection = input.getRectangles();
+        rectangleCollection = input.getRectangles();
+        containerHeight = input.getContainerHeight();
         Collections.sort(rectangleCollection, new WidthComparator());
         for (Rectangle rectangle : rectangleCollection) {
             if (floor_feasible(rectangle) == false) {
@@ -32,12 +34,42 @@ public class NFDHAlgo extends AbstractAlgorithm {
             currentFloorHeight = currentFloorHeight + rectangle.getHeight();  //(HAS to be after packing)
         }
         Collections.sort(rectangleCollection, new IndexComparator());
-        System.out.println("placement of rectangles");
-        for (Rectangle r: rectangleCollection) {
-     //       System.out.print(r.getWidth() + ": ");
-            System.out.println(r);
-        }
 
+        print();
+    }
+
+
+    public void print() {
+        System.out.print("container height: ");
+        if(input.isContainerHeightFixed()) {
+            System.out.println("fixed " + input.getContainerHeight());
+        } else {
+            System.out.println("free");
+        }
+        System.out.print("rotations allowed: ");
+        if(input.isRotationsAllowed()) {
+            System.out.println("yes");
+        } else {
+            System.out.println("no");
+        }
+        System.out.println("number of rectangles: " + input.getRectangleAmount());
+        for (Rectangle r: rectangleCollection) {
+            System.out.print(r.getWidth() + " ");
+            System.out.println(r.getHeight());
+        }
+        System.out.println("placement of rectangles");
+        if(input.isRotationsAllowed()) {
+            for (Rectangle r: rectangleCollection) {
+                //       System.out.print(r.getWidth() + ": ");
+                System.out.print("no "); // needs to be changed it corresponds to if the rectangles are rotated or not
+                System.out.println(r);
+            }
+        } else {
+            for (Rectangle r: rectangleCollection) {
+                //       System.out.print(r.getWidth() + ": ");
+                System.out.println(r);
+            }
+        }
     }
 
 

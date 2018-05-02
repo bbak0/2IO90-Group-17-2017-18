@@ -1,6 +1,9 @@
 package com.packing.algo;
 
 import com.packing.models.Data;
+import com.packing.models.Rectangle;
+
+import java.util.ArrayList;
 
 public abstract class AbstractAlgorithm {
 
@@ -11,4 +14,6 @@ public abstract class AbstractAlgorithm {
     }
 
     public abstract void solve();
+
+    public abstract void print();
 }

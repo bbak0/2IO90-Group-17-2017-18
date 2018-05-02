@@ -13,4 +13,9 @@ public class ExampleAlgo extends AbstractAlgorithm {
     public void solve() {
         System.out.println("not solving anything frigg of");
     }
+
+    @Override
+    public void print() {
+
+    }
 }

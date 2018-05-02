@@ -11,4 +11,9 @@ public class OtherAlgo extends AbstractAlgorithm {
     public void solve() {
         System.out.println("haha yes");
     }
+
+    @Override
+    public void print() {
+
+    }
 }
