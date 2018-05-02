@@ -15,10 +15,10 @@ public class FFDHAlgo extends AbstractAlgorithm {
     }
 
     int containerHeight;
-    int formerFirstRectangleWidth = 0;
+    int formerFirstRectangleWidth;
     int levelIndex = 0;
     int lastLevel = 0;
-    ArrayList<Integer> widthLevel = new ArrayList<Integer>(50);
+    ArrayList<Integer> widthLevel = new ArrayList<Integer>(50);         //capacity is a potential issue
     ArrayList<Integer> heightLevel = new ArrayList<Integer>(50);
 
     ArrayList<Rectangle> rectangleCollection = input.getRectangles();

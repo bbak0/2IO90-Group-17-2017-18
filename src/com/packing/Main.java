@@ -1,9 +1,6 @@
 package com.packing;
 
-import com.packing.algo.AbstractAlgorithm;
-import com.packing.algo.ExampleAlgo;
-import com.packing.algo.NFDHAlgo;
-import com.packing.algo.OtherAlgo;
+import com.packing.algo.*;
 import com.packing.models.Data;
 
 import java.util.Random;
