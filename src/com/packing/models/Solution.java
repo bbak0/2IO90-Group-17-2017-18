@@ -3,11 +3,17 @@ package com.packing.models;
 import java.util.ArrayList;
 public class Solution {
 
-     ArrayList<Rectangle> rectangles;
-     long area;
-     long wastedArea;
-    int maxHeight = 0;
-    int maxWidth = 0;
+     public ArrayList<Rectangle> rectangles;
+    public long area;
+    public long wastedArea;
+    public int maxHeight = 0;
+    public int maxWidth = 0;
+
+
+    public void update(){
+        calcDimensions();
+        calcWastedArea();
+    }
 
     public void calcDimensions(){
         for(Rectangle r: rectangles){

@@ -8,7 +8,7 @@ public class Data {
     int containerHeight = Integer.MAX_VALUE;
     boolean rotationsAllowed;
     int rectangleAmount;
-    ArrayList<Rectangle> rectangles = new ArrayList<>();
+    public ArrayList<Rectangle> rectangles = new ArrayList<>();
 
     public ArrayList<Rectangle> getRectangles() {
         return rectangles;

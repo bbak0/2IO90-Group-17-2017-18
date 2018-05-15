@@ -2,15 +2,15 @@ package com.packing.models;
 
 public class Rectangle {
 
-    int index;
-    int width; //first length
-    int height; //second length
-    int area;
+    public int index;
+    public int width; //first length
+    public int height; //second length
+    public int area;
     boolean isPlaced = false;
 
     //coordinates
-    int x = 0;
-    int y = 0;
+    public int x = 0;
+    public int y = 0;
 
 
      public Rectangle(int index, int width, int height){
