@@ -22,7 +22,6 @@ public class RecursiveHeuristic extends AbstractAlgorithm {
 
     @Override
     public void solve() {
-        Collections.sort(rectangleCollection, new WidthComparator());
         for (Rectangle rectangle : rectangleCollection) {
             if (floor_feasible(rectangle) == false) {
                 createNewLevel(rectangle);
@@ -31,50 +30,15 @@ public class RecursiveHeuristic extends AbstractAlgorithm {
             currentFloorHeight = currentFloorHeight + rectangle.getHeight();  //(HAS to be after packing)
         }
         Collections.sort(rectangleCollection, new IndexComparator());
-        print();
+
     }
-
-    public void print() {
-        System.out.print("container height: ");
-        if(input.isContainerHeightFixed()) {
-            System.out.println("fixed " + input.getContainerHeight());
-        } else {
-            System.out.println("free");
-        }
-        System.out.print("rotations allowed: ");
-        if(input.isRotationsAllowed()) {
-            System.out.println("yes");
-        } else {
-            System.out.println("no");
-        }
-        System.out.println("number of rectangles: " + input.getRectangleAmount());
-        for (Rectangle r: rectangleCollection) {
-            System.out.print(r.getWidth() + " ");
-            System.out.println(r.getHeight());
-        }
-        System.out.println("placement of rectangles");
-        if (input.isRotationsAllowed()){
-            for (Rectangle r: rectangleCollection) {
-                //       System.out.print(r.getWidth() + ": ");
-                System.out.print("no ");                           // if rotations are allowed UPDATE to whether is rotated or not
-                System.out.println(r);
-            }
-        } else {
-            for (Rectangle r: rectangleCollection) {
-                //       System.out.print(r.getWidth() + ": ");
-
-                System.out.println(r);
-            }
-        }
-    }
-
 
 
     boolean floor_feasible(Rectangle r){
         if(currentFloorHeight == 0 && currentLevelWidth == 0){
             formerFirstRectangleWidth = r.getWidth();               //initialising variable manually to largest width rectangle
         }
-        if (r.getHeight() <= containerHeight - currentFloorHeight ){
+        if (r.getHeight() <= containerHeight - currentFloorHeight && r.getWidth() <= formerFirstRectangleWidth){
             return true;
         }
         else {

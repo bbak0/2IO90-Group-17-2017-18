@@ -25,13 +25,16 @@ public class HrSaAlgo extends AbstractAlgorithm {
             sol.rectangles.add(r);
         }
         Collections.sort(sol.rectangles, new AreaComparator());
-
+        input.rectangles = sol.rectangles;
+        AbstractAlgorithm RH = new RecursiveHeuristic(input);
+        RH.solve();
+        sol.rectangles=((RecursiveHeuristic) RH).rectangleCollection;
         sol.update();
         int nonAccepted=0;
 
 
-        //while under 10 solutions are accepted
-        while (nonAccepted < 10){
+
+        while (nonAccepted < 10){                   //while under 10 solutions are accepted
             for(int i=0;i<=L;i++){
                 long ePre = sol.wastedArea;
                 randomSwitch(sol);
@@ -71,6 +74,9 @@ public class HrSaAlgo extends AbstractAlgorithm {
         sol.rectangles.get(r1).y = sol.rectangles.get(r2).y;
         sol.rectangles.get(r2).x = temp1;
         sol.rectangles.get(r2).y = temp2;
+        AbstractAlgorithm RH = new RecursiveHeuristic(input);
+        RH.solve();
+        sol.rectangles=((RecursiveHeuristic) RH).rectangleCollection;
         sol.update();
     }
 
