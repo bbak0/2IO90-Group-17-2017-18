@@ -25,7 +25,7 @@ public class HrSaAlgo extends AbstractAlgorithm {
             sol.rectangles.add(r);
         }
         Collections.sort(sol.rectangles, new AreaComparator());
-        sol.nfdh
+
         sol.update();
         int nonAccepted=0;
 
@@ -33,11 +33,10 @@ public class HrSaAlgo extends AbstractAlgorithm {
         //while under 10 solutions are accepted
         while (nonAccepted < 10){
             for(int i=0;i<=L;i++){
-                int ePre = sol.calcWastedArea();
+                long ePre = sol.wastedArea;
                 randomSwitch(sol);
-                sol.nfdh
-                int ePost = sol.calcWastedArea();
-                int eDiff = ePost - ePre;
+                long ePost = sol.wastedArea;
+                long eDiff = ePost - ePre;
 
                 if(eDiff < 0){
 
@@ -47,8 +46,8 @@ public class HrSaAlgo extends AbstractAlgorithm {
                     if( Math.random() <= Math.exp(-eDiff/temperature)) {
                         //switch stays
                     } else {
-                        switch(r1, r2);//unswitch
-                        nonAccepted++
+                        Switch(r1, r2, sol);//unswitch
+                        nonAccepted++;
                     }
                 }
             }
@@ -61,10 +60,10 @@ public class HrSaAlgo extends AbstractAlgorithm {
         r1 = (int) Math.round(Math.random()*input.getRectangleAmount());
         do{r2 = (int) Math.round(Math.random()*input.getRectangleAmount());}
         while(r1==r2);
-        Switch(r1,r2);
+        Switch(r1,r2, sol);
     }
 
-    public void Switch(r1,r2){
+    public void Switch(int r1,int r2, Solution sol){
         int temp1,temp2;
         temp1 = sol.rectangles.get(r1).x;
         temp2 = sol.rectangles.get(r1).y;
@@ -72,7 +71,7 @@ public class HrSaAlgo extends AbstractAlgorithm {
         sol.rectangles.get(r1).y = sol.rectangles.get(r2).y;
         sol.rectangles.get(r2).x = temp1;
         sol.rectangles.get(r2).y = temp2;
-
+        sol.update();
     }
 
 
