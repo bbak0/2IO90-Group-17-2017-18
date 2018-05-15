@@ -5,6 +5,7 @@ public class Solution {
 
      ArrayList<Rectangle> rectangles;
      long area;
+     long wastedArea;
     int maxHeight = 0;
     int maxWidth = 0;
 
@@ -18,5 +19,13 @@ public class Solution {
             }
         }
         area = maxHeight*maxHeight;
+    }
+    public void calcWastedArea(){
+        long rectangleArea = 0;
+        for(Rectangle r: rectangles){
+            rectangleArea += r.area;
+        }
+        wastedArea = area - rectangleArea;
+
     }
 }
