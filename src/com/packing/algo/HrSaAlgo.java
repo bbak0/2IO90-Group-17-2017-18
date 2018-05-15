@@ -9,9 +9,10 @@ import java.util.Collections;
 
 public class HrSaAlgo extends AbstractAlgorithm {
 
-    private double initialTemp = 0;
+    private double temperature = 0;
     private double a = 0;
     private int L = 20000;
+    int r1,r2;
 
     public HrSaAlgo(Data in) {
         super(in);
@@ -24,18 +25,46 @@ public class HrSaAlgo extends AbstractAlgorithm {
             sol.rectangles.add(r);
         }
         Collections.sort(sol.rectangles, new AreaComparator());
+        sol.nfdh
         sol.update();
+        int nonAccepted=0;
 
-        for(int i=0;i<=9;i++){
+
+        //while under 10 solutions are accepted
+        while (nonAccepted < 10){
+            for(int i=0;i<=L;i++){
+                int ePre = sol.calcWastedArea();
+                randomSwitch(sol);
+                sol.nfdh
+                int ePost = sol.calcWastedArea();
+                int eDiff = ePost - ePre;
+
+                if(eDiff < 0){
+
+                    //switch stays
+                } else {                                               //unswitch, then switch with probability of -eDiff/T
+                    //Switch stays with probability 1 - P(-eDiff/T)
+                    if( Math.random() <= Math.exp(-eDiff/temperature)) {
+                        //switch stays
+                    } else {
+                        switch(r1, r2);//unswitch
+                        nonAccepted++
+                    }
+                }
+            }
+            temperature *= a;
 
         }
     }
 
     public void randomSwitch(Solution sol){
-        int r1 = (int) Math.round(Math.random()*input.getRectangleAmount());
-        int r2;
+        r1 = (int) Math.round(Math.random()*input.getRectangleAmount());
         do{r2 = (int) Math.round(Math.random()*input.getRectangleAmount());}
         while(r1==r2);
+        Switch(r1,r2);
+    }
+
+    public void Switch(r1,r2){
         int temp1,temp2;
         temp1 = sol.rectangles.get(r1).x;
         temp2 = sol.rectangles.get(r1).y;
@@ -45,6 +74,7 @@ public class HrSaAlgo extends AbstractAlgorithm {
         sol.rectangles.get(r2).y = temp2;
 
     }
+
 
 
 }
