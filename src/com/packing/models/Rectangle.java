@@ -6,7 +6,8 @@ public class Rectangle {
     public int width; //first length
     public int height; //second length
     public int area;
-    boolean isPlaced = false;
+    public boolean isPlaced = false;
+    public boolean isRotated = false;
 
     //coordinates
     public int x = 0;
@@ -24,6 +25,12 @@ public class Rectangle {
          this.x = x;
          this.y = y;
          return false;
+     }
+     public void rotate(){
+         int temp = this.height;
+         height = width;
+         width = temp;
+         isRotated = !isRotated;
      }
 
     public int getIndex() {

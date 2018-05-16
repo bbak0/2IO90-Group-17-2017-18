@@ -5,11 +5,12 @@ public class Solution {
 
      public ArrayList<Rectangle> rectangles;
     public long area;
-    public int maxHeight = 0;
-    public int maxWidth = 0;
+    public int maxHeight ;
+    public int maxWidth;
+    public long areaOfRectangles;
 
 
-    public void calcDimensions(){
+    public void update(){
         for(Rectangle r: rectangles){
             if(r.y+r.height>maxHeight){
                 maxHeight = r.y+r.height;
@@ -19,5 +20,8 @@ public class Solution {
             }
         }
         area = maxHeight*maxHeight;
+    }
+    public long getWastedArea(){
+        return area-areaOfRectangles;
     }
 }
