@@ -5,15 +5,9 @@ public class Solution {
 
      public ArrayList<Rectangle> rectangles;
     public long area;
-    public long wastedArea;
     public int maxHeight = 0;
     public int maxWidth = 0;
 
-
-    public void update(){
-        calcDimensions();
-        calcWastedArea();
-    }
 
     public void calcDimensions(){
         for(Rectangle r: rectangles){
@@ -25,13 +19,5 @@ public class Solution {
             }
         }
         area = maxHeight*maxHeight;
-    }
-    public void calcWastedArea(){
-        long rectangleArea = 0;
-        for(Rectangle r: rectangles){
-            rectangleArea += r.area;
-        }
-        wastedArea = area - rectangleArea;
-
     }
 }
