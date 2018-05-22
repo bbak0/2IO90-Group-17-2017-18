@@ -9,6 +9,19 @@ public class Solution {
     public int maxWidth;
     public long areaOfRectangles;
 
+    public Solution(){ }
+    public Solution(ArrayList<Rectangle> recs){
+        this(recs,false);
+    }
+    public Solution(ArrayList<Rectangle> recs, boolean calc){
+        rectangles = recs;
+        if(calc) {
+            for (Rectangle r: rectangles){
+                areaOfRectangles += r.area;
+            }
+            update();
+        }
+    }
 
     public void update(){
         for(Rectangle r: rectangles){
