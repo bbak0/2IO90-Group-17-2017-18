@@ -80,7 +80,7 @@ public class GUI  {
     public static void main(String[] args) {
 
 
-        File file = new File("/Users/viablesoft/IdeaProjects/DBL AGLO/food.out");
+        File file = new File("C:\\Users\\Zordon\\IdeaProjects\\2IO90-Group-17-2017-18\\src\\com\\packing\\testGUI.out");
         int[][] bigBox = new int[10000][10000];
         int i, j;
 

@@ -4,7 +4,6 @@ import com.packing.models.*;
 import com.packing.sorting.IndexComparator;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 public class Skyline extends AbstractAlgorithm {
@@ -16,6 +15,7 @@ public class Skyline extends AbstractAlgorithm {
     ArrayList<Rectangle> solRect = new ArrayList<Rectangle>();
     int areaUsed = 0;
     long inserted = 0;
+    int maxHeight = 0;
 
     public Skyline(Data in) {
         super(in);
@@ -26,6 +26,7 @@ public class Skyline extends AbstractAlgorithm {
         init();
         algoLoop();
         Collections.sort(solRect, new IndexComparator());
+        System.out.println("Area used:" + areaUsed + "Total area:" + maxHeight * binWidth);
         return new Solution(solRect, true);
     }
 
@@ -72,6 +73,7 @@ public class Skyline extends AbstractAlgorithm {
             addSkylineLevel(globalBest.getBestSkylineIndex(), bestR);
             solRect.add(bestR);
             areaUsed += bestR.area;
+            maxHeight = Math.max(maxHeight, bestR.height + bestR.y);
             inserted++;
             System.out.println("inserted:" + inserted);
             rectangles.remove(globalBest.getBestRectangle());
@@ -89,12 +91,12 @@ public class Skyline extends AbstractAlgorithm {
         for (int i = skylineNodeIndex + 1; i < skyline.size(); i++){
             SkylineNode current = skyline.get(i);
             SkylineNode previous = skyline.get(i-1);
-            if (current.x < previous.x + previous.width){
-                int shrink = previous.x + previous.width - current.x;
+            if (current.x < previous.x + previous.length){
+                int shrink = previous.x + previous.length - current.x;
                 current.x += shrink;
-                current.width -= shrink;
+                current.length -= shrink;
 
-                if(current.width <= 0){
+                if(current.length <= 0){
                     skyline.remove(current);
                     i--;
                 } else {
@@ -113,7 +115,7 @@ public class Skyline extends AbstractAlgorithm {
             SkylineNode current = skyline.get(i);
             SkylineNode next = skyline.get(i+1);
             if (current.y == next.y){
-                current.width += next.width;
+                current.length += next.length;
                 skyline.remove(next);
                 i--;
             }
@@ -130,8 +132,9 @@ public class Skyline extends AbstractAlgorithm {
             }
             if (input.isRotationsAllowed()){
                 r.rotate();
+                y = RectangleFits(i,r);
                 FindBLPositionHelper(i, y, r, b);
-
+                r.rotate();
             }
         }
 
@@ -140,10 +143,10 @@ public class Skyline extends AbstractAlgorithm {
 
     void FindBLPositionHelper(int i, int y, Rectangle r, BestValues b){
         if (y + r.height < b.getBestHeight() ||
-                (y + r.height == b.getBestHeight() && skyline.get(i).width < b.getBestWidth()) ){
+                (y + r.height == b.getBestHeight() && skyline.get(i).length < b.getBestWidth()) ){
             b.setBestHeight(y + r.height);
             b.setBestSkylineIndex(i);
-            b.setBestWidth(skyline.get(i).width);
+            b.setBestWidth(skyline.get(i).length);
             b.setBestRectangle(r);
         }
     }
@@ -162,7 +165,7 @@ public class Skyline extends AbstractAlgorithm {
             if (y + r.height > binHeight){
                 return -1;
             }
-            remainingWidth -= skyline.get(i).width;
+            remainingWidth -= skyline.get(i).length;
             i++;
             if (i >= skyline.size() && remainingWidth > 0){
                 return -1;

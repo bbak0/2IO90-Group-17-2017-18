@@ -3,11 +3,11 @@ package com.packing.models;
 public class SkylineNode {
     public int x;
     public int y;
-    public int width;
+    public int length;
 
-    public SkylineNode(int x, int y, int width) {
+    public SkylineNode(int x, int y, int length) {
         this.x = x;
         this.y = y;
-        this.width = width;
+        this.length = length;
     }
 }

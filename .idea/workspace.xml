@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a43496ca-baf3-4003-b0a8-5dbc4349bc9f" name="Default" comment="Minor fixes">
-      <change beforePath="$PROJECT_DIR$/.idea/description.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/project-template.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="4a2d9a01-953b-4be2-a0fb-cce4692f623f" name="Default" comment="Skyline-MW + DisjointArrayList">
+      <change afterPath="$PROJECT_DIR$/src/com/packing/algo/SkylineStrip.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/packing/models/WasteMapArea.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/packing/sorting/DESCSS.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/packing/sorting/DESCSS_NR.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/packing/utils/DisjointArrayList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/packing/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/packing/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/packing/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/packing/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/packing/algo/BFDHAlgo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/packing/algo/BFDHAlgo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/packing/algo/FFDHAlgo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/packing/algo/FFDHAlgo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/packing/algo/NFDHAlgo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/packing/algo/NFDHAlgo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/packing/algo/Skyline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/packing/algo/Skyline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/packing/models/BestValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/packing/models/BestValues.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/packing/models/SkylineNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/packing/models/SkylineNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/packing/testGUI.out" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/packing/testGUI.out" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,78 +28,209 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="HrSaAlgo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/packing/algo/HrSaAlgo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-              <folding>
-                <element signature="e#140#141#0" expanded="true" />
-                <element signature="e#165#166#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Checker.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/packing/Checker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="24" column="20" lean-forward="true" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Solution.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/packing/models/Solution.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="39" lean-forward="true" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Rectangle.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/packing/models/Rectangle.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BFDHAlgo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/packing/algo/BFDHAlgo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="48" column="25" lean-forward="true" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/packing/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Data.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/packing/models/Data.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.3820841">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="AbstractAlgorithm.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/packing/algo/AbstractAlgorithm.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="68">
+                  <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="BestValues.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/packing/models/BestValues.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="476">
+                  <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
+                  <folding>
+                    <element signature="e#411#412#0" expanded="true" />
+                    <element signature="e#446#447#0" expanded="true" />
+                    <element signature="e#505#506#0" expanded="true" />
+                    <element signature="e#553#554#0" expanded="true" />
+                    <element signature="e#640#641#0" expanded="true" />
+                    <element signature="e#677#678#0" expanded="true" />
+                    <element signature="e#734#735#0" expanded="true" />
+                    <element signature="e#786#787#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Data.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/packing/models/Data.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="697">
+                  <caret line="57" column="32" selection-start-line="57" selection-start-column="32" selection-end-line="57" selection-end-column="32" />
+                  <folding>
+                    <element signature="e#1427#1428#0" expanded="true" />
+                    <element signature="e#1462#1463#0" expanded="true" />
+                    <element signature="e#1496#1497#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="InputReader.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/packing/InputReader.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="459">
+                  <caret line="30" column="27" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="SkylineNode.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/packing/models/SkylineNode.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="204">
+                  <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Skyline.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/packing/algo/Skyline.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="97">
+                  <caret line="102" column="10" lean-forward="true" selection-start-line="102" selection-start-column="10" selection-end-line="102" selection-end-column="10" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#321#334#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="DESCSS.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/com/packing/sorting/DESCSS.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="272">
+                  <caret line="16" column="37" lean-forward="true" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="WasteMapArea.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/packing/models/WasteMapArea.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="221">
+                  <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="Skyline.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/packing/algo/Skyline.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1285">
+                  <caret line="136" column="27" selection-start-line="136" selection-start-column="27" selection-end-line="136" selection-end-column="27" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/packing/Main.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="153">
+                  <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="SkylineStrip.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/packing/algo/SkylineStrip.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1275">
+                  <caret line="122" selection-start-line="122" selection-end-line="122" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="SkylineStripFaster.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="223">
+                  <caret line="88" selection-start-line="88" selection-end-line="88" />
+                  <folding>
+                    <element signature="e#364#377#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="DESCSS_NR.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/packing/sorting/DESCSS_NR.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="51">
+                  <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="TextCaseGenerator.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/packing/TextCaseGenerator.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-624">
+                  <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="DisjointArrayList.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/packing/utils/DisjointArrayList.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="187">
+                  <caret line="11" selection-start-line="11" selection-end-line="11" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Solution.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/packing/models/Solution.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="459">
+                  <caret line="29" selection-start-line="29" selection-end-line="29" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Rectangle.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/packing/models/Rectangle.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="383">
+                  <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="IndexComparator.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/packing/sorting/IndexComparator.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="68">
+                  <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -101,40 +241,59 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Main</find>
+      <find>i</find>
+      <find>binHeight</find>
     </findStrings>
-    <replaceStrings>
-      <replace>aa</replace>
-    </replaceStrings>
-    <dirStrings>
-      <dir>C:\Users\ameya\Documents\IdeaProjects\2IO90-Group-17-2017-18\out</dir>
-    </dirStrings>
   </component>
   <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/src/com/packing/InputReader.java" />
         <option value="$PROJECT_DIR$/src/com/packing/models/Data.java" />
+        <option value="$PROJECT_DIR$/src/com/packing/models/MinWValues.java" />
+        <option value="$PROJECT_DIR$/src/com/packing/models/BestValues.java" />
+        <option value="$PROJECT_DIR$/src/com/packing/algo/Skyline.java" />
+        <option value="$PROJECT_DIR$/src/com/packing/models/SkylineNode.java" />
+        <option value="$PROJECT_DIR$/src/com/packing/TextCaseGenerator.java" />
+        <option value="$PROJECT_DIR$/src/com/packing/models/DisjointRectangles.java" />
+        <option value="$PROJECT_DIR$/src/com/packing/utils/DisjointArrayList.java" />
+        <option value="$PROJECT_DIR$/src/com/packing/models/SharedRectangles.java" />
+        <option value="$PROJECT_DIR$/src/com/packing/models/WasteMapArea.java" />
         <option value="$PROJECT_DIR$/src/com/packing/GUI.java" />
-        <option value="$PROJECT_DIR$/src/com/packing/Checker.java" />
-        <option value="$PROJECT_DIR$/src/com/packing/algo/HrSaAlgo.java" />
-        <option value="$PROJECT_DIR$/src/com/packing/models/Solution.java" />
+        <option value="$PROJECT_DIR$/src/com/packing/testGUI.out" />
+        <option value="$PROJECT_DIR$/src/com/packing/algo/SkylineStrip.java" />
+        <option value="$PROJECT_DIR$/src/com/packing/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/packing/sorting/DESCSS_NR.java" />
+        <option value="$PROJECT_DIR$/src/com/packing/sorting/DESCSS.java" />
+        <option value="$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java" />
       </list>
     </option>
   </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="15" />
-    <option name="y" value="30" />
-    <option name="width" value="1890" />
-    <option name="height" value="930" />
+    <option name="x" value="260" />
+    <option name="y" value="20" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -167,133 +326,42 @@
               <item name="packing" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="2IO90-Group-17-2017-18" type="b2602c69:ProjectViewProjectNode" />
+              <item name="2IO90-Group-17-2017-18" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="packing" type="462c0819:PsiDirectoryNode" />
+              <item name="sorting" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="2IO90-Group-17-2017-18" type="b2602c69:ProjectViewProjectNode" />
+              <item name="2IO90-Group-17-2017-18" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="packing" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/Packing/com/packing/algo/NFDHAlgo.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/com/packing/Main.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/com/packing/algo/NFDHAlgo.java</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.DS_Store</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/.DS_Store</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/com/.DS_Store</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/com/packing/.DS_Store</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/com/packing/TestCaseGenerator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/com/packing/algo/BFDHAlgo.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/com/packing/algo/FFDHAlgo.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/com/packing/testGUI.out</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="C:/Program Files/Git/bin/git.exe" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="com.packing.utils" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.packing.sorting" />
+      <recent name="com.packing.algo" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -307,9 +375,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Unnamed">
+    <configuration name="GUI" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.packing.GUI" />
+      <module name="2IO90-Group-17-2017-18" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+    </configuration>
+    <configuration name="Unnamed" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.packing.Main" />
+      <module name="2IO90-Group-17-2017-18" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="MAIN_CLASS_NAME" value="com.packing.Main" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -349,201 +428,580 @@
       <properties />
       <listeners />
     </configuration>
+    <list>
+      <item itemvalue="Application.Unnamed" />
+      <item itemvalue="Application.GUI" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a43496ca-baf3-4003-b0a8-5dbc4349bc9f" name="Default" comment="" />
-      <created>1525080687799</created>
+      <changelist id="4a2d9a01-953b-4be2-a0fb-cce4692f623f" name="Default" comment="" />
+      <created>1527035422441</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1525080687799</updated>
+      <updated>1527035422441</updated>
+      <workItem from="1527035425319" duration="11148000" />
+      <workItem from="1527057595974" duration="13663000" />
     </task>
-    <task id="LOCAL-00001" summary="Minor fixes">
-      <created>1525249398670</created>
+    <task id="LOCAL-00001" summary="first implementation of Skyline, needs debug">
+      <created>1527044472580</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1525249398670</updated>
+      <updated>1527044472580</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="TextCaseGenerator Revival">
+      <created>1527063018004</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1527063018005</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="24811000" />
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.49947917" weight="0.32943678" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50208336" side_tool="true" weight="0.3995749" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3298969" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32943678" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49791667" weight="0.32943678" />
       <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24980484" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1453125" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32943678" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24980484" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49791667" weight="0.3995749" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.3298969" />
-      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Message" order="0" />
     </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Minor fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor fixes" />
+    <MESSAGE value="first implementation of Skyline, needs debug" />
+    <MESSAGE value="TextCaseGenerator Revival" />
+    <option name="LAST_COMMIT_MESSAGE" value="TextCaseGenerator Revival" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStrip.java</url>
+          <line>209</line>
+          <properties />
+          <option name="timeStamp" value="141" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStrip.java</url>
+          <line>77</line>
+          <properties />
+          <option name="timeStamp" value="160" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/utils/DisjointArrayList.java</url>
+          <line>11</line>
+          <properties />
+          <option name="timeStamp" value="163" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>85</line>
+          <properties />
+          <option name="timeStamp" value="231" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>86</line>
+          <properties />
+          <option name="timeStamp" value="232" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>88</line>
+          <properties />
+          <option name="timeStamp" value="233" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>89</line>
+          <properties />
+          <option name="timeStamp" value="234" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>90</line>
+          <properties />
+          <option name="timeStamp" value="235" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>91</line>
+          <properties />
+          <option name="timeStamp" value="236" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>92</line>
+          <properties />
+          <option name="timeStamp" value="237" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>93</line>
+          <properties />
+          <option name="timeStamp" value="238" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>94</line>
+          <properties />
+          <option name="timeStamp" value="239" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>96</line>
+          <properties />
+          <option name="timeStamp" value="240" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>98</line>
+          <properties />
+          <option name="timeStamp" value="241" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>97</line>
+          <properties />
+          <option name="timeStamp" value="243" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>99</line>
+          <properties />
+          <option name="timeStamp" value="244" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>100</line>
+          <properties />
+          <option name="timeStamp" value="245" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>101</line>
+          <properties />
+          <option name="timeStamp" value="246" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>103</line>
+          <properties />
+          <option name="timeStamp" value="247" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>104</line>
+          <properties />
+          <option name="timeStamp" value="248" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>105</line>
+          <properties />
+          <option name="timeStamp" value="249" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>107</line>
+          <properties />
+          <option name="timeStamp" value="250" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>112</line>
+          <properties />
+          <option name="timeStamp" value="252" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>111</line>
+          <properties />
+          <option name="timeStamp" value="253" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>113</line>
+          <properties />
+          <option name="timeStamp" value="254" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>114</line>
+          <properties />
+          <option name="timeStamp" value="255" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>115</line>
+          <properties />
+          <option name="timeStamp" value="256" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>116</line>
+          <properties />
+          <option name="timeStamp" value="257" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>117</line>
+          <properties />
+          <option name="timeStamp" value="258" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java</url>
+          <line>110</line>
+          <properties class="com.packing.algo.SkylineStripFaster" method="mergeSkylines">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="251" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="259" />
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="((SkylineStrip)this).wasteMap" custom="com.packing.algo.SkylineStrip" />
+        <watch expression="globalBest" />
+        <watch expression="newNode" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/com/packing/algo/AbstractAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/packing/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/com/packing/models/BestValues.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="14" column="40" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+        <state relative-caret-position="289">
+          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+          <folding>
+            <element signature="e#411#412#0" expanded="true" />
+            <element signature="e#446#447#0" expanded="true" />
+            <element signature="e#505#506#0" expanded="true" />
+            <element signature="e#553#554#0" expanded="true" />
+            <element signature="e#640#641#0" expanded="true" />
+            <element signature="e#677#678#0" expanded="true" />
+            <element signature="e#734#735#0" expanded="true" />
+            <element signature="e#786#787#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/packing/algo/AbstractAlgorithm.java">
+    <entry file="file://$PROJECT_DIR$/src/com/packing/models/Data.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="57" column="32" selection-start-line="57" selection-start-column="32" selection-end-line="57" selection-end-column="32" />
+          <folding>
+            <element signature="e#1427#1428#0" expanded="true" />
+            <element signature="e#1462#1463#0" expanded="true" />
+            <element signature="e#1496#1497#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/packing/InputReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="30" column="27" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/packing/models/SkylineNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/packing/algo/Skyline.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1224">
+          <caret line="74" column="19" selection-start-line="74" selection-start-column="19" selection-end-line="74" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/packing/algo/BFDHAlgo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/packing/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/com/packing/algo/FFDHAlgo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="14" column="40" lean-forward="true" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/packing/GUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/packing/Checker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/packing/GUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="48" lean-forward="true" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="68">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/packing/algo/NFDHAlgo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/packing/algo/ExampleAlgo.java">
+    <entry file="file://$PROJECT_DIR$/src/com/packing/models/Solution.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        <state relative-caret-position="493">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/packing/models/Rectangle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="32" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/packing/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/packing/algo/AbstractAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/packing/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/com/packing/InputReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+        <state relative-caret-position="459">
+          <caret line="30" column="27" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/packing/algo/BFDHAlgo.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/packing/algo/FFDHAlgo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/packing/TestCaseGenerator.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/packing/algo/NFDHAlgo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/packing/models/MinWValues.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/packing/models/BestValues.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
-          <caret line="48" column="25" lean-forward="true" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
+          <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
+          <folding>
+            <element signature="e#411#412#0" expanded="true" />
+            <element signature="e#446#447#0" expanded="true" />
+            <element signature="e#505#506#0" expanded="true" />
+            <element signature="e#553#554#0" expanded="true" />
+            <element signature="e#640#641#0" expanded="true" />
+            <element signature="e#677#678#0" expanded="true" />
+            <element signature="e#734#735#0" expanded="true" />
+            <element signature="e#786#787#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/packing/models/SkylineNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/packing/models/SharedRectangles.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/packing/models/Data.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/packing/models/Rectangle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/packing/Checker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="24" column="20" lean-forward="true" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+        <state relative-caret-position="697">
+          <caret line="57" column="32" selection-start-line="57" selection-start-column="32" selection-end-line="57" selection-end-column="32" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/packing/algo/HrSaAlgo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="e#140#141#0" expanded="true" />
-            <element signature="e#165#166#0" expanded="true" />
+            <element signature="e#1427#1428#0" expanded="true" />
+            <element signature="e#1462#1463#0" expanded="true" />
+            <element signature="e#1496#1497#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/packing/models/Solution.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="39" lean-forward="true" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
+        <state relative-caret-position="459">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/packing/models/WasteMapArea.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/packing/testGUI.out">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="10001" lean-forward="true" selection-start-line="10001" selection-end-line="10001" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/packing/GUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="103" selection-start-line="103" selection-end-line="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/packing/models/Rectangle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/packing/algo/Skyline.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1285">
+          <caret line="136" column="27" selection-start-line="136" selection-start-column="27" selection-end-line="136" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/packing/sorting/IndexComparator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/packing/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/packing/sorting/DESCSS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="37" lean-forward="true" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/packing/TextCaseGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-624">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/packing/sorting/DESCSS_NR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/packing/utils/DisjointArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/packing/algo/SkylineStrip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="122" selection-start-line="122" selection-end-line="122" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/packing/algo/SkylineStripFaster.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="88" selection-start-line="88" selection-end-line="88" />
+          <folding>
+            <element signature="e#364#377#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
