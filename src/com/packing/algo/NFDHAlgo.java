@@ -39,7 +39,7 @@ public class NFDHAlgo extends AbstractAlgorithm {
 
     boolean floor_feasible(Rectangle r){
         if(currentFloorHeight == 0 && currentLevelWidth == 0){
-            formerFirstRectangleWidth = r.getWidth();               //initialising variable manually to largest width rectangle
+            formerFirstRectangleWidth = r.getWidth();               //initialising variable manually to largest length rectangle
         }
         if (r.getHeight() <= containerHeight - currentFloorHeight ){
             return true;

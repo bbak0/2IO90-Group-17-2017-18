@@ -14,7 +14,7 @@ public class Main {
         Data input = inputReader.read();
         //System.out.println(input);
         AbstractAlgorithm solver;
-        solver = new Skyline(input);
+        solver = new SkylineStripFaster(input);
 
         /*Random random = new Random();
 
