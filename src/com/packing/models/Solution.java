@@ -16,9 +16,7 @@ public class Solution {
     public Solution(ArrayList<Rectangle> recs, boolean calc){
         rectangles = recs;
         if(calc) {
-            for (Rectangle r: rectangles){
-                areaOfRectangles += r.area;
-            }
+            calcRectangleArea();
             update();
         }
     }
@@ -33,6 +31,11 @@ public class Solution {
             }
         }
         area = maxHeight*maxHeight;
+    }
+    public void calcRectangleArea(){
+        for (Rectangle r: rectangles){
+            areaOfRectangles += r.area;
+        }
     }
     public long getWastedArea(){
         return area-areaOfRectangles;
