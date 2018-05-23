@@ -26,9 +26,9 @@ public class InputReader {
         }
 
         if (cRotations.contains("yes")){
-            result.setRotarionsAllowed(true);
+            result.setRotationsAllowed(true);
         } else {
-            result.setRotarionsAllowed(false);
+            result.setRotationsAllowed(false);
         }
         int i = cRectangles.indexOf("rectangles:");
         int n = Integer.valueOf(cRectangles.substring(i + "rectangles: ".length()));

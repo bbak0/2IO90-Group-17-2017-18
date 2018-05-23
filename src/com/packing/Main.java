@@ -14,7 +14,7 @@ public class Main {
         Data input = inputReader.read();
         //System.out.println(input);
         AbstractAlgorithm solver;
-        solver = new NFDHAlgo(input);
+        solver = new Skyline(input);
 
         /*Random random = new Random();
 
@@ -61,6 +61,7 @@ public class Main {
                 System.out.println(r);
             }
         }
+        System.out.println("wasted: " + sol.getWastedArea() + "used :" + sol.areaOfRectangles);
 
     }
 
