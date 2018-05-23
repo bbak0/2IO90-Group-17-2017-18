@@ -7,8 +7,6 @@ public class BestValues {
     int bestRectIndex;
     Rectangle bestRectangle;
     Rectangle oldRectangle;
-    int bestWastedArea = Integer.MAX_VALUE;
-
 
     public BestValues() {
         bestWidth = Integer.MAX_VALUE;
@@ -23,14 +21,6 @@ public class BestValues {
 
     public void setOldRectangle(Rectangle oldRectangle) {
         this.oldRectangle = oldRectangle;
-    }
-
-    public int getBestWastedArea() {
-        return bestWastedArea;
-    }
-
-    public void setBestWastedArea(int bestWastedArea) {
-        this.bestWastedArea = bestWastedArea;
     }
 
     public int getBestWidth() {

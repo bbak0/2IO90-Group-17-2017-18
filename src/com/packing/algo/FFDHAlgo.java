@@ -31,7 +31,7 @@ public class FFDHAlgo extends AbstractAlgorithm {
         widthLevel.add(0,0);
         heightLevel.add(0,0);
         containerHeight = input.getContainerHeight();
-        formerFirstRectangleWidth = rectangleCollection.get(0).getWidth();               //initialising variable manually to largest length rectangle
+        formerFirstRectangleWidth = rectangleCollection.get(0).getWidth();               //initialising variable manually to largest width rectangle
         for (Rectangle rectangle : rectangleCollection) {
             levelIndex = 0;
             while (levelIndex <= lastLevel) {                           //find a floor it fits in
