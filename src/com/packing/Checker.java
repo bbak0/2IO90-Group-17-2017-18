@@ -145,7 +145,7 @@ public class Checker {
         System.out.println((xMax) * (yMax));
 
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter("food.out"));
+            BufferedWriter bw = new BufferedWriter(new FileWriter("testGUI.out"));
 
             bw.write(xMax +  " "  + yMax);
             bw.newLine();
@@ -156,7 +156,6 @@ public class Checker {
                 for(j=1; j<=yMax; j++)
                 {
                     bw.write(bigBox[i][j] + " ");
-
                 }
                 bw.newLine();
 
