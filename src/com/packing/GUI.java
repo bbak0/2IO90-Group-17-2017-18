@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.io.File;
 
-public class GUI {
+public class GUI  {
 
 
     JFrame frame = new JFrame(); //creates frame
@@ -21,7 +21,7 @@ public class GUI {
     Color red = new Color(255, 102, 102);   // colors
     Color blue = new Color(51, 153, 255);
     Color lightBlue = new Color(153, 255, 255);
-    Color brown = new Color(160, 82, 45);
+    Color brown = new Color(160,82,45);
 
     Color[] colorSet = {Color.white, Color.red, Color.BLUE, Color.orange, Color.green, Color.pink, Color.cyan, Color.magenta, Color.yellow, Color.black, Color.white};
 
@@ -40,13 +40,13 @@ public class GUI {
         grid = new JLabel[length][width]; //allocate the size of grid
 
         for (int i = 0; i < length; i++) {
-            for (int j = 0; j < width; j++) {
+            for (int j = 0; j< width; j++) {
 
 
                 grid[i][j] = new JLabel();
-                // grid[i][j].setBorder(BorderFactory.createLineBorder(myBorder));
+               // grid[i][j].setBorder(BorderFactory.createLineBorder(myBorder));
                 grid[i][j].setOpaque(true);
-                //  grid[i][j].setText((i+1) + " "+ (j+1));
+              //  grid[i][j].setText((i+1) + " "+ (j+1));
 
             }
         }
@@ -56,7 +56,7 @@ public class GUI {
             for (int j = 0; j < width; j++) {
 
 
-                //  grid[i][j].setBorder(BorderFactory.createLineBorder(myBorder));
+              //  grid[i][j].setBorder(BorderFactory.createLineBorder(myBorder));
                 grid[i][j].setOpaque(true);
                 Color mycolor = new Color(255, 128, bigBox[i][j]);
 
@@ -64,6 +64,7 @@ public class GUI {
                     grid[i][j].setBackground(colorSet[bigBox[i][j] % 11]);
                 else
                     grid[i][j].setBackground(Color.white);
+
 
 
                 panel_1.add(grid[i][j]); //adds button to grid
@@ -78,8 +79,46 @@ public class GUI {
 
     public static void main(String[] args) {
 
-    }
 
+        File file = new File("/Users/viablesoft/IdeaProjects/DBL AGLO/food.out");
+        int[][] bigBox = new int[10000][10000];
+        int i, j;
+
+        try {
+            Scanner sc = new Scanner(file);
+
+
+            // READ X SIZE
+            xf = sc.nextInt();
+            // READ Y SIZE
+            yf = sc.nextInt();
+
+
+
+            // READ MATRIX
+
+            for (i = 0; i < xf; i++)
+            {
+                for (j = 0; j < yf; j++)
+                {
+                    bigBox[i][j] = sc.nextInt();
+                    System.out.print(bigBox[i][j] + " ");
+                }
+
+                System.out.println();
+            }
+
+
+        } catch (IOException e) {
+
+            // do something
+            e.printStackTrace();
+        }
+
+        System.out.println(xf + " "  + yf);
+
+        new GUI(xf, yf, bigBox);//makes new ButtonGrid with 2 parameters
+    }
 }
 
 

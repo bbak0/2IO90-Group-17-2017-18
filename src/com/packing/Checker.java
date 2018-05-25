@@ -11,6 +11,10 @@ import java.io.IOException;
 
 public class Checker {
 
+
+
+
+
     Scanner sc = new Scanner(System.in);
 
     int [][] bigBox = new int[10000][10000];
@@ -68,7 +72,7 @@ public class Checker {
         cHeight = sc.next();
 
 
-        doCalculations(numberOfRectangles);
+        Area(numberOfRectangles, fixedHeight, rotationsAllowed);
     }
     public void doCalculations(int numberOfRectangles)
     {
@@ -117,23 +121,54 @@ public class Checker {
                 }
             }
             //System.out.println(xAxis[i] + " " + yAxis[i]);
-           // System.out.println(x + " " + y);
+            System.out.println(x + " " + y);
 
         }
     }
+
+
+    public void Area (int numberOfRectangles, boolean fixedHeight, boolean rotationsAllowed)
+    {
+
+        doCalculations(numberOfRectangles);
+
+
+        return;
+    }
+
+
+
 
     public void run(){
 
         readGeneral();
         System.out.println((xMax) * (yMax));
-        new GUI(xMax, yMax, bigBox);
+
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter("testGUI.out"));
+
+            bw.write(xMax +  " "  + yMax);
+            bw.newLine();
+
+
+            for(i=1; i<=xMax; i++)
+            {
+                for(j=1; j<=yMax; j++)
+                {
+                    bw.write(bigBox[i][j] + " ");
+                }
+                bw.newLine();
+
+            }
+            bw.flush();
+        } catch (IOException e) {}
+
     }
 
 
     public static void main(String[] args) {
 
         ( new Checker() ).run();
-
 
     }
 }
