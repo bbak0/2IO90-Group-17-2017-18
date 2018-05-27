@@ -34,7 +34,7 @@ public class BinaryTree extends AbstractAlgorithm {
         freepointY.add(1, rectangleCollection.get(0).getHeight());
         Hlimit.add(0, rectangleCollection.get(0).getHeight());
         Hlimit.add(1, bigH);
-        
+
         for(Rectangle rectangle : rectangleCollection) {
             avgH += rectangle.getHeight();
             avgW += rectangle.getWidth();
