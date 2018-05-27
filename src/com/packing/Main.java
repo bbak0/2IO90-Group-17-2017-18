@@ -61,7 +61,7 @@ public class Main {
                 System.out.println(r);
             }
         }
-        System.out.println("wasted: " + sol.getWastedArea() + "used :" + sol.areaOfRectangles);
+        System.out.println("wasted: " + sol.getWastedArea() + "\n" + "used :" + sol.areaOfRectangles);
 
     }
 
