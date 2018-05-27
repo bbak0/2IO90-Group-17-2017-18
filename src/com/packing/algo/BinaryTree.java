@@ -41,10 +41,6 @@ public class BinaryTree extends AbstractAlgorithm {
 
     }
 
-    boolean isFit() {
-        for(int i=0; i<) {
 
-        }
-    }
 
 }
