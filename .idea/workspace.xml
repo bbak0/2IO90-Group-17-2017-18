@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="a43496ca-baf3-4003-b0a8-5dbc4349bc9f" name="Default" comment="Minor fixes">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -9,6 +10,9 @@
       <change beforePath="$PROJECT_DIR$/src/com/packing/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/packing/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/packing/algo/BinaryTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/packing/algo/BinaryTree.java" afterDir="false" />
     </list>
+=======
+    <list default="true" id="a43496ca-baf3-4003-b0a8-5dbc4349bc9f" name="Default" comment="Minor fixes" />
+>>>>>>> aefb637430fc08695fb8593badc90007fbfc6afd
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,6 +23,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+<<<<<<< HEAD
       <file leaf-file-name="BFDHAlgo.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/packing/algo/BFDHAlgo.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -29,6 +34,9 @@
         </entry>
       </file>
       <file leaf-file-name="BinaryTree.java" pinned="false" current-in-tab="true">
+=======
+      <file leaf-file-name="BinaryTree.java" pinned="false" current-in-tab="false">
+>>>>>>> aefb637430fc08695fb8593badc90007fbfc6afd
         <entry file="file://$PROJECT_DIR$/src/com/packing/algo/BinaryTree.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="277">
@@ -45,6 +53,18 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="695">
               <caret line="63" column="65" selection-start-line="63" selection-start-column="65" selection-end-line="63" selection-end-column="65" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Checker.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/packing/Checker.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="694">
+              <caret line="170" column="32" lean-forward="true" selection-start-line="170" selection-start-column="32" selection-end-line="170" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -260,7 +280,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1841000" />
+    <option name="totallyTimeSpent" value="1849000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
@@ -340,6 +360,16 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/src/com/packing/models/Data.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> aefb637430fc08695fb8593badc90007fbfc6afd
     <entry file="file://$PROJECT_DIR$/src/com/packing/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -351,6 +381,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -407,6 +440,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -463,6 +499,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -512,6 +551,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="24" column="20" lean-forward="true" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -582,6 +624,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -589,6 +634,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -596,6 +644,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -667,6 +718,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/com/packing/algo/BFDHAlgo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-162">
@@ -680,6 +732,21 @@
           <caret line="36" column="8" lean-forward="true" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
           <folding>
             <element signature="e#594#603#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/com/packing/algo/BinaryTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="46" column="9" lean-forward="true" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/packing/Checker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="694">
+          <caret line="170" column="32" lean-forward="true" selection-start-line="170" selection-start-column="32" selection-end-line="170" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+>>>>>>> aefb637430fc08695fb8593badc90007fbfc6afd
           </folding>
         </state>
       </provider>

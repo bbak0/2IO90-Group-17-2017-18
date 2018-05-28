@@ -47,8 +47,10 @@ public class BinaryTree extends AbstractAlgorithm {
 
         for(Rectangle rectangle : rectangleCollection) {
             for(int i=0; i<k; i++) {
-                if (isFit(rectangle, freepointX.get(k), freepointY.get(k), Hlimit.get(k))) {
-                    rectangle.placeRectangle(freepointX.get(k), freepointY.get(k));
+                if (isFit(rectangle, freepointX.get(i), freepointY.get(i), Hlimit.get(i))) {
+                    rectangle.placeRectangle(freepointX.get(i), freepointY.get(i));
+                    freepointX.add(i, freepointX.get(i)+rectangle.getWidth());
+                    break;
                 }
             }
         }
@@ -58,11 +60,10 @@ public class BinaryTree extends AbstractAlgorithm {
 
     }
 
-    boolean isFit(Rectangle rectangle, int htemp, int wtemp) {
-        if(rectangle.getWidth() + wtemp > bigW && rectangle.getHeight() + htemp > bigH){
+    boolean isFit(Rectangle rectangle, int wtemp, int htemp, int hlimit) {
+        if(rectangle.getWidth() + wtemp > bigW && rectangle.getHeight() + htemp > hlimit){
             return false;
         }
         return true;
     }
-
 }
