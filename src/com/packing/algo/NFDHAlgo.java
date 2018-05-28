@@ -41,12 +41,7 @@ public class NFDHAlgo extends AbstractAlgorithm {
         if(currentFloorHeight == 0 && currentLevelWidth == 0){
             formerFirstRectangleWidth = r.getWidth();               //initialising variable manually to largest width rectangle
         }
-        if (r.getHeight() <= containerHeight - currentFloorHeight ){
-            return true;
-        }
-        else {
-            return false;
-        }
+        return r.getHeight() <= containerHeight - currentFloorHeight;
     }
 
     void createNewLevel(Rectangle r) {

@@ -56,12 +56,7 @@ public class FFDHAlgo extends AbstractAlgorithm {
 
 
     boolean floor_feasible(Rectangle r, int levelX){
-        if (r.getHeight() <= containerHeight - heightLevel.get(levelX) ){
-            return true;
-        }
-        else {
-            return false;
-        }
+        return r.getHeight() <= containerHeight - heightLevel.get(levelX);
     }
 
     void createNewLevel(Rectangle r) {

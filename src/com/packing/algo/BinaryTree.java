@@ -61,9 +61,6 @@ public class BinaryTree extends AbstractAlgorithm {
     }
 
     boolean isFit(Rectangle rectangle, int wtemp, int htemp, int hlimit) {
-        if(rectangle.getWidth() + wtemp > bigW && rectangle.getHeight() + htemp > hlimit){
-            return false;
-        }
-        return true;
+        return rectangle.getWidth() + wtemp <= bigW || rectangle.getHeight() + htemp <= hlimit;
     }
 }
