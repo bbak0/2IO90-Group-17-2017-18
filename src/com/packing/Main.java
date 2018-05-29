@@ -14,8 +14,8 @@ public class Main {
         Data input = inputReader.read();
         //System.out.println(input);
         AbstractAlgorithm solver;
-        solver = new BinaryTree(input);
 
+        solver = new BTRun(input);
         /*Random random = new Random();
 
         if (random.nextBoolean()){
