@@ -2,9 +2,10 @@ package com.packing.algo;
 import com.packing.models.Data;
 import com.packing.models.Rectangle;
 import com.packing.models.Solution;
-import com.packing.models.BTP;
+import com.packing.sorting.IndexComparator;
 import com.packing.sorting.WidthComparator;
 import java.util.ArrayList;
+import com.packing.models.BTP;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -16,40 +17,28 @@ public class BTRun extends AbstractAlgorithm{
     }
     @Override
     public Solution solve() {
-        int avgH = 0, avgW = 0;
-        int bigH, bigW;
-        ArrayList<Rectangle> blocks = input.getRectangles();  // THIS IS SHIT.
-        int n = blocks.size();
-        avgH /= blocks.size();
-        avgW /= blocks.size();
-        for(Rectangle rectangle : blocks) {
-            avgH += rectangle.getHeight();
-            avgW += rectangle.getWidth();
-        }
-        avgH /= blocks.size();
-        avgW /= blocks.size();
-        bigH = (int) (avgH * Math.sqrt(n));
-        bigW = (int) (avgW * Math.sqrt(n));
-        BTP packer = new BTP(bigW, bigH);
 
-        //////////
+        ArrayList<Rectangle> rectangleCollection = input.getRectangles();  // THIS IS SHIT.
+        BTP packer = new BTP(1000, 1000);
 
 
-        Collections.sort(blocks, new WidthComparator());
 
-        packer.fit(blocks);
-        Iterator<Rectangle> blocksItr = blocks.iterator();
+
+        Collections.sort(rectangleCollection, new WidthComparator());
+
+        packer.fit(rectangleCollection);
+        Iterator<Rectangle> blocksItr = rectangleCollection.iterator();
         while (blocksItr.hasNext()) {
-            Rectangle block = blocksItr.next();
-            if (block.fit != null) {
-                int fitX = block.fit.x;
-                int fitY = block.fit.y;
-                block.placeRectangle(fitX, fitY);
+            Rectangle rectangle = blocksItr.next();
+            if (rectangle.fit != null) {
+                int fitX = rectangle.fit.x;
+                int fitY = rectangle.fit.y;
+                rectangle.placeRectangle(fitX, fitY);
 
 
             }
         }
-
-        return new Solution(blocks);
+        Collections.sort(rectangleCollection, new IndexComparator());
+        return new Solution(rectangleCollection);
     }
 }

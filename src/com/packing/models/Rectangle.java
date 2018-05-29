@@ -47,6 +47,7 @@ public class Rectangle {
          isRotated = !isRotated;
      }
 
+
     public int getIndex() {
         return index;
     }
