@@ -8,7 +8,10 @@ public class Data {
     int containerHeight = Integer.MAX_VALUE;
     boolean rotationsAllowed;
     int rectangleAmount;
-    ArrayList<Rectangle> rectangles = new ArrayList<>();
+    int totalWidth = 0;
+    int totalHeight = 0;
+
+    public ArrayList<Rectangle> rectangles = new ArrayList<>();
 
     public ArrayList<Rectangle> getRectangles() {
         return rectangles;
@@ -34,8 +37,8 @@ public class Data {
         return rotationsAllowed;
     }
 
-    public void setRotarionsAllowed(boolean rotarionsAllowed) {
-        this.rotationsAllowed = rotarionsAllowed;
+    public void setRotationsAllowed(boolean rotationsAllowed) {
+        this.rotationsAllowed = rotationsAllowed;
     }
 
     public int getRectangleAmount() {
@@ -47,7 +50,17 @@ public class Data {
     }
 
     public void addRectangle(Rectangle r){
+        totalWidth += r.width;
+        totalHeight += r.height;
         rectangles.add(r);
+    }
+
+    public int getTotalWidth() {
+        return totalWidth;
+    }
+
+    public int getTotalHeight() {
+        return totalHeight;
     }
 
     @Override

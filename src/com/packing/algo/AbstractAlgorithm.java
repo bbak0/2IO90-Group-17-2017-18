@@ -1,9 +1,7 @@
 package com.packing.algo;
 
 import com.packing.models.Data;
-import com.packing.models.Rectangle;
-
-import java.util.ArrayList;
+import com.packing.models.Solution;
 
 public abstract class AbstractAlgorithm {
 
@@ -13,7 +11,5 @@ public abstract class AbstractAlgorithm {
         this.input = in;
     }
 
-    public abstract void solve();
-
-    public abstract void print();
+    public abstract Solution solve();
 }

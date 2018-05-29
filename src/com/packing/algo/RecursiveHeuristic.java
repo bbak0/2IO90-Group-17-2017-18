@@ -9,9 +9,9 @@ import com.packing.sorting.WidthComparator;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class NFDHAlgo extends AbstractAlgorithm {
+public class RecursiveHeuristic extends AbstractAlgorithm {
 
-    public NFDHAlgo(Data in) {
+    public RecursiveHeuristic(Data in) {
         super(in);
     }
 
@@ -23,7 +23,6 @@ public class NFDHAlgo extends AbstractAlgorithm {
 
     @Override
     public Solution solve() {
-        Collections.sort(rectangleCollection, new WidthComparator());
         for (Rectangle rectangle : rectangleCollection) {
             if (floor_feasible(rectangle) == false) {
                 createNewLevel(rectangle);
