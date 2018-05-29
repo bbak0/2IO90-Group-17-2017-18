@@ -12,17 +12,17 @@ public class BTP {
     }
 
 
-    public void fit(ArrayList<Rectangle> blocks) {
+    public void fit(ArrayList<Rectangle> rectanglesCollection) {
         Rectangle node;
-        Rectangle block;
-        Iterator<Rectangle> blockItr = blocks.iterator();
+        Rectangle rectangle;
+        Iterator<Rectangle> rectangleIterator = rectanglesCollection.iterator();
         int n=0;
-        while (blockItr.hasNext()) {
-            block = blockItr.next();
-            if ((node = this.findNode(this.root.get(n), block.width, block.height))!=null) {
-                block.fit = this.splitNode(node, block.width, block.height);
+        while (rectangleIterator.hasNext()) {
+            rectangle = rectangleIterator.next();
+            if ((node = this.findNode(this.root.get(n), rectangle.width, rectangle.height))!=null) {
+                rectangle.fit = this.splitNode(node, rectangle.width, rectangle.height);
                 if(node.isroot){
-                    block.fit.isroot = true;
+                    rectangle.fit.isroot = true;
                 }
             }else{
                 n++;

@@ -7,8 +7,10 @@ import com.packing.sorting.WidthComparator;
 import java.util.ArrayList;
 import com.packing.models.BTP;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Iterator;
+
+
+
 public class BTRun extends AbstractAlgorithm{
 
 
@@ -18,9 +20,21 @@ public class BTRun extends AbstractAlgorithm{
     @Override
     public Solution solve() {
 
-        ArrayList<Rectangle> rectangleCollection = input.getRectangles();  // THIS IS SHIT.
+        boolean rotAllowed = input.isRotationsAllowed();
+        ArrayList<Rectangle> rectangleCollection = input.getRectangles();
         BTP packer = new BTP(1000, 1000);
 
+       if(rotAllowed)
+        for(Rectangle rectangle : rectangleCollection)
+        {
+            if(rectangle.height > rectangle.width)
+            {
+                int x = rectangle.width;
+                rectangle.width = rectangle.height;
+                rectangle.height = x;
+                rectangle.isRotated = true;
+            }
+        }
 
 
 
