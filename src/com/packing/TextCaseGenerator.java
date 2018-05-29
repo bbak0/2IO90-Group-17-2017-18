@@ -25,9 +25,15 @@ public class TextCaseGenerator {
         int randomRot = randomGenerator.nextInt(2);
         int height = randomGenerator.nextInt(10000);
         int n = randomGenerator.nextInt(100);
-        cHeight = random % 2 == 0;
+        if (random % 2 == 0)
+            cHeight = true;
+        else
+            cHeight = false;
 
-        rotation = randomRot % 2 == 0;
+        if (randomRot % 2 == 0)
+            rotation = true;
+        else
+            rotation = false;
 
 
         if (cHeight == true)

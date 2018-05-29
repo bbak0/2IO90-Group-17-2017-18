@@ -8,11 +8,7 @@ public class Rectangle {
     public int area;
     public boolean isPlaced = false;
     public boolean isRotated = false;
-    public Rectangle right = null;
-    public Rectangle down = null;
-    public Rectangle fit = null;
-    public boolean isroot = false;
-    public boolean used = false;
+
     //coordinates
     public int x = 0;
     public int y = 0;
@@ -25,16 +21,7 @@ public class Rectangle {
          area = width * height;
      }
 
-    public Rectangle(int x, int y, int w, int h) {
-        this.x = x;
-        this.y = y;
-        this.width = w;
-        this.height = h;
-
-    }
-
-
-    public boolean placeRectangle(int x, int y){
+     public boolean placeRectangle(int x, int y){
          this.x = x;
          this.y = y;
          return false;
