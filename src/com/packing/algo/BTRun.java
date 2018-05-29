@@ -25,8 +25,16 @@ public class BTRun extends AbstractAlgorithm {
     public Solution solve() {
 
         boolean rotAllowed = input.isRotationsAllowed();
+        boolean fixH = input.isContainerHeightFixed();
+        int fixedHeight = 1000;
+       /*if(fixH)
+        {
+             fixedHeight = input.getContainerHeight();
+
+        } */
+
+        BTP packer = new BTP (1000, fixedHeight);
         ArrayList<Rectangle> rectangleCollection = input.getRectangles();
-        BTP packer = new BTP(1000, 1000);
 
         if (rotAllowed)
             for (Rectangle rectangle : rectangleCollection) {
