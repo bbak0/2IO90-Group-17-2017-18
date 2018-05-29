@@ -1,4 +1,5 @@
 package com.packing.models;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -16,25 +17,27 @@ public class BTP {
         Rectangle node;
         Rectangle rectangle;
         Iterator<Rectangle> rectangleIterator = rectanglesCollection.iterator();
-        int n=0;
+        int n = 0;
         while (rectangleIterator.hasNext()) {
             rectangle = rectangleIterator.next();
-            if ((node = this.findNode(this.root.get(n), rectangle.width, rectangle.height))!=null) {
+            if ((node = this.findNode(this.root.get(n), rectangle.width, rectangle.height)) != null) {
                 rectangle.fit = this.splitNode(node, rectangle.width, rectangle.height);
-                if(node.isroot){
+                if (node.isroot) {
                     rectangle.fit.isroot = true;
                 }
-            }else{
+            } else {
                 n++;
             }
         }
     }
 
     public Rectangle findNode(Rectangle root, int w, int h) {
-        if (root.used
-                ) {
+        if (root.used) {
             Rectangle right = findNode(root.right, w, h);
-            return (right != null ? right : findNode(root.down, w, h));
+            if (right != null)
+                return right;
+            else
+                return findNode(root.down, w, h);
         } else if ((w <= root.width) && (h <= root.height)) {
             return root;
         } else {
