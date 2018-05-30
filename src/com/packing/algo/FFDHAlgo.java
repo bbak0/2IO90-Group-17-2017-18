@@ -8,6 +8,7 @@ import com.packing.sorting.WidthComparator;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 
 public class FFDHAlgo extends AbstractAlgorithm {
 
@@ -28,8 +29,8 @@ public class FFDHAlgo extends AbstractAlgorithm {
     @Override
     public Solution solve() {
         Collections.sort(rectangleCollection, new WidthComparator());
-        widthLevel.add(0,0);
-        heightLevel.add(0,0);
+        widthLevel.add(0, 0);
+        heightLevel.add(0, 0);
         containerHeight = input.getContainerHeight();
         formerFirstRectangleWidth = rectangleCollection.get(0).getWidth();               //initialising variable manually to largest width rectangle
         for (Rectangle rectangle : rectangleCollection) {
@@ -37,8 +38,7 @@ public class FFDHAlgo extends AbstractAlgorithm {
             while (levelIndex <= lastLevel) {                           //find a floor it fits in
                 if (floor_feasible(rectangle, levelIndex) == false) {
                     levelIndex++;
-                }
-                else {
+                } else {
                     break;                      //SHOULD BREAK OUT OF LOOP WHILE ??
                 }
             }
@@ -55,22 +55,21 @@ public class FFDHAlgo extends AbstractAlgorithm {
     }
 
 
-    boolean floor_feasible(Rectangle r, int levelX){
-        if (r.getHeight() <= containerHeight - heightLevel.get(levelX) ){
+    boolean floor_feasible(Rectangle r, int levelX) {
+        if (r.getHeight() <= containerHeight - heightLevel.get(levelX)) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
 
     void createNewLevel(Rectangle r) {
-        widthLevel.add(lastLevel + 1,widthLevel.get(lastLevel) + formerFirstRectangleWidth);
-        heightLevel.add(lastLevel + 1, 0) ;
+        widthLevel.add(lastLevel + 1, widthLevel.get(lastLevel) + formerFirstRectangleWidth);
+        heightLevel.add(lastLevel + 1, 0);
         formerFirstRectangleWidth = r.getWidth();
         lastLevel++;
         levelIndex = lastLevel;
     }
-
-
 }
+
+

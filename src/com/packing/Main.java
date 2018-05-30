@@ -14,8 +14,8 @@ public class Main {
         Data input = inputReader.read();
         //System.out.println(input);
         AbstractAlgorithm solver;
-        solver = new BinaryTree(input);
 
+        solver = new BTRun(input);
         /*Random random = new Random();
 
         if (random.nextBoolean()){
@@ -44,14 +44,33 @@ public class Main {
         }
         System.out.println("number of rectangles: " + input.getRectangleAmount());
         for (Rectangle r : sol.rectangles) {
-            System.out.print(r.getWidth() + " ");
-            System.out.println(r.getHeight());
+            if(!input.isRotationsAllowed()) {
+                System.out.print(r.getWidth() + " ");
+                System.out.println(r.getHeight());
+            }
+            else
+            {
+                if(r.isRotated)
+                {
+                    System.out.print(r.getHeight() + " ");
+                    System.out.println(r.getWidth());
+                }
+                else
+                {
+                    System.out.print(r.getWidth() + " ");
+                    System.out.println(r.getHeight());
+                }
+            }
         }
         System.out.println("placement of rectangles");
         if (input.isRotationsAllowed()) {
             for (Rectangle r : sol.rectangles) {
-                //       System.out.print(r.getWidth() + ": ");
-                System.out.print("no ");                           // if rotations are allowed UPDATE to whether is rotated or not
+                String rot = "";
+                if(r.isRotated)
+                    rot = "yes ";
+                else
+                    rot = "no ";
+                System.out.print(rot);                           // if rotations are allowed UPDATE to whether is rotated or not
                 System.out.println(r);
             }
         } else {
