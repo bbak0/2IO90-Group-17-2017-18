@@ -1,6 +1,6 @@
-package com.packing.algo;
+package com.packing.models;
 
-import com.packing.models.*;
+import com.packing.algo.AbstractAlgorithm;
 import com.packing.sorting.IndexComparator;
 
 import java.util.ArrayList;

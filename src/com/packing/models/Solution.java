@@ -40,4 +40,16 @@ public class Solution {
     public long getWastedArea(){
         return area-areaOfRectangles;
     }
+
+    public ArrayList<Rectangle> getRectangles() {
+        return rectangles;
+    }
+
+    public int getMaxHeight() {
+        return maxHeight;
+    }
+
+    public int getMaxWidth() {
+        return maxWidth;
+    }
 }
