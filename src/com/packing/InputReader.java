@@ -9,6 +9,9 @@ public class InputReader {
     Scanner sc = new Scanner(System.in);
 
     public InputReader(){}
+    public InputReader(String input){
+        sc = new Scanner(input);
+    }
 
     public Data read(){
         Data result = new Data();

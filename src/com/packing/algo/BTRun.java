@@ -1,55 +1,59 @@
 package com.packing.algo;
+
 import com.packing.models.Data;
 import com.packing.models.Rectangle;
 import com.packing.models.Solution;
-import com.packing.models.BTP;
+import com.packing.sorting.IndexComparator;
 import com.packing.sorting.WidthComparator;
+
 import java.util.ArrayList;
+
+import com.packing.models.BTP;
+
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Iterator;
-public class BTRun extends AbstractAlgorithm{
+
+
+public class BTRun extends AbstractAlgorithm {
 
 
     public BTRun(Data in) {
         super(in);
     }
+
     @Override
     public Solution solve() {
-        int avgH = 0, avgW = 0;
-        int bigH, bigW;
-        ArrayList<Rectangle> blocks = input.getRectangles();  // THIS IS SHIT.
-        int n = blocks.size();
-        avgH /= blocks.size();
-        avgW /= blocks.size();
-        for(Rectangle rectangle : blocks) {
-            avgH += rectangle.getHeight();
-            avgW += rectangle.getWidth();
-        }
-        avgH /= blocks.size();
-        avgW /= blocks.size();
-        bigH = (int) (avgH * Math.sqrt(n));
-        bigW = (int) (avgW * Math.sqrt(n));
-        BTP packer = new BTP(bigW, bigH);
 
-        //////////
+        boolean rotAllowed = input.isRotationsAllowed();
+        ArrayList<Rectangle> rectangleCollection = input.getRectangles();
+        BTP packer = new BTP(1000, 1000);
+
+        if (rotAllowed)
+            for (Rectangle rectangle : rectangleCollection) {
+                if (rectangle.height > rectangle.width) {
+                    int x = rectangle.width;
+                    rectangle.width = rectangle.height;
+                    rectangle.height = x;
+                    rectangle.isRotated = true;
+                }
+            }
 
 
-        Collections.sort(blocks, new WidthComparator());
+        Collections.sort(rectangleCollection, new WidthComparator());
 
-        packer.fit(blocks);
-        Iterator<Rectangle> blocksItr = blocks.iterator();
-        while (blocksItr.hasNext()) {
-            Rectangle block = blocksItr.next();
-            if (block.fit != null) {
-                int fitX = block.fit.x;
-                int fitY = block.fit.y;
-                block.placeRectangle(fitX, fitY);
+        packer.fit(rectangleCollection);
+        Iterator<Rectangle> rectangleIterator = rectangleCollection.iterator();
+        while (rectangleIterator.hasNext()) {
+            Rectangle rectangle = rectangleIterator.next();
+            if (rectangle.fit != null) {
+                int fitX = rectangle.fit.x;
+                int fitY = rectangle.fit.y;
+                rectangle.placeRectangle(fitX, fitY);
 
 
             }
         }
-
-        return new Solution(blocks);
+        Collections.sort(rectangleCollection, new IndexComparator());
+        return new Solution(rectangleCollection);
     }
 }

@@ -3,7 +3,7 @@ package com.packing.models;
 import java.util.ArrayList;
 public class Solution {
 
-     public ArrayList<Rectangle> rectangles;
+    public ArrayList<Rectangle> rectangles;
     public long area;
     public int maxHeight ;
     public int maxWidth;
@@ -39,5 +39,17 @@ public class Solution {
     }
     public long getWastedArea(){
         return area-areaOfRectangles;
+    }
+
+    public ArrayList<Rectangle> getRectangles() {
+        return rectangles;
+    }
+
+    public int getMaxHeight() {
+        return maxHeight;
+    }
+
+    public int getMaxWidth() {
+        return maxWidth;
     }
 }
