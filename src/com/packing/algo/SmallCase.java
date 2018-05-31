@@ -17,33 +17,41 @@ public class SmallCase extends AbstractAlgorithm{
 
     @Override
     public Solution solve() {
-
-
-        return null;
-    }
+        ArrayList<BLnode> nodes = new ArrayList<BLnode>();
+        nodes.add(new BLnode(0, 0));
+        rectangleAssigner(nodes, input.getRectangles(), new ArrayList<Rectangle>() );
+        return finalSolution;
+}
 
     void rectangleAssigner(ArrayList<BLnode> nodes, ArrayList<Rectangle> rectangles, ArrayList<Rectangle> placedRectangles) {
         if(rectangles.isEmpty()) {
+            ArrayList<Rectangle> placedRectanglesTemp = (ArrayList<Rectangle>) placedRectangles.clone();
+            Solution finalSolutionTemp = new Solution(placedRectanglesTemp, true);
+            System.out.println(finalSolutionTemp.area);
             if(finalSolution == null) {
-                finalSolution = new Solution(placedRectangles, true);
-            } else if(new Solution(placedRectangles, true).area < finalSolution.area) {
-                finalSolution = new Solution(placedRectangles, true);
+                finalSolution = new Solution(placedRectanglesTemp, true);
+                return;
+            } else if(finalSolutionTemp.area < finalSolution.area) {
+                finalSolution = finalSolutionTemp;
+                System.out.println("Found it");
+                return;
             }
         }
         for(BLnode node : nodes) {
             for(Rectangle rect : rectangles) {
                 if(rectangleFits(rect, node, placedRectangles)) {
-                    rect.x = node.x;
-                    rect.y = node.y;
-                    rect.isPlaced = true;
+                    Rectangle rectTemp = new Rectangle(rect.index, rect.width, rect.height);
+                    rectTemp.x = node.x;
+                    rectTemp.y = node.y;
+                    rectTemp.isPlaced = true;
 
-                    ArrayList<Rectangle> placedRectanglesTemp = placedRectangles;
-                    placedRectanglesTemp.add(rect);
+                    ArrayList<Rectangle> placedRectanglesTemp = (ArrayList<Rectangle>) placedRectangles.clone();
+                    placedRectanglesTemp.add(rectTemp);
 
-                    ArrayList<Rectangle> rectanglesTemp = rectangles;
+                    ArrayList<Rectangle> rectanglesTemp = (ArrayList<Rectangle>) rectangles.clone();
                     rectanglesTemp.remove(rect);
 
-                    ArrayList<BLnode> nodesTemp = nodes;
+                    ArrayList<BLnode> nodesTemp = (ArrayList<BLnode>) nodes.clone();
 
                     nodesTemp.add(addVerticalNode(nodesTemp, node, rect.height, placedRectanglesTemp));
                     nodesTemp.add(addHorizontalNode(nodesTemp, node, rect.width, placedRectanglesTemp));
