@@ -5,8 +5,6 @@ import com.packing.models.Data;
 import com.packing.models.Rectangle;
 import com.packing.models.Solution;
 
-import java.util.Random;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -15,7 +13,7 @@ public class Main {
         //System.out.println(input);
         AbstractAlgorithm solver;
 
-        solver = new BTRun(input);
+        solver = new SmallCase(input);
         /*Random random = new Random();
 
         if (random.nextBoolean()){
@@ -29,7 +27,8 @@ public class Main {
     }
 
         //printing
-        public static void print(Data input, Solution sol){
+
+    public static void print(Data input, Solution sol){
         System.out.print("container height: ");
         if (input.isContainerHeightFixed()) {
             System.out.println("fixed " + input.getContainerHeight());
