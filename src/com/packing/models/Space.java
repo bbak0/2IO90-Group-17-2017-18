@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public abstract class Space {
 
-    protected ArrayList<Rectangle> rectangles;
-    protected int height;
-    protected boolean isPacked;
-    protected long areaOfRectangles;
+    public ArrayList<Rectangle> rectangles;
+    public int height;
+    public boolean isPacked;
+    public long areaOfRectangles;
     //coordinates
     public int x = 0;
     public int y = 0;
