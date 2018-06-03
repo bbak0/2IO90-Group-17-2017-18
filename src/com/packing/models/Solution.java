@@ -30,7 +30,7 @@ public class Solution {
                 maxWidth = r.x+r.width;
             }
         }
-        area = maxHeight*maxHeight;
+        area = maxHeight*maxWidth;
     }
     public void calcRectangleArea(){
         for (Rectangle r: rectangles){
@@ -39,5 +39,17 @@ public class Solution {
     }
     public long getWastedArea(){
         return area-areaOfRectangles;
+    }
+
+    public ArrayList<Rectangle> getRectangles() {
+        return rectangles;
+    }
+
+    public int getMaxHeight() {
+        return maxHeight;
+    }
+
+    public int getMaxWidth() {
+        return maxWidth;
     }
 }

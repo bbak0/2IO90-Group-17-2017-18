@@ -23,7 +23,7 @@ public class SimulatedAnnealing extends AbstractAlgorithm {
     @Override
     public Solution solve() {
         Collections.sort(inputCopy.rectangles, new AreaComparator());
-        Solution sol = new RecursiveHeuristic(input).solve();
+        Solution sol = new NFDHAlgo(input).solve();
         sol.update();
         sol.calcRectangleArea();
         int nonAccepted=0;
@@ -69,8 +69,9 @@ public class SimulatedAnnealing extends AbstractAlgorithm {
         sol.rectangles.get(r2).x = temp1;
         sol.rectangles.get(r2).y = temp2;
         inputCopy.rectangles = sol.rectangles;
-        sol.rectangles = new RecursiveHeuristic(input).solve().rectangles;
+        sol.rectangles = new NFDHAlgo(input).solve().rectangles;
         sol.update();
     }
+
 
 }
