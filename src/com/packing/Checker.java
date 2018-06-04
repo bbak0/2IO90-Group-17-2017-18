@@ -13,9 +13,9 @@ public class Checker {
 
     Scanner sc = new Scanner(System.in);
 
-    int [][] bigBox = new int[10000][10000];
-    int []xAxis = new int[10000];
-    int []yAxis = new int[10000];
+    int [][] bigBox = new int[10002][10002];
+    int []xAxis = new int[10002];
+    int []yAxis = new int[10002];
 
     int xMax, yMax, i, j, x, y, k;
     int counter = 0;
@@ -53,7 +53,7 @@ public class Checker {
 
 
 
-        for(i=1; i <= numberOfRectangles; i++)
+        for(i=0; i < numberOfRectangles; i++)
         {
 
             j = sc.nextInt();
@@ -72,7 +72,7 @@ public class Checker {
     }
     public void doCalculations(int numberOfRectangles)
     {
-        for(i=1; i <= numberOfRectangles; i++)
+        for(i=0; i < numberOfRectangles; i++)
         {
             counter++;
             if(rotationsAllowed)
@@ -104,20 +104,18 @@ public class Checker {
             }
 
 
-            for(int j=x+1; j<=xAxis[i] + x; j++){
-                for(int k=y+1; k<=yAxis[i] + y; k++){
+            for(int j=x; j< xAxis[i] + x; j++){
+                for(int k=y; k< yAxis[i] + y; k++){
                     bigBox[j][k] = counter;
-                    if(j > xMax){
-                        xMax = j;
+                    if(j+1 > xMax){
+                        xMax = j+1;
                     }
-                    if(k > yMax){
-                        yMax = k;
+                    if(k+1 > yMax){
+                        yMax = k+1;
                     }
 
                 }
             }
-            //System.out.println(xAxis[i] + " " + yAxis[i]);
-            // System.out.println(x + " " + y);
 
         }
     }
@@ -125,8 +123,20 @@ public class Checker {
     public void run(){
 
         readGeneral();
+       // new GUI(xMax, yMax, bigBox);
+        System.out.println(xMax + " " + yMax);
         System.out.println((xMax) * (yMax));
-        new GUI(xMax, yMax, bigBox);
+        double used = 0;
+
+        for(i=0; i<xMax;i++)
+            for(j=0;j<yMax;j++)
+                if(bigBox[i][j] > 0)
+                    used++;
+        double wasted = xMax * yMax - used;
+        double total = wasted + used; double p = total/100; wasted = wasted/p; used = used/p;
+        System.out.println("used%: " + used);
+        System.out.println("wasted% "+ wasted);
+
     }
 
 

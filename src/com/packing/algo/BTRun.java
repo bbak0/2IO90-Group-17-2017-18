@@ -3,8 +3,7 @@ package com.packing.algo;
 import com.packing.models.Data;
 import com.packing.models.Rectangle;
 import com.packing.models.Solution;
-import com.packing.sorting.IndexComparator;
-import com.packing.sorting.WidthComparator;
+import com.packing.sorting.*;
 
 import java.util.ArrayList;
 
@@ -33,7 +32,6 @@ public class BTRun extends AbstractAlgorithm {
 
         } */
 
-        BTP packer = new BTP (1000, fixedHeight);
         ArrayList<Rectangle> rectangleCollection = input.getRectangles();
 
         if (rotAllowed)
@@ -47,7 +45,11 @@ public class BTRun extends AbstractAlgorithm {
             }
 
 
-        Collections.sort(rectangleCollection, new WidthComparator());
+        Collections.sort(rectangleCollection, new HeightComparator());
+
+        int w = rectangleCollection.get(0).getWidth();
+        int h = rectangleCollection.get(0).getHeight();
+        BTP packer = new BTP (10000, 10000);
 
         packer.fit(rectangleCollection);
         Iterator<Rectangle> rectangleIterator = rectangleCollection.iterator();
