@@ -26,7 +26,7 @@ public class BTRun extends AbstractAlgorithm {
     private  ArrayList<Rectangle> procedure(ArrayList<Rectangle> collection, int sortingIndex)
     {
         boolean rotAllowed = input.isRotationsAllowed();
-
+        int rWidth = 0; int rHeight = 0;
         if (rotAllowed)
             for (Rectangle rectangle : collection) {
                 if (rectangle.height > rectangle.width) {
@@ -44,8 +44,67 @@ public class BTRun extends AbstractAlgorithm {
         else
             Collections.sort(collection, new AreaComparator());
 
-        BTP packer = new BTP (8000, 8000);
 
+        for(Rectangle rectangle :collection) {
+            rHeight+= rectangle.getHeight();
+            rWidth += rectangle.getWidth();
+        }
+        rHeight /= collection.size();
+        rWidth /= collection.size();
+        int n = collection.size();
+        int h = (int) (rHeight * Math.sqrt(n));
+        int w = (int) (rWidth * Math.sqrt(n));
+
+
+            try {
+                collection = method(collection, w, h);
+
+            }
+            catch (IndexOutOfBoundsException e) {
+
+                try {
+                    w = w*2 + w/2;
+                    h = h*2 + h/2;
+                    collection = method(collection, w, h);
+                    return collection;
+                }
+
+                catch(IndexOutOfBoundsException f)
+                {
+                    try {
+                        w = 4*w;
+                        h = 4*h;
+                        collection = method(collection, w, h);
+                        return collection;
+                    }
+                    catch(IndexOutOfBoundsException g)
+                    {
+                        try {
+                            w = 6 * w + w / 2;
+                            h = 6 * h + h / 2;
+                            collection = method(collection, w, h);
+                            return collection;
+                        }
+                        catch(IndexOutOfBoundsException H)
+                        {
+                            w = 8 * w;
+                            h = 8 * h;
+                            collection = method(collection, w, h);
+                            return collection;
+                        }
+                    }
+                }
+            }
+
+            return collection;
+
+
+    }
+
+
+    public ArrayList<Rectangle> method(ArrayList<Rectangle> collection, int w, int h)
+    {
+        BTP packer = new BTP (w, h);
         packer.fit(collection);
         Iterator<Rectangle> rectangleIterator = collection.iterator();
         while (rectangleIterator.hasNext()) {
