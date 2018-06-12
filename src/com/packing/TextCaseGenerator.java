@@ -36,6 +36,7 @@ public class TextCaseGenerator {
             rotation = false;
 
 
+
         if (cHeight == true)
             ch = "  free";
         else

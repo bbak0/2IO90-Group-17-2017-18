@@ -38,6 +38,8 @@ public class Solution {
         }
     }
     public long getWastedArea(){
+        update();
+        calcRectangleArea();
         return area-areaOfRectangles;
     }
 
