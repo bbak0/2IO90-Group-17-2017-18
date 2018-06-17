@@ -17,14 +17,62 @@ public class SmallCase extends AbstractAlgorithm{
 
     @Override
     public Solution solve() {
-        ArrayList<BLnode> nodes = new ArrayList<BLnode>();
+        ArrayList<BLnode> nodes = new ArrayList<BLnode>(); //initialize input
         nodes.add(new BLnode(0, 0));
-        rectangleAssigner(nodes, input.getRectangles(), new ArrayList<Rectangle>());
-
+        if (input.isRotationsAllowed() && input.isContainerHeightFixed()) {
+            rectangleAssignerStripWithRotations(nodes, input.getRectangles(), new ArrayList<Rectangle>());
+        } else if (input.isRotationsAllowed()){ // && !isContainerHeightFixed()
+            rectangleAssignerWithRotations(nodes, input.getRectangles(), new ArrayList<Rectangle>());
+        } else if (input.isContainerHeightFixed()) { //&& !isRotationsAllowed()
+            rectangleAssignerStrip(nodes, input.getRectangles(), new ArrayList<Rectangle>());
+        } else {
+            rectangleAssigner(nodes, input.getRectangles(), new ArrayList<Rectangle>());
+        }
         return finalSolution;
-}
+    }
 
     void rectangleAssigner(ArrayList<BLnode> nodes, ArrayList<Rectangle> rectangles, ArrayList<Rectangle> placedRectangles) {
+        updateSolution(rectangles, placedRectangles);
+
+        for(BLnode node : nodes) {
+            for(Rectangle rect : rectangles) {
+                putRectangle(rect, node, rectangles, placedRectangles, nodes);
+            }
+        }
+    }
+    void rectangleAssignerWithRotations(ArrayList<BLnode> nodes, ArrayList<Rectangle> rectangles, ArrayList<Rectangle> placedRectangles) {
+        updateSolution(rectangles, placedRectangles);
+
+        for(BLnode node : nodes) {
+            for(Rectangle rect : rectangles) {
+                putRectangle(rect, node, rectangles, placedRectangles, nodes);
+                rect.rotate();  //MAYBE NEED A CLONE OVER HERE? IS THE ACTUAL RECTANGLE ROTATED IN PREVIOUS LINE AS WELL?
+                putRectangleWithRotations(rect, node, rectangles, placedRectangles, nodes);
+            }
+        }
+    }
+    void rectangleAssignerStrip(ArrayList<BLnode> nodes, ArrayList<Rectangle> rectangles, ArrayList<Rectangle> placedRectangles) {
+        updateSolution(rectangles, placedRectangles);
+
+        for(BLnode node : nodes) {
+            for(Rectangle rect : rectangles) {
+                putRectangleFixedHeight(rect, node, rectangles, placedRectangles, nodes);
+            }
+        }
+    }
+    void rectangleAssignerStripWithRotations(ArrayList<BLnode> nodes, ArrayList<Rectangle> rectangles, ArrayList<Rectangle> placedRectangles) {
+        updateSolution(rectangles, placedRectangles);
+
+        for(BLnode node : nodes) {
+            for(Rectangle rect : rectangles) {
+                putRectangleFixedHeightWithRotations(rect, node, rectangles, placedRectangles, nodes);
+                rect.rotate();
+                putRectangleFixedHeightWithRotations(rect, node, rectangles, placedRectangles, nodes);
+            }
+        }
+    }
+
+    void updateSolution(ArrayList<Rectangle> rectangles, ArrayList<Rectangle> placedRectangles) {
         if(rectangles.isEmpty()) {
             ArrayList<Rectangle> placedRectanglesTemp = (ArrayList<Rectangle>) placedRectangles.clone();
             Solution finalSolutionTemp = new Solution(placedRectanglesTemp, true);
@@ -38,53 +86,96 @@ public class SmallCase extends AbstractAlgorithm{
                 return;
             }
         }
-        for(BLnode node : nodes) {
-            for(Rectangle rect : rectangles) {
-                putRectangle(rect, node, rectangles, placedRectangles, nodes);
-                if(input.isRotationsAllowed()){   //THIS SHOULD BE CHECKED ONLY ONCE, BEFORE, TO SAVE TIME.
-                    rect.rotate();
-                    putRectangle(rect, node, rectangles, placedRectangles, nodes);
-                }
-            }
-        }
     }
 
     void putRectangle(Rectangle rect, BLnode node, ArrayList<Rectangle> rectangles, ArrayList<Rectangle> placedRectangles, ArrayList<BLnode> nodes) {
         if(rectangleFits(rect, node, placedRectangles)) {
             Rectangle rectTemp = new Rectangle(rect.index, rect.width, rect.height);
+            ArrayList<BLnode> nodesTemp = (ArrayList<BLnode>) nodes.clone();
+            ArrayList<Rectangle> rectanglesTemp = (ArrayList<Rectangle>) rectangles.clone();
             rectTemp.x = node.x;
             rectTemp.y = node.y;
             rectTemp.isPlaced = true;
-
             ArrayList<Rectangle> placedRectanglesTemp = (ArrayList<Rectangle>) placedRectangles.clone();
-            placedRectanglesTemp.add(rectTemp);
 
-            ArrayList<Rectangle> rectanglesTemp = (ArrayList<Rectangle>) rectangles.clone();
-            rectanglesTemp.remove(rect);
-
-            ArrayList<BLnode> nodesTemp = (ArrayList<BLnode>) nodes.clone();
-
-            nodesTemp.add(addVerticalNode(nodesTemp, node, rect.height, placedRectanglesTemp));
-            nodesTemp.add(addHorizontalNode(nodesTemp, node, rect.width, placedRectanglesTemp));
-
-            nodesTemp.remove(node);
-            //
-            //                    //add the other possiblity
-
-            for(BLnode nodeno : nodes) {
-                if(!isNodeFree( placedRectangles,nodeno)) {
-                    if(node.x == nodeno.x) {
-                        nodeno.x = nodeno.x + rect.width;
-                    } else if (node.y == nodeno.y) {
-                        nodeno.y = nodeno.y + rect.height;
-                    }
-                }
-            }
+            putRectangleGeneric(rect, node, rectangles, rectanglesTemp, placedRectangles, placedRectanglesTemp, rectTemp, nodes, nodesTemp);
 
             rectangleAssigner(nodesTemp, rectanglesTemp,placedRectanglesTemp);
         }
     }
+    void putRectangleWithRotations(Rectangle rect, BLnode node, ArrayList<Rectangle> rectangles, ArrayList<Rectangle> placedRectangles, ArrayList<BLnode> nodes) {
+        if(rectangleFits(rect, node, placedRectangles)) {
+            Rectangle rectTemp = new Rectangle(rect.index, rect.width, rect.height);
+            ArrayList<BLnode> nodesTemp = (ArrayList<BLnode>) nodes.clone();
+            ArrayList<Rectangle> rectanglesTemp = (ArrayList<Rectangle>) rectangles.clone();
+            rectTemp.x = node.x;
+            rectTemp.y = node.y;
+            rectTemp.isPlaced = true;
+            ArrayList<Rectangle> placedRectanglesTemp = (ArrayList<Rectangle>) placedRectangles.clone();
 
+            putRectangleGeneric(rect, node, rectangles, rectanglesTemp, placedRectangles, placedRectanglesTemp, rectTemp, nodes, nodesTemp);
+
+            rectangleAssignerWithRotations(nodesTemp, rectanglesTemp,placedRectanglesTemp);
+        }
+    }
+
+    void putRectangleFixedHeight(Rectangle rect, BLnode node, ArrayList<Rectangle> rectangles, ArrayList<Rectangle> placedRectangles, ArrayList<BLnode> nodes) {
+        if(rectangleFits(rect, node, placedRectangles) && rectangleFitsContainer(rect, node)) {
+
+            Rectangle rectTemp = new Rectangle(rect.index, rect.width, rect.height);
+            ArrayList<BLnode> nodesTemp = (ArrayList<BLnode>) nodes.clone();
+            ArrayList<Rectangle> rectanglesTemp = (ArrayList<Rectangle>) rectangles.clone();
+            rectTemp.x = node.x;
+            rectTemp.y = node.y;
+            rectTemp.isPlaced = true;
+            ArrayList<Rectangle> placedRectanglesTemp = (ArrayList<Rectangle>) placedRectangles.clone();
+
+            putRectangleGeneric(rect, node, rectangles, rectanglesTemp, placedRectangles, placedRectanglesTemp, rectTemp, nodes, nodesTemp);
+
+            //FIXED HEIGHT == STRIP
+            rectangleAssignerStrip(nodesTemp, rectanglesTemp,placedRectanglesTemp);
+        }
+    }
+
+    void putRectangleFixedHeightWithRotations(Rectangle rect, BLnode node, ArrayList<Rectangle> rectangles, ArrayList<Rectangle> placedRectangles, ArrayList<BLnode> nodes) {
+        if(rectangleFits(rect, node, placedRectangles) && rectangleFitsContainer(rect, node)) {
+
+            Rectangle rectTemp = new Rectangle(rect.index, rect.width, rect.height);
+            ArrayList<BLnode> nodesTemp = (ArrayList<BLnode>) nodes.clone();
+            ArrayList<Rectangle> rectanglesTemp = (ArrayList<Rectangle>) rectangles.clone();
+            rectTemp.x = node.x;
+            rectTemp.y = node.y;
+            rectTemp.isPlaced = true;
+            ArrayList<Rectangle> placedRectanglesTemp = (ArrayList<Rectangle>) placedRectangles.clone();
+
+            putRectangleGeneric(rect, node, rectangles, rectanglesTemp, placedRectangles, placedRectanglesTemp, rectTemp, nodes, nodesTemp);
+
+            //FIXED HEIGHT == STRIP
+            rectangleAssignerStripWithRotations(nodesTemp, rectanglesTemp,placedRectanglesTemp);
+        }
+    }
+    void putRectangleGeneric(Rectangle rect, BLnode node, ArrayList<Rectangle> rectangles, ArrayList<Rectangle> rectanglesTemp, ArrayList<Rectangle> placedRectangles, ArrayList<Rectangle> placedRectanglesTemp, Rectangle rectTemp, ArrayList<BLnode> nodes, ArrayList<BLnode> nodesTemp){
+
+        placedRectanglesTemp.add(rectTemp);
+        rectanglesTemp.remove(rect);
+
+        nodesTemp.add(addVerticalNode(nodesTemp, node, rect.height, placedRectanglesTemp));
+        nodesTemp.add(addHorizontalNode(nodesTemp, node, rect.width, placedRectanglesTemp));
+
+        nodesTemp.remove(node);
+        //
+        //                    //add the other possiblity
+
+        for(BLnode nodeno : nodes) {
+            if(!isNodeFree( placedRectangles,nodeno)) {
+                if(node.x == nodeno.x) {
+                    nodeno.x = nodeno.x + rect.width;
+                } else if (node.y == nodeno.y) {
+                    nodeno.y = nodeno.y + rect.height;
+                }
+            }
+        }
+    }
     BLnode addVerticalNode(ArrayList<BLnode> nodes, BLnode node, int height, ArrayList<Rectangle> placedRectangles) {
 
         int x = node.x; //initialize for comparison
@@ -136,10 +227,9 @@ public class SmallCase extends AbstractAlgorithm{
         return true;
     }
 
-    public ArrayList<Rectangle> includeRotations() {
-
-
-        return null;
+    boolean rectangleFitsContainer(Rectangle rectangle, BLnode node) {
+        return node.y + rectangle.height <= input.getContainerHeight();
     }
+
 
 }

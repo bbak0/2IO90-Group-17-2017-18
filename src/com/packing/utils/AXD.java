@@ -14,7 +14,7 @@ import java.awt.event.MouseListener;
 public class AXD extends JFrame{
     JButton button;
     static JTextArea tf;
-    String[] algoChoices = {"Skyline","Skyline Faster", "Simulated Annealing", "RandomSky"};
+    String[] algoChoices = {"Skyline","Skyline Faster", "Simulated Annealing", "RandomSky", "SmallCase"};
     JComboBox<String> algopicker = new JComboBox<>(algoChoices);
 
     void openNewCanvas(Solution sol, int mul){
@@ -71,6 +71,9 @@ public class AXD extends JFrame{
                         break;
                     case ("RandomSky"):
                         solver = new SkySolution(input);
+                        break;
+                    case ("SmallCase"):
+                        solver = new SmallCase(input);
                         break;
                     default:
                         solver = new NFDHAlgo(input);
