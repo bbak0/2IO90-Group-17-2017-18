@@ -69,7 +69,7 @@ public class SimulatedAnnealing extends AbstractAlgorithm {
         sol.rectangles.get(r2).x = temp1;
         sol.rectangles.get(r2).y = temp2;
         inputCopy.rectangles = sol.rectangles;
-        sol.rectangles = new NFDHAlgo(input).solve().rectangles;
+        sol.rectangles = new NFDHAlgo(inputCopy).solve().rectangles;
         sol.update();
     }
 
