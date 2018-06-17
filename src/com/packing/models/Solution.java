@@ -8,6 +8,8 @@ public class Solution {
     public int maxHeight ;
     public int maxWidth;
     public long areaOfRectangles;
+    public int customX;
+    public int customY;
 
     public Solution(){ }
     public Solution(ArrayList<Rectangle> recs){

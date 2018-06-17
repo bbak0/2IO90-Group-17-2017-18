@@ -1,7 +1,9 @@
-package com.packing.models;
+package com.packing.sorting;
 
 import com.packing.algo.AbstractAlgorithm;
+import com.packing.models.*;
 import com.packing.sorting.DESCSS;
+import com.packing.utils.DisjointArrayList;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,33 +11,47 @@ import java.util.InputMismatchException;
 
 public class SkylineStripFaster extends AbstractAlgorithm {
 
-    ArrayList<Rectangle> rectangles = input.getRectangles();
+    ArrayList<Rectangle> rectangles = new ArrayList<>(input.getRectangles());
     ArrayList<SkylineNode> skyline = new ArrayList<SkylineNode>();
     int binHeight;
     int binWidth;
-    ArrayList<Rectangle> solRect = new ArrayList<>();
+    ArrayList<Rectangle> solRect = new DisjointArrayList();
     ArrayList<ArrayList<Rectangle>> wasteMap = new ArrayList<>();
     int areaUsed = 0;
     long inserted = 0;
     int maxWidth = 0;
+    int maxSpread = Integer.MAX_VALUE;
+    int minSkylineX = 0;
+
+
 
     public SkylineStripFaster(Data in) {
         super(in);
     }
 
+    public void setMaxSpread(int maxSpread) {
+        this.maxSpread = maxSpread;
+    }
+
     @Override
     public Solution solve() {
         long startTime = System.currentTimeMillis();
-        Collections.sort(rectangles, new DESCSS());
+
+
         init();
-        algoLoop();
+        boolean successful = algoLoop();
+        if (!successful){
+            return null;
+        }
         //Collections.sort(solRect, new IndexComparator());
         System.out.println("Area used:" + areaUsed + "Total area:" + binHeight * maxWidth);
         binWidth = maxWidth;
         long stopTime = System.currentTimeMillis();
         long elapsedTime = stopTime - startTime;
         System.out.println(elapsedTime/1000);
-        return new Solution(solRect, true);
+        Solution returnSol = new Solution(solRect, false);
+        returnSol.maxWidth = this.maxWidth;
+        return returnSol;
 
     }
 
@@ -46,39 +62,35 @@ public class SkylineStripFaster extends AbstractAlgorithm {
         } else {
             throw new InputMismatchException("Algorithm meant to work with strip packing");
         }
+
         SkylineNode newNode = new SkylineNode(0,0, binHeight);
         skyline.add(newNode);
     }
 
-    void algoLoop(){
+    boolean algoLoop(){
 
-
-
-            for (int i = 0; i < rectangles.size(); i++){
-                if (inserted == 40){
-                     System.out.println("debug");
-                }
-                if (rectangles.get(i).index == 8363){
-                    System.out.println("debug");
-                }
-                BestValues globalBest = FindMWPosition(rectangles.get(i));
+            while(rectangles.size() > 0){
+                BestValues globalBest = FindMWPosition(rectangles.get(0));
                 Rectangle bestR = globalBest.getBestRectangle();
+                if (bestR == null){
+                    return false;
+                }
                 bestR.x = skyline.get(globalBest.getBestSkylineIndex()).x;
                 bestR.y = skyline.get(globalBest.getBestSkylineIndex()).y;
                 addSkylineLevel(globalBest.getBestSkylineIndex(), bestR);
-
+                if(inserted == 134){
+                    System.out.println("debug");
+                }
                 solRect.add(bestR);
+                rectangles.remove(bestR);
+
                 areaUsed += bestR.area;
                 maxWidth = Math.max(maxWidth, bestR.width + bestR.x);
                 inserted++;
+
                 System.out.println("inserted:" + inserted);
             }
-
-
-
-
-
-
+            return true;
     }
 //done
     void addSkylineLevel(int skylineNodeIndex, Rectangle r){
@@ -105,6 +117,7 @@ public class SkylineStripFaster extends AbstractAlgorithm {
             }
         }
         mergeSkylines();
+        updateMinNode();
     }
 //done
     void mergeSkylines(){
@@ -123,14 +136,12 @@ public class SkylineStripFaster extends AbstractAlgorithm {
         BestValues b = new BestValues();
 
         for (int i = 0; i < skyline.size(); i++){
-            int x = RectangleFits(i,r);
-            if (r.index == 1381)
-            {
-                //System.out.println("AAAAAAAAAAAA");
+            if (skyline.get(i).x > minSkylineX + maxSpread){
+                continue;
             }
+            int x = RectangleFits(i,r);
             if (x >= 0){
                 FindMWPositionHelper(i, x, r, b);
-                //System.out.println("Jestem gupia kurwa" + x);
             }
             boolean check = false;
             if (input.isRotationsAllowed()){
@@ -138,7 +149,6 @@ public class SkylineStripFaster extends AbstractAlgorithm {
                 x = RectangleFits(i, r);
                 if (x >= 0) {
                     check = FindMWPositionHelper(i, x, r, b);
-                    //System.out.println("Jestem gupi debil" + x);
                 }
                 if (!check){
                     r.rotate();
@@ -153,7 +163,20 @@ public class SkylineStripFaster extends AbstractAlgorithm {
     boolean FindMWPositionHelper(int i, int x, Rectangle r, BestValues b){
         int wasted = computeWastedArea(i, r, x);
         if (wasted < b.getBestWastedArea() ||
-                (wasted == b.getBestWastedArea()) && x + r.width < b.getBestWidth()){
+                (wasted == b.getBestWastedArea()) && (x + r.width < b.getBestWidth())){
+            b.setBestWidth(x + r.width);
+            b.setBestSkylineIndex(i);
+            b.setBestWastedArea(wasted);
+            b.setBestRectangle(r);
+            return true;
+        }
+        return false;
+    }
+
+    boolean FindMWPositionHelper2(int i, int x, Rectangle r, BestValues b){
+        int wasted = computeWastedArea(i, r, x);
+        if (x + r.width < b.getBestWidth() || //change
+                (x + r.width == b.getBestWidth()) && (wasted == b.getBestWastedArea())){
             b.setBestWidth(x + r.width);
             b.setBestSkylineIndex(i);
             b.setBestWastedArea(wasted);
@@ -223,6 +246,17 @@ public class SkylineStripFaster extends AbstractAlgorithm {
         }
 
         return wasted;
+    }
+
+
+    void updateMinNode(){
+        int x = Integer.MAX_VALUE;
+        for(SkylineNode s: skyline) {
+            if (s.x < x) {
+                x = s.x;
+            }
+        }
+        minSkylineX = x;
     }
 
 
