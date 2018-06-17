@@ -35,7 +35,7 @@ public class GUI {
         panel_1.setFont(new Font("Serif", Font.PLAIN, 12));
         frame.add(panel_1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 600);
+        frame.setSize(1024, 1024);
         frame.setVisible(true);
         grid = new JLabel[length][width]; //allocate the size of grid
 
@@ -44,9 +44,9 @@ public class GUI {
 
 
                 grid[i][j] = new JLabel();
-                // grid[i][j].setBorder(BorderFactory.createLineBorder(myBorder));
+                //grid[i][j].setBorder(BorderFactory.createLineBorder(myBorder));
                 grid[i][j].setOpaque(true);
-                //  grid[i][j].setText((i+1) + " "+ (j+1));
+                  //grid[i][j].setText((i+1) + " "+ (j+1));
 
             }
         }
@@ -56,12 +56,16 @@ public class GUI {
             for (int j = 0; j < width; j++) {
 
 
-                //  grid[i][j].setBorder(BorderFactory.createLineBorder(myBorder));
+                grid[i][j].setBorder(BorderFactory.createLineBorder(myBorder));
                 grid[i][j].setOpaque(true);
                 Color mycolor = new Color(255, 128, bigBox[i][j]);
+                StringBuilder sb = new StringBuilder();
+                sb.append("");
+                sb.append(bigBox[i][j]);
+                String str = sb.toString();
 
                 if (bigBox[i][j] > 0)
-                    grid[i][j].setBackground(colorSet[bigBox[i][j] % 11]);
+                { grid[i][j].setBackground(colorSet[bigBox[i][j] % 11]); grid[i][j].setText(str);}
                 else
                     grid[i][j].setBackground(Color.white);
 

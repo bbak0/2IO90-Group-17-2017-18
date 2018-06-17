@@ -8,8 +8,18 @@ public class Solution {
     public int maxHeight ;
     public int maxWidth;
     public long areaOfRectangles;
+    public int customX;
+    public int customY;
+    public boolean isStrip = false;
 
     public Solution(){ }
+    public Solution(ArrayList<Rectangle> recs, int StripHeight){
+        rectangles = recs;
+        maxHeight = StripHeight;
+        isStrip = true;
+        calcRectangleArea();
+        update();
+    }
     public Solution(ArrayList<Rectangle> recs){
         this(recs,false);
     }
@@ -23,8 +33,10 @@ public class Solution {
 
     public void update(){
         for(Rectangle r: rectangles){
-            if(r.y+r.height>maxHeight){
-                maxHeight = r.y+r.height;
+            if (!isStrip) {
+                if(r.y+r.height>maxHeight){
+                    maxHeight = r.y+r.height;
+                }
             }
             if(r.x+r.width>maxWidth){
                 maxWidth = r.x+r.width;
@@ -38,6 +50,8 @@ public class Solution {
         }
     }
     public long getWastedArea(){
+        update();
+        calcRectangleArea();
         return area-areaOfRectangles;
     }
 

@@ -2,8 +2,8 @@ package com.packing.models;
 
 public class BoundedSpace extends Space {
 
-    int width;
-    long area;
+    public int width;
+    public long area;
 
     public BoundedSpace(int height, int x, int y, int width) {
         super(height, x, y);
@@ -12,7 +12,7 @@ public class BoundedSpace extends Space {
     }
 
 
-    public long getWastedArea() {
+    public long getFreeArea() {
         return area - areaOfRectangles;
     }
 }

@@ -10,6 +10,8 @@ public class Data {
     int rectangleAmount;
     int totalWidth = 0;
     int totalHeight = 0;
+    int maxHeight = 0;
+    int maxWidth = 0;
 
     public ArrayList<Rectangle> rectangles = new ArrayList<>();
 
@@ -52,6 +54,8 @@ public class Data {
     public void addRectangle(Rectangle r){
         totalWidth += r.width;
         totalHeight += r.height;
+        maxWidth = Math.max(maxWidth, r.width);
+        maxHeight = Math.max(maxHeight, r.height);
         rectangles.add(r);
     }
 
@@ -61,6 +65,14 @@ public class Data {
 
     public int getTotalHeight() {
         return totalHeight;
+    }
+
+    public int getMaxHeight() {
+        return maxHeight;
+    }
+
+    public int getMaxWidth() {
+        return maxWidth;
     }
 
     @Override

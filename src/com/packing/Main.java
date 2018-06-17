@@ -1,9 +1,7 @@
 package com.packing;
 
 import com.packing.algo.*;
-import com.packing.models.Data;
-import com.packing.models.Rectangle;
-import com.packing.models.Solution;
+import com.packing.models.*;
 
 public class Main {
 
@@ -13,7 +11,7 @@ public class Main {
         //System.out.println(input);
         AbstractAlgorithm solver;
 
-        solver = new SmallCase(input);
+        solver = new BTRun(input);
         /*Random random = new Random();
 
         if (random.nextBoolean()){
@@ -80,6 +78,7 @@ public class Main {
             }
         }
         System.out.println("wasted: " + sol.getWastedArea() + "\n" + "used :" + sol.areaOfRectangles);
+        System.out.println("total : "+ (sol.getWastedArea() + sol.areaOfRectangles));
 
     }
 

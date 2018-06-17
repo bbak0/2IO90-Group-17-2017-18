@@ -35,20 +35,21 @@ public class TextCaseGenerator {
         else
             rotation = false;
 
+            n=5000;
 
-        if (cHeight == true)
-            ch = "  free";
-        else
-            ch = "  fixed " + height;
+        //if (cHeight == true)
+            ch = " free";
+      //  else
+       //     ch = " fixed " + height;
 
         System.out.println("container height:" + ch);
 
         if(rotation == true)
-            ch = "rotations allowed:  yes";
+            ch = "rotations allowed: yes";
         else
-            ch = "rotations allowed:  no";
+            ch = "rotations allowed: no";
         System.out.println(ch);
-        System.out.println("number of rectangles  " + n);
+        System.out.println("number of rectangles: " + n);
 
 
         for(int i=1; i<=n; i++)

@@ -19,7 +19,8 @@ public class SmallCase extends AbstractAlgorithm{
     public Solution solve() {
         ArrayList<BLnode> nodes = new ArrayList<BLnode>();
         nodes.add(new BLnode(0, 0));
-        rectangleAssigner(nodes, input.getRectangles(), new ArrayList<Rectangle>() );
+        rectangleAssigner(nodes, input.getRectangles(), new ArrayList<Rectangle>());
+
         return finalSolution;
 }
 
@@ -39,40 +40,48 @@ public class SmallCase extends AbstractAlgorithm{
         }
         for(BLnode node : nodes) {
             for(Rectangle rect : rectangles) {
-                if(rectangleFits(rect, node, placedRectangles)) {
-                    Rectangle rectTemp = new Rectangle(rect.index, rect.width, rect.height);
-                    rectTemp.x = node.x;
-                    rectTemp.y = node.y;
-                    rectTemp.isPlaced = true;
-
-                    ArrayList<Rectangle> placedRectanglesTemp = (ArrayList<Rectangle>) placedRectangles.clone();
-                    placedRectanglesTemp.add(rectTemp);
-
-                    ArrayList<Rectangle> rectanglesTemp = (ArrayList<Rectangle>) rectangles.clone();
-                    rectanglesTemp.remove(rect);
-
-                    ArrayList<BLnode> nodesTemp = (ArrayList<BLnode>) nodes.clone();
-
-                    nodesTemp.add(addVerticalNode(nodesTemp, node, rect.height, placedRectanglesTemp));
-                    nodesTemp.add(addHorizontalNode(nodesTemp, node, rect.width, placedRectanglesTemp));
-
-                    nodesTemp.remove(node);
-                    //
-                    //                    //add the other possiblity
-
-                    for(BLnode nodeno : nodes) {
-                        if(!isNodeFree( placedRectangles,nodeno)) {
-                            if(node.x == nodeno.x) {
-                                nodeno.x = nodeno.x + rect.width;
-                            } else if (node.y == nodeno.y) {
-                                nodeno.y = nodeno.y + rect.height;
-                            }
-                        }
-                    }
-
-                    rectangleAssigner(nodesTemp, rectanglesTemp,placedRectanglesTemp);
+                putRectangle(rect, node, rectangles, placedRectangles, nodes);
+                if(input.isRotationsAllowed()){   //THIS SHOULD BE CHECKED ONLY ONCE, BEFORE, TO SAVE TIME.
+                    rect.rotate();
+                    putRectangle(rect, node, rectangles, placedRectangles, nodes);
                 }
             }
+        }
+    }
+
+    void putRectangle(Rectangle rect, BLnode node, ArrayList<Rectangle> rectangles, ArrayList<Rectangle> placedRectangles, ArrayList<BLnode> nodes) {
+        if(rectangleFits(rect, node, placedRectangles)) {
+            Rectangle rectTemp = new Rectangle(rect.index, rect.width, rect.height);
+            rectTemp.x = node.x;
+            rectTemp.y = node.y;
+            rectTemp.isPlaced = true;
+
+            ArrayList<Rectangle> placedRectanglesTemp = (ArrayList<Rectangle>) placedRectangles.clone();
+            placedRectanglesTemp.add(rectTemp);
+
+            ArrayList<Rectangle> rectanglesTemp = (ArrayList<Rectangle>) rectangles.clone();
+            rectanglesTemp.remove(rect);
+
+            ArrayList<BLnode> nodesTemp = (ArrayList<BLnode>) nodes.clone();
+
+            nodesTemp.add(addVerticalNode(nodesTemp, node, rect.height, placedRectanglesTemp));
+            nodesTemp.add(addHorizontalNode(nodesTemp, node, rect.width, placedRectanglesTemp));
+
+            nodesTemp.remove(node);
+            //
+            //                    //add the other possiblity
+
+            for(BLnode nodeno : nodes) {
+                if(!isNodeFree( placedRectangles,nodeno)) {
+                    if(node.x == nodeno.x) {
+                        nodeno.x = nodeno.x + rect.width;
+                    } else if (node.y == nodeno.y) {
+                        nodeno.y = nodeno.y + rect.height;
+                    }
+                }
+            }
+
+            rectangleAssigner(nodesTemp, rectanglesTemp,placedRectanglesTemp);
         }
     }
 
@@ -125,6 +134,12 @@ public class SmallCase extends AbstractAlgorithm{
             }
         }
         return true;
+    }
+
+    public ArrayList<Rectangle> includeRotations() {
+
+
+        return null;
     }
 
 }
