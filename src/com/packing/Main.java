@@ -78,6 +78,7 @@ public class Main {
             }
         }
         System.out.println("wasted: " + sol.getWastedArea() + "\n" + "used :" + sol.areaOfRectangles);
+        System.out.println("total : "+ (sol.getWastedArea() + sol.areaOfRectangles));
 
     }
 
