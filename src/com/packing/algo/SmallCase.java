@@ -4,7 +4,7 @@ import com.packing.models.BLnode;
 import com.packing.models.Data;
 import com.packing.models.Rectangle;
 import com.packing.models.Solution;
-import com.packing.utils.AXD;
+import com.packing.sorting.AreaComparator;
 
 import java.util.ArrayList;
 
@@ -22,16 +22,34 @@ public class SmallCase extends AbstractAlgorithm {
     public Solution solve() {
         ArrayList<BLnode> nodes = new ArrayList<BLnode>(); //initialize input
         nodes.add(new BLnode(0, 0));
+
         Solution temp = new Solution(null, false);
         temp.area = Integer.MAX_VALUE;
         finalSolution = temp;
+
         if(input.getRectangleAmount() == 10) {
+
             ArrayList<Rectangle> sortedRectangles = input.getRectangles();
-            if (input.isContainerHeightFixed()) { //&& !isRotationsAllowed()
-                rectangleAssignerStrip(nodes, input.getRectangles(), new ArrayList<Rectangle>());
-            } else {
-                rectangleAssigner(nodes, input.getRectangles(), new ArrayList<Rectangle>());
+            sortedRectangles.sort(new AreaComparator()); //sorting by area
+
+            ArrayList<Rectangle> PlacedRectangle = new ArrayList<Rectangle>();
+
+            Rectangle biggestRectangle = sortedRectangles.get(0);
+
+            if (input.isRotationsAllowed()) {
+                if (input.isContainerHeightFixed()) { //&& !isRotationsAllowed()
+                    putRectangleFixedHeightWithRotations(biggestRectangle, nodes.get(0), sortedRectangles, PlacedRectangle, nodes);
+                } else {
+                    putRectangleWithRotations(biggestRectangle, nodes.get(0), sortedRectangles, PlacedRectangle, nodes);
+                }
+            }else {
+                if (input.isContainerHeightFixed()) { //&& !isRotationsAllowed()
+                    putRectangleFixedHeight(biggestRectangle, nodes.get(0), sortedRectangles, PlacedRectangle, nodes);
+                } else {
+                    putRectangle(biggestRectangle, nodes.get(0), sortedRectangles, PlacedRectangle, nodes);
+                }
             }
+
         } else {
             if (input.isRotationsAllowed() && input.isContainerHeightFixed()) {
                 rectangleAssignerStripWithRotations(nodes, input.getRectangles(), new ArrayList<Rectangle>());

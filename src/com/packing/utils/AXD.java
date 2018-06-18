@@ -77,7 +77,11 @@ public class AXD extends JFrame{
                         solver = new NFDHAlgo(input);
 
                 }
+                long startTime = System.nanoTime();
                 Solution sol = solver.solve();
+                long endTime   = System.nanoTime();
+                long totalTime = endTime - startTime;
+                System.out.println(totalTime);
                 int m = Integer.valueOf(mul.getText());
                 if (m == 0){
                     openNewCanvas(sol, 5);
