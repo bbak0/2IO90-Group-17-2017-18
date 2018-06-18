@@ -8,25 +8,39 @@ public class Main {
     public static void main(String[] args) {
         InputReader inputReader = new InputReader();
         Data input = inputReader.read();
-        //System.out.println(input);
-        AbstractAlgorithm solver;
+        Solution sol = new Solution();
 
-        solver = new BTRun(input);
-        /*Random random = new Random();
+        if (input.getRectangleAmount() <= 10) {
+            AbstractAlgorithm solver = new SmallCase(input);
+            sol = solver.solve();
+        }
+        if (input.getRectangleAmount() > 10 && !input.isContainerHeightFixed()) {
+            AbstractAlgorithm solver = new BTRun(input);
+            sol = solver.solve();
+        }
+        if (input.getRectangleAmount() > 10 && input.isContainerHeightFixed()) {
+            Solution sol1 = new SimulatedAnnealing(input).solve();
+            sol1.calcWidth();
+            Solution sol2 = new BTRun(input).solve();
+            sol2.calcWidth();
+            Solution sol3 = new SkySolution(input).solve();
+            sol3.calcWidth();
+            if (sol1.maxWidth <= sol2.maxWidth && sol1.maxWidth <= sol3.maxWidth) {
+                sol = sol1;
+            } else if (sol2.maxWidth <= sol1.maxWidth && sol2.maxWidth <= sol3.maxWidth) {
+                sol = sol2;
+            } else {
+                sol = sol3;
+            }
 
-        if (random.nextBoolean()){
-            solver = new ExampleAlgo(input);
-        } else {
-            solver = new OtherAlgo(input);
-        }*/
+        }
 
-        Solution sol = solver.solve();
         print(input, sol);
     }
 
-        //printing
+    //printing
 
-    public static void print(Data input, Solution sol){
+    public static void print(Data input, Solution sol) {
         System.out.print("container height: ");
         if (input.isContainerHeightFixed()) {
             System.out.println("fixed " + input.getContainerHeight());
@@ -41,19 +55,14 @@ public class Main {
         }
         System.out.println("number of rectangles: " + input.getRectangleAmount());
         for (Rectangle r : sol.rectangles) {
-            if(!input.isRotationsAllowed()) {
+            if (!input.isRotationsAllowed()) {
                 System.out.print(r.getWidth() + " ");
                 System.out.println(r.getHeight());
-            }
-            else
-            {
-                if(r.isRotated)
-                {
+            } else {
+                if (r.isRotated) {
                     System.out.print(r.getHeight() + " ");
                     System.out.println(r.getWidth());
-                }
-                else
-                {
+                } else {
                     System.out.print(r.getWidth() + " ");
                     System.out.println(r.getHeight());
                 }
@@ -63,7 +72,7 @@ public class Main {
         if (input.isRotationsAllowed()) {
             for (Rectangle r : sol.rectangles) {
                 String rot = "";
-                if(r.isRotated)
+                if (r.isRotated)
                     rot = "yes ";
                 else
                     rot = "no ";
@@ -78,7 +87,7 @@ public class Main {
             }
         }
         System.out.println("wasted: " + sol.getWastedArea() + "\n" + "used :" + sol.areaOfRectangles);
-        System.out.println("total : "+ (sol.getWastedArea() + sol.areaOfRectangles));
+        System.out.println("total : " + (sol.getWastedArea() + sol.areaOfRectangles));
 
     }
 
