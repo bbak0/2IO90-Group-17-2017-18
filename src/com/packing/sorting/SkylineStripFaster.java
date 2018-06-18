@@ -45,7 +45,7 @@ public class SkylineStripFaster extends AbstractAlgorithm {
             return null;
         }
         //Collections.sort(solRect, new IndexComparator());
-        System.out.println("Area used:" + areaUsed + "Total area:" + binHeight * maxWidth);
+        //System.out.println("Area used:" + areaUsed + "Total area:" + binHeight * maxWidth);
         binWidth = maxWidth;
         long stopTime = System.currentTimeMillis();
         long elapsedTime = stopTime - startTime;
@@ -80,9 +80,6 @@ public class SkylineStripFaster extends AbstractAlgorithm {
                 bestR.x = globalBest.bestX;
                 bestR.y = skyline.get(globalBest.getBestSkylineIndex()).y;
                 addSkylineLevel(globalBest.getBestSkylineIndex(), bestR);
-                if(inserted == 134){
-                    System.out.println("debug");
-                }
                 boolean debug = solRect.add(bestR);
                 if(!debug){
                     SkylineSolution debugSol = new SkylineSolution(solRect, false);
@@ -97,7 +94,7 @@ public class SkylineStripFaster extends AbstractAlgorithm {
                 maxWidth = Math.max(maxWidth, bestR.width + bestR.x);
                 inserted++;
 
-                System.out.println("inserted:" + inserted);
+                //System.out.println("inserted:" + inserted);
             }
             return true;
     }
@@ -237,7 +234,7 @@ public class SkylineStripFaster extends AbstractAlgorithm {
             leftSide = current.y;
             rightSide = Math.min(rectRight, leftSide + current.length);
             if ((rightSide - leftSide) * (x - current.x) < 0){
-                System.out.println("cos sie zjebalo");
+                //System.out.println("wrong");
             }
             wasted += (rightSide - leftSide) * (x - current.x);
            // wma.add(new WasteMapArea(x - current.x, x, leftSide, rightSide));
@@ -251,7 +248,7 @@ public class SkylineStripFaster extends AbstractAlgorithm {
 //        wastedRectangle.x = x;
 //        wastedRectangle.y = ;
         if (wasted < 0){
-            System.out.println("cos sie zjebalo");
+            //System.out.println("wrong");
         }
 
         return wasted;
