@@ -31,11 +31,11 @@ public class Solution {
 
     public void update(){
         for(Rectangle r: rectangles){
-            if (!isStrip) {
+//            if (!isStrip) {
                 if(r.y+r.height>maxHeight){
                     maxHeight = r.y+r.height;
                 }
-            }
+//            }
             if(r.x+r.width>maxWidth){
                 maxWidth = r.x+r.width;
             }

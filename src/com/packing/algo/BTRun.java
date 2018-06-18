@@ -22,10 +22,14 @@ public class BTRun extends AbstractAlgorithm {
         inputCopy = input;
         inputCopy2 = input;
     }
+    boolean isFixedHeight = input.isContainerHeightFixed();
+
 
     private  ArrayList<Rectangle> procedure(ArrayList<Rectangle> collection, int sortingIndex)
     {
         boolean rotAllowed = input.isRotationsAllowed();
+
+
         int rWidth = 0; int rHeight = 0;
         if (rotAllowed)
             for (Rectangle rectangle : collection) {
@@ -36,13 +40,16 @@ public class BTRun extends AbstractAlgorithm {
                     rectangle.isRotated = true;
                 }
             }
-
-        if(sortingIndex==1)
-             Collections.sort(collection, new HeightComparator());
+        if(!isFixedHeight)
+        {  if(sortingIndex==1)
+            Collections.sort(collection, new HeightComparator());
         else if (sortingIndex==2)
             Collections.sort(collection, new WidthComparator());
         else
             Collections.sort(collection, new AreaComparator());
+        }
+        else
+            Collections.sort(collection, new HeightComparator());
 
 
         for(Rectangle rectangle :collection) {
@@ -54,49 +61,84 @@ public class BTRun extends AbstractAlgorithm {
         int n = collection.size();
         int h = (int) (rHeight * Math.sqrt(n));
         int w = (int) (rWidth * Math.sqrt(n));
+        if(isFixedHeight==true)
+        {
+            int fixedHeight = input.getContainerHeight();
+            h = fixedHeight;
 
+        }
+
+
+        try {
+            collection = method(collection, w, h);
+
+        }
+        catch (IndexOutOfBoundsException e) {
 
             try {
-                collection = method(collection, w, h);
-
-            }
-            catch (IndexOutOfBoundsException e) {
-
-                try {
+                if(isFixedHeight)
+                {
+                    w=w*3;
+                }
+                else
+                {
                     w = w*2 + w/2;
                     h = h*2 + h/2;
+                }
+                collection = method(collection, w, h);
+                return collection;
+            }
+
+            catch(IndexOutOfBoundsException f)
+            {
+                try {
+                    if(isFixedHeight)
+                    {
+                        w = w*6;
+                    }
+                    else
+                    {
+                        w = w*4 ;
+                        h = h*4 ;
+                    }
                     collection = method(collection, w, h);
                     return collection;
                 }
-
-                catch(IndexOutOfBoundsException f)
+                catch(IndexOutOfBoundsException g)
                 {
                     try {
-                        w = 4*w;
-                        h = 4*h;
+                        if(isFixedHeight)
+                        {
+                            w=w*9;
+                        }
+                        else
+                        {
+                            w = w*6 + w/6;
+                            h = h*6 + h/6;
+                        }
+
                         collection = method(collection, w, h);
                         return collection;
                     }
-                    catch(IndexOutOfBoundsException g)
+                    catch(IndexOutOfBoundsException H)
                     {
-                        try {
-                            w = 6 * w + w / 2;
-                            h = 6 * h + h / 2;
-                            collection = method(collection, w, h);
-                            return collection;
-                        }
-                        catch(IndexOutOfBoundsException H)
+                        if(isFixedHeight)
                         {
-                            w = 8 * w;
-                            h = 8 * h;
-                            collection = method(collection, w, h);
-                            return collection;
+                            w=w*12;
                         }
+                        else
+                        {
+                            w = w*8 + w/8;
+                            h = h*8 + h/8;
+                        }
+                        collection = method(collection, w, h);
+                        return collection;
                     }
                 }
             }
+        }
 
-            return collection;
+        return collection;
 
 
     }
@@ -164,7 +206,7 @@ public class BTRun extends AbstractAlgorithm {
             }
 
 
-            return sol1;
+        return sol1;
 
     }
 }
