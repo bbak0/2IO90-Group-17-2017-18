@@ -23,6 +23,11 @@ public class NFDHAlgo extends AbstractAlgorithm {
 
     @Override
     public Solution solve() {
+        for(Rectangle r: rectangleCollection){
+            if(r.height>r.width){
+                r.rotate();
+            }
+        }
         Collections.sort(rectangleCollection, new WidthComparator());
         for (Rectangle rectangle : rectangleCollection) {
             if (floor_feasible(rectangle) == false) {
