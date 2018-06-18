@@ -81,13 +81,13 @@ public class SkylineStripFaster extends AbstractAlgorithm {
                 bestR.y = skyline.get(globalBest.getBestSkylineIndex()).y;
                 addSkylineLevel(globalBest.getBestSkylineIndex(), bestR);
                 boolean debug = solRect.add(bestR);
-                if(!debug){
-                    SkylineSolution debugSol = new SkylineSolution(solRect, false);
-                    debugSol.setSkyline(skyline);
-                    new AXD().openNewCanvas(debugSol, 5);
-                    System.out.println("aaaaa");
-                    throw new RuntimeException();
-                }
+//                if(!debug){
+//                    SkylineSolution debugSol = new SkylineSolution(solRect, false);
+//                    debugSol.setSkyline(skyline);
+//                    new AXD().openNewCanvas(debugSol, 5);
+//                    System.out.println("aaaaa");
+//                    throw new RuntimeException();
+//                }
                 rectangles.remove(bestR);
 
                 areaUsed += bestR.area;
