@@ -10,14 +10,18 @@ import java.util.Collections;
 
 public class RecursiveHeuristic extends AbstractAlgorithm {
 
-    ArrayList<Rectangle> rectangleCollection = input.getRectangles();
+    ArrayList<Rectangle> rectanglesToPlace = input.getRectangles();
+    Solution bestSolution;
+    ArrayList<Rectangle> rectanglesPlaced = new ArrayList<>(input.getRectangles());
+
 
     public RecursiveHeuristic(Data in) {
         super(in);
     }
 
     @Override
-    public Solution solve() {
+    public Solution solve() {//HeuristicRecursion
+        Collections.sort(rectanglesToPlace, new AreaComparator());
 
         return new Solution();
     }
@@ -31,11 +35,6 @@ public class RecursiveHeuristic extends AbstractAlgorithm {
     }
 
     void Packing(UnboundedSpace us){
-
-    }
-
-    void HeuristicRecursion(){
-        Collections.sort(rectangleCollection, new AreaComparator());
 
     }
 
