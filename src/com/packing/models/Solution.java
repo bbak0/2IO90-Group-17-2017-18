@@ -17,6 +17,7 @@ public class Solution {
         rectangles = recs;
         maxHeight = StripHeight;
         isStrip = true;
+        calcRectangleArea();
         update();
     }
     public Solution(ArrayList<Rectangle> recs){
@@ -25,6 +26,7 @@ public class Solution {
     public Solution(ArrayList<Rectangle> recs, boolean calc){
         rectangles = recs;
         if(calc) {
+            calcRectangleArea();
             update();
         }
     }

@@ -17,7 +17,7 @@ public class AXD extends JFrame{
     String[] algoChoices = {"Skyline","Skyline Faster", "Simulated Annealing", "RandomSky", "BinaryTree", "SmallCase"};
     JComboBox<String> algopicker = new JComboBox<>(algoChoices);
 
-    public void openNewCanvas(Solution sol, int mul){
+    void openNewCanvas(Solution sol, int mul){
         JFrame frame = new JFrame();
         JPanel panel = new RectangleCanvas(sol, mul);
 
@@ -34,7 +34,7 @@ public class AXD extends JFrame{
         frame.setVisible(true);
     }
 
-    public void run(){
+    void run(){
         JFrame frame = new JFrame("AXD");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         JPanel panel = new JPanel();

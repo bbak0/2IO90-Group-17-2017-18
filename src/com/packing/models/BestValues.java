@@ -8,7 +8,6 @@ public class BestValues {
     Rectangle bestRectangle;
     Rectangle oldRectangle;
     int bestWastedArea = Integer.MAX_VALUE;
-    public int bestX;
 
 
     public BestValues() {
@@ -16,7 +15,6 @@ public class BestValues {
         bestHeight = Integer.MAX_VALUE;
         bestSkylineIndex = -1;
         bestRectIndex = -1;
-        bestX = -1;
     }
 
     public Rectangle getOldRectangle() {
