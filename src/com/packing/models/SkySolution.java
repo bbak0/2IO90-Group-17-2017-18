@@ -21,13 +21,25 @@ public class SkySolution extends AbstractAlgorithm {
         } else {
             maxH = input.getMaxWidth();
         }
-        maxH = maxH * 2;
+
         int bestWidth = Integer.MAX_VALUE;
         Solution bestSol = null;
-        for (int i = 0; i < 5; i++){
+        for (int i = 0; i < 100; i++){
             Collections.shuffle(input.getRectangles());
-            bestSol = executeAlgo(input, bestSol, 0);
+            bestSol = executeAlgo(input, bestSol, maxH);
         }
+        while (bestSol == null){
+            Collections.shuffle(input.getRectangles());
+            bestSol = executeAlgo(input, bestSol, maxH);
+            maxH = maxH + (maxH/5);
+        }
+
+        Collections.sort(input.getRectangles(), new RatioComparator());
+        bestSol = executeAlgo(input, bestSol, maxH);
+
+        Collections.reverse(input.getRectangles());
+        bestSol = executeAlgo(input, bestSol, maxH);
+
         Collections.sort(input.getRectangles(), new DESCSS());
         bestSol = executeAlgo(input, bestSol, maxH);
         Collections.sort(input.getRectangles(), new AreaComparator());
@@ -45,6 +57,8 @@ public class SkySolution extends AbstractAlgorithm {
         Collections.sort(input.getRectangles(), new SquareComparator());
         bestSol = executeAlgo(input, bestSol, maxH);
 
+
+
         return bestSol;
 }
 
@@ -59,8 +73,14 @@ public class SkySolution extends AbstractAlgorithm {
         }
         int solWidth = sol.getMaxWidth();
         if (solWidth < bestWidth){
+            bestWidth = solWidth;
             return sol;
         }
-        return bestSol;
+        if (bestSol.rectangles.size() == 10000){
+            return bestSol;
+        } else {
+            throw new IllegalStateException("wrong amount of rectangles");
+        }
+
     }
 }
