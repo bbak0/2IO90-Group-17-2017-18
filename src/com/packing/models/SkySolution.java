@@ -2,7 +2,9 @@ package com.packing.models;
 
 import com.packing.algo.AbstractAlgorithm;
 import com.packing.sorting.*;
+import com.packing.utils.DisjointArrayList;
 
+import java.util.ArrayList;
 import java.util.Collections;
 
 public class SkySolution extends AbstractAlgorithm {
@@ -24,14 +26,14 @@ public class SkySolution extends AbstractAlgorithm {
 
         int bestWidth = Integer.MAX_VALUE;
         Solution bestSol = null;
-        for (int i = 0; i < 100; i++){
+        for (int i = 0; i < 20000 / input.getRectangles().size(); i++){
             Collections.shuffle(input.getRectangles());
             bestSol = executeAlgo(input, bestSol, maxH);
         }
         while (bestSol == null){
             Collections.shuffle(input.getRectangles());
             bestSol = executeAlgo(input, bestSol, maxH);
-            maxH = maxH + (maxH/5);
+            maxH = maxH + (maxH/10);
         }
 
         Collections.sort(input.getRectangles(), new RatioComparator());
@@ -74,13 +76,16 @@ public class SkySolution extends AbstractAlgorithm {
         int solWidth = sol.getMaxWidth();
         if (solWidth < bestWidth){
             bestWidth = solWidth;
+            ArrayList<Rectangle> check = new DisjointArrayList();
+            for (Rectangle r : sol.rectangles){
+                boolean c = check.add(r);
+                if (!c){
+                    throw new IllegalStateException("rectangles not disjoint");
+                }
+            }
             return sol;
-        }
-        if (bestSol.rectangles.size() == 10000){
-            return bestSol;
         } else {
-            throw new IllegalStateException("wrong amount of rectangles");
+            return bestSol;
         }
-
     }
 }

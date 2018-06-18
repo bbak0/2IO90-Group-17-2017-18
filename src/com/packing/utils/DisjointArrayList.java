@@ -11,11 +11,11 @@ public class DisjointArrayList extends ArrayList<Rectangle> {
             if (!isDisjoint(a, b)){
                 b.highlight = true;
                 a.highlight = true;
-                super.add(a);
+                //super.add(a);
                 return false;
                 //throw new IllegalStateException("Overlap Detected");
             }
-            System.out.println("insert a: " + a + " checking disjoint with " + b);
+            //System.out.println("insert a: " + a + " checking disjoint with " + b);
 
         }
         super.add(a);
