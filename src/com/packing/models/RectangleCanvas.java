@@ -44,12 +44,22 @@ public class RectangleCanvas extends JPanel implements MouseListener {
         setBackground(Color.WHITE);
         for (Rectangle r : rect){
             g.setColor(Color.ORANGE);
+            if (r.highlight){
+                g.setColor(new Color(1f,0f,0f,.3f ));
+            }
             g.fillRect(multiplier * r.x, multiplier * r.y, multiplier * r.width, multiplier *  r.height);
             g.setColor(Color.black);
             g.drawRect(multiplier * r.x, multiplier * r.y, multiplier * r.width, multiplier *  r.height);
         }
         g.setColor(Color.magenta);
         g.fillRect(solution.customX, solution.customY,10,10);
+        if (solution instanceof SkylineSolution){
+            g.setColor(Color.red);
+            ArrayList<SkylineNode> skyline = ((SkylineSolution) solution).getSkyline();
+            for (SkylineNode node : skyline){
+                g.fillRect(node.x, node.y, 10, node.length);
+            }
+        }
 
         // Your custom painting codes
         // ......

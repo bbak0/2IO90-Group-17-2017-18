@@ -17,7 +17,7 @@ public class AXD extends JFrame{
     String[] algoChoices = {"Skyline","Skyline Faster", "Simulated Annealing", "RandomSky"};
     JComboBox<String> algopicker = new JComboBox<>(algoChoices);
 
-    void openNewCanvas(Solution sol, int mul){
+    public void openNewCanvas(Solution sol, int mul){
         JFrame frame = new JFrame();
         JPanel panel = new RectangleCanvas(sol, mul);
 
