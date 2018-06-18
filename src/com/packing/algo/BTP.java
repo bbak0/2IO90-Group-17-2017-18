@@ -1,7 +1,8 @@
-package com.packing.models;
+package com.packing.algo;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import com.packing.models.*;
 
 public class BTP {
 
