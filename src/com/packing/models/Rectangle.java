@@ -17,6 +17,7 @@ public class Rectangle {
     public int ratioR;
     public int ratio;
     public int heuristicRatio;
+    public boolean isRotatable = true;
 
 
     //coordinates
@@ -57,6 +58,7 @@ public class Rectangle {
         isRotated = !isRotated;
     }
 
+    public void isASquare(Rectangle rect) { isRotatable = !(rect.width == rect.height);}
 
     public int getIndex() {
         return index;

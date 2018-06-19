@@ -75,6 +75,24 @@ public class Data {
         return maxWidth;
     }
 
+    public Data copyOf(){
+        Data out = new Data();
+        ArrayList<Rectangle> temparray = new ArrayList<>();
+        for(Rectangle rect: rectangles) {
+            temparray.add(rect.copyOf());
+        }
+        out.rectangles = temparray;
+        out.containerHeight = this.containerHeight;
+        out.containerHeightFixed = this.containerHeightFixed;
+        out.maxHeight = this.maxHeight;
+        out.maxWidth = this.maxWidth;
+        out.rectangleAmount = this.rectangleAmount;
+        out.rotationsAllowed = this.rotationsAllowed;
+        out.totalWidth = this.totalWidth;
+        out.totalHeight = this.totalHeight;
+        return out;
+    }
+
     @Override
     public String toString() {
         return "container height:" + this.containerHeight + "\n" +

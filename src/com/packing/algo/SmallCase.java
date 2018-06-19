@@ -17,6 +17,7 @@ public class SmallCase extends AbstractAlgorithm {
     }
 
     Solution finalSolution = null;
+    long startTime = System.currentTimeMillis();
 
     @Override
     public Solution solve() {
@@ -37,15 +38,45 @@ public class SmallCase extends AbstractAlgorithm {
             Rectangle biggestRectangle = sortedRectangles.get(0);
 
             if (input.isRotationsAllowed()) {
+                for(Rectangle rect: sortedRectangles) {
+                    rect.isASquare(rect);
+                }
+
                 if (input.isContainerHeightFixed()) { //&& !isRotationsAllowed()
+                    Data tempInput = input.copyOf();
+
+                    AbstractAlgorithm tempSolver = new SkySolution(tempInput);
+                    finalSolution = tempSolver.solve();
+                    finalSolution.update();
+
+
                     putRectangleFixedHeightWithRotations(biggestRectangle, nodes.get(0), sortedRectangles, PlacedRectangle, nodes);
                 } else {
+                    Data tempInput = input.copyOf();
+
+                    AbstractAlgorithm tempSolver = new BTRun(tempInput);
+                    finalSolution = tempSolver.solve();
+                    finalSolution.update();
+
+
                     putRectangleWithRotations(biggestRectangle, nodes.get(0), sortedRectangles, PlacedRectangle, nodes);
                 }
             }else {
                 if (input.isContainerHeightFixed()) { //&& !isRotationsAllowed()
+                    Data tempInput = input.copyOf();
+
+                    AbstractAlgorithm tempSolver = new SkySolution(tempInput);
+                    finalSolution = tempSolver.solve();
+                    finalSolution.update();
+
                     putRectangleFixedHeight(biggestRectangle, nodes.get(0), sortedRectangles, PlacedRectangle, nodes);
                 } else {
+                    Data tempInput = input.copyOf();
+
+                    AbstractAlgorithm tempSolver = new BTRun(tempInput);
+                    finalSolution = tempSolver.solve();
+                    finalSolution.update();
+
                     putRectangle(biggestRectangle, nodes.get(0), sortedRectangles, PlacedRectangle, nodes);
                 }
             }
@@ -66,7 +97,11 @@ public class SmallCase extends AbstractAlgorithm {
     }
 
     void rectangleAssigner(ArrayList<BLnode> nodes, ArrayList<Rectangle> rectangles, ArrayList<Rectangle> placedRectangles) {
-        if (rectangles.isEmpty()) {
+        long endTime   = System.currentTimeMillis();
+        long totalTime = endTime - startTime;
+        if(totalTime > 240000) {
+            return;
+        } else if (rectangles.isEmpty()) {
             updateSolution(rectangles, placedRectangles);
         } else {
             for (BLnode node : nodes) {
@@ -78,21 +113,31 @@ public class SmallCase extends AbstractAlgorithm {
     }
 
     void rectangleAssignerWithRotations(ArrayList<BLnode> nodes, ArrayList<Rectangle> rectangles, ArrayList<Rectangle> placedRectangles) {
-        if (rectangles.isEmpty()) {
+        long endTime   = System.currentTimeMillis();
+        long totalTime = endTime - startTime;
+        if(totalTime > 240000) {
+            return;
+        } else if (rectangles.isEmpty()) {
             updateSolution(rectangles, placedRectangles);
         } else {
             for (BLnode node : nodes) {
                 for (Rectangle rect : rectangles) {
                     putRectangle(rect, node, rectangles, placedRectangles, nodes);
-                    rect.rotate();  //MAYBE NEED A CLONE OVER HERE? IS THE ACTUAL RECTANGLE ROTATED IN PREVIOUS LINE AS WELL?
-                    putRectangleWithRotations(rect, node, rectangles, placedRectangles, nodes);
+                    if(rect.isRotatable) {
+                        rect.rotate();
+                        putRectangleWithRotations(rect, node, rectangles, placedRectangles, nodes);
+                    }
                 }
             }
         }
     }
 
     void rectangleAssignerStrip(ArrayList<BLnode> nodes, ArrayList<Rectangle> rectangles, ArrayList<Rectangle> placedRectangles) {
-        if (rectangles.isEmpty()) {
+        long endTime   = System.currentTimeMillis();
+        long totalTime = endTime - startTime;
+        if(totalTime > 240000) {
+            return;
+        } else if (rectangles.isEmpty()) {
             updateSolutionStrip(rectangles, placedRectangles);
         } else {
             for (BLnode node : nodes) {
@@ -104,14 +149,20 @@ public class SmallCase extends AbstractAlgorithm {
     }
 
     void rectangleAssignerStripWithRotations(ArrayList<BLnode> nodes, ArrayList<Rectangle> rectangles, ArrayList<Rectangle> placedRectangles) {
-        if (rectangles.isEmpty()) {
+        long endTime   = System.currentTimeMillis();
+        long totalTime = endTime - startTime;
+        if(totalTime > 240000) {
+          return;
+        } else if (rectangles.isEmpty()) {
             updateSolutionStrip(rectangles, placedRectangles);
         } else {
             for (BLnode node : nodes) {
                 for (Rectangle rect : rectangles) {
                     putRectangleFixedHeightWithRotations(rect, node, rectangles, placedRectangles, nodes);
-                    rect.rotate();
-                    putRectangleFixedHeightWithRotations(rect, node, rectangles, placedRectangles, nodes);
+                    if(rect.isRotatable) {
+                        rect.rotate();
+                        putRectangleFixedHeightWithRotations(rect, node, rectangles, placedRectangles, nodes);
+                    }
                 }
             }
         }
