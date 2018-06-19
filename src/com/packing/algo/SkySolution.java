@@ -73,13 +73,6 @@ public class SkySolution extends AbstractAlgorithm {
         int solWidth = sol.getMaxWidth();
         if (solWidth < bestWidth) {
             bestWidth = solWidth;
-            ArrayList<Rectangle> check = new DisjointArrayList();
-            for (Rectangle r : sol.rectangles) {
-                boolean c = check.add(r);
-                if (!c) {
-                    throw new IllegalStateException("Solution is wrong");
-                }
-            }
             return sol;
         } else {
             return bestSol;
