@@ -35,6 +35,7 @@ public class Rectangle {
     }
 
 
+
      public Rectangle(int index, int width, int height){
          this.width = width;
          this.height = height;
@@ -84,6 +85,12 @@ public class Rectangle {
 
     public int getY() {
         return y;
+    }
+
+    public Rectangle copyOf(){
+        Rectangle copy = new Rectangle(this.x, this.y, this.width, this.height);
+        copy.index = this.index;
+        return copy;
     }
 
     @Override

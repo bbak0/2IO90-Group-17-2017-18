@@ -7,13 +7,13 @@ public class BestValues {
     int bestRectIndex;
     Rectangle bestRectangle;
     Rectangle oldRectangle;
-    int bestWastedArea = Integer.MAX_VALUE;
+    int bestWastedArea = Integer.MAX_VALUE / 2;
     public int bestX;
 
 
     public BestValues() {
-        bestWidth = Integer.MAX_VALUE;
-        bestHeight = Integer.MAX_VALUE;
+        bestWidth = Integer.MAX_VALUE /2;
+        bestHeight = Integer.MAX_VALUE /2;
         bestSkylineIndex = -1;
         bestRectIndex = -1;
         bestX = -1;

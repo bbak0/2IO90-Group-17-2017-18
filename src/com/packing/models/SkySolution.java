@@ -40,16 +40,16 @@ public class SkySolution extends AbstractAlgorithm {
             bestSol = executeAlgo(input, bestSol, maxH);
             Collections.sort(input.getRectangles(), new AreaComparator());
             bestSol = executeAlgo(input, bestSol, maxH);
-
+//
             Collections.sort(input.getRectangles(), new HeightComparator());
             bestSol = executeAlgo(input, bestSol, maxH);
-
+////
             Collections.sort(input.getRectangles(), new DESCSS_NR());
             bestSol = executeAlgo(input, bestSol, maxH);
-
+//
             Collections.sort(input.getRectangles(), new WidthComparator());
             bestSol = executeAlgo(input, bestSol, maxH);
-
+//
             Collections.sort(input.getRectangles(), new SquareComparator());
             bestSol = executeAlgo(input, bestSol, maxH);
             maxH += maxH + (maxH/8);

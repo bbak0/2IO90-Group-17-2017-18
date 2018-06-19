@@ -51,8 +51,6 @@ public class RectangleCanvas extends JPanel implements MouseListener {
             g.setColor(Color.black);
             g.drawRect(multiplier * r.x, multiplier * r.y, multiplier * r.width, multiplier *  r.height);
         }
-        g.setColor(Color.magenta);
-        g.fillRect(solution.customX, solution.customY,10,10);
         if (solution instanceof SkylineSolution){
             g.setColor(Color.red);
             ArrayList<SkylineNode> skyline = ((SkylineSolution) solution).getSkyline();
