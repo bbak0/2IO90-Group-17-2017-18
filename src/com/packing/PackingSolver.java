@@ -2,8 +2,9 @@ package com.packing;
 
 import com.packing.algo.*;
 import com.packing.models.*;
+import com.packing.utils.DisjointArrayList;
 
-public class Main {
+public class PackingSolver {
 
     public static void main(String[] args) {
         InputReader inputReader = new InputReader();
@@ -21,20 +22,15 @@ public class Main {
         if (input.getRectangleAmount() > 10 && input.isContainerHeightFixed()) {
             Solution sol1 = new SimulatedAnnealing(input).solve();
             sol1.calcWidth();
-            Solution sol2 = new BTRun(input).solve();
+            Solution sol2 = new SkySolution(input).solve();
             sol2.calcWidth();
-            Solution sol3 = new SkySolution(input).solve();
-            sol3.calcWidth();
-            if (sol1.maxWidth <= sol2.maxWidth && sol1.maxWidth <= sol3.maxWidth) {
+            if(sol1.maxWidth<sol2.maxWidth){
                 sol = sol1;
-            } else if (sol2.maxWidth <= sol1.maxWidth && sol2.maxWidth <= sol3.maxWidth) {
+            } else{
                 sol = sol2;
-            } else {
-                sol = sol3;
             }
 
         }
-
         print(input, sol);
     }
 
@@ -86,8 +82,6 @@ public class Main {
                 System.out.println(r);
             }
         }
-        System.out.println("wasted: " + sol.getWastedArea() + "\n" + "used :" + sol.areaOfRectangles);
-        System.out.println("total : " + (sol.getWastedArea() + sol.areaOfRectangles));
 
     }
 
