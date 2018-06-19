@@ -8,9 +8,9 @@ import java.util.Collections;
 
 public class SimulatedAnnealing extends AbstractAlgorithm {
 
-    private double temperature = 0;
+    private double temperature = 20;
     private double a = 0.9;
-    private int L = 20000;
+    private int L = 2000;
     Solution previousSol;
     Data inputCopy;
 
@@ -54,9 +54,9 @@ public class SimulatedAnnealing extends AbstractAlgorithm {
     }
 
     public void randomSwitch(Solution sol){
-        int r1 = (int) Math.round(Math.random()*input.getRectangleAmount());
+        int r1 = (int) Math.floor(Math.random()*input.getRectangleAmount());
         int r2;
-        do{r2 = (int) Math.round(Math.random()*input.getRectangleAmount());} while(r1==r2);
+        do{r2 = (int) Math.floor(Math.random()*input.getRectangleAmount());} while(r1==r2);
         Switch(r1, r2, sol);
     }
 

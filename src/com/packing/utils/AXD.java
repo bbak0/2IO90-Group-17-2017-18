@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class AXD extends JFrame{
     JButton button;
     static JTextArea tf;
-    String[] algoChoices = {"Skyline","Skyline Faster", "Simulated Annealing", "RandomSky", "BinaryTree", "SmallCase"};
+    String[] algoChoices = {"BinaryTree", "Skyline Faster", "Simulated Annealing", "RandomSky", "SmallCase"};
     JComboBox<String> algopicker = new JComboBox<>(algoChoices);
 
     public void openNewCanvas(Solution sol, int mul){
@@ -54,17 +54,12 @@ public class AXD extends JFrame{
         button.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println("XF");
                 InputReader inputReader = new InputReader(tf.getText());
                 Data input = inputReader.read();
                 //System.out.println(input);
                 AbstractAlgorithm solver;
                 //solver = new SkylineStripFaster(input);
                 switch ((String)algopicker.getSelectedItem()){
-                    case("Skyline"):
-                        solver = new SkylineStrip(input);
-                        System.out.println("DUP");
-                        break;
                     case("Skyline Faster"):
                         solver = new SkylineStripFaster(input);
                         break;
@@ -84,7 +79,11 @@ public class AXD extends JFrame{
                         solver = new NFDHAlgo(input);
 
                 }
+                long startTime = System.nanoTime();
                 Solution sol = solver.solve();
+                long endTime   = System.nanoTime();
+                long totalTime = endTime - startTime;
+                System.out.println(totalTime);
                 int m = Integer.valueOf(mul.getText());
                 if (m == 0){
                     openNewCanvas(sol, 5);
