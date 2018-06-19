@@ -63,13 +63,7 @@ public class SkylineStripFaster extends AbstractAlgorithm {
         //freeRectangles.sort(new HeightComparator());
         SkylineNode newNode = new SkylineNode(0,0, binHeight);
         skyline.add(newNode);
-        for (Rectangle r : rectangles){
-            r.x = 0;
-            r.y = 0;
-            if (r.isRotated){
-                r.rotate();
-            }
-        }
+        
     }
 
     boolean algoLoop(){

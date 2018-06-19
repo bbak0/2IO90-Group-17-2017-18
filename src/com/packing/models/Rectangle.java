@@ -90,6 +90,7 @@ public class Rectangle {
     public Rectangle copyOf(){
         Rectangle copy = new Rectangle(this.x, this.y, this.width, this.height);
         copy.index = this.index;
+        copy.isRotated = this.isRotated;
         return copy;
     }
 
