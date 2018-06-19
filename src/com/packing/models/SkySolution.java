@@ -26,38 +26,34 @@ public class SkySolution extends AbstractAlgorithm {
 
         int bestWidth = Integer.MAX_VALUE;
         Solution bestSol = null;
-        for (int i = 0; i < 20000 / input.getRectangles().size(); i++){
-            Collections.shuffle(input.getRectangles());
+
+        while (bestSol == null) {
+
+
+            Collections.sort(input.getRectangles(), new RatioComparator());
             bestSol = executeAlgo(input, bestSol, maxH);
-        }
-        while (bestSol == null){
-            Collections.shuffle(input.getRectangles());
+
+            Collections.reverse(input.getRectangles());
             bestSol = executeAlgo(input, bestSol, maxH);
-            maxH = maxH + (maxH/10);
+
+            Collections.sort(input.getRectangles(), new DESCSS());
+            bestSol = executeAlgo(input, bestSol, maxH);
+            Collections.sort(input.getRectangles(), new AreaComparator());
+            bestSol = executeAlgo(input, bestSol, maxH);
+
+            Collections.sort(input.getRectangles(), new HeightComparator());
+            bestSol = executeAlgo(input, bestSol, maxH);
+
+            Collections.sort(input.getRectangles(), new DESCSS_NR());
+            bestSol = executeAlgo(input, bestSol, maxH);
+
+            Collections.sort(input.getRectangles(), new WidthComparator());
+            bestSol = executeAlgo(input, bestSol, maxH);
+
+            Collections.sort(input.getRectangles(), new SquareComparator());
+            bestSol = executeAlgo(input, bestSol, maxH);
+            maxH += maxH + (maxH/8);
         }
-
-        Collections.sort(input.getRectangles(), new RatioComparator());
-        bestSol = executeAlgo(input, bestSol, maxH);
-
-        Collections.reverse(input.getRectangles());
-        bestSol = executeAlgo(input, bestSol, maxH);
-
-        Collections.sort(input.getRectangles(), new DESCSS());
-        bestSol = executeAlgo(input, bestSol, maxH);
-        Collections.sort(input.getRectangles(), new AreaComparator());
-        bestSol = executeAlgo(input, bestSol, maxH);
-
-        Collections.sort(input.getRectangles(), new HeightComparator());
-        bestSol = executeAlgo(input, bestSol, maxH);
-
-        Collections.sort(input.getRectangles(), new DESCSS_NR());
-        bestSol = executeAlgo(input, bestSol, maxH);
-
-        Collections.sort(input.getRectangles(), new WidthComparator());
-        bestSol = executeAlgo(input, bestSol, maxH);
-
-        Collections.sort(input.getRectangles(), new SquareComparator());
-        bestSol = executeAlgo(input, bestSol, maxH);
 
 
 
@@ -80,7 +76,7 @@ public class SkySolution extends AbstractAlgorithm {
             for (Rectangle r : sol.rectangles){
                 boolean c = check.add(r);
                 if (!c){
-                    throw new IllegalStateException("rectangles not disjoint");
+                    throw new IllegalStateException("Solution is wrong");
                 }
             }
             return sol;

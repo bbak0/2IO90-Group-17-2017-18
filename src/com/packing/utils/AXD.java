@@ -3,6 +3,7 @@ package com.packing.utils;
 import com.packing.InputReader;
 import com.packing.algo.*;
 import com.packing.models.*;
+import com.packing.models.Rectangle;
 import com.packing.sorting.SkylineStrip;
 import com.packing.sorting.SkylineStripFaster;
 
@@ -10,6 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 public class AXD extends JFrame{
     JButton button;
