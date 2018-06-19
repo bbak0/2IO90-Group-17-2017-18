@@ -8,7 +8,7 @@ public abstract class AbstractAlgorithm {
     protected Data input;
 
     public AbstractAlgorithm(Data in) {
-        this.input = in;
+        this.input = in.copyOf();
     }
 
     public abstract Solution solve();

@@ -22,14 +22,14 @@ public class PackingSolver {
             sol = solver.solve();
         }
         if (input.getRectangleAmount() > 10 && input.isContainerHeightFixed()) {
-            Solution sol1 = new SimulatedAnnealing(input).solve();
+            Solution sol1 = new SkySolution(input).solve();
             sol1.calcWidth();
-            Solution sol2 = new SkySolution(input).solve();
+            Solution sol2 = new SimulatedAnnealing(input).solve();
             sol2.calcWidth();
-            if (sol1.maxWidth < sol2.maxWidth) {
-                sol = sol1;
-            } else {
+            if (sol2.maxWidth < sol1.maxWidth) {
                 sol = sol2;
+            } else {
+                sol = sol1;
             }
 
         }
