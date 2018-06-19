@@ -1,6 +1,8 @@
-package com.packing.models;
+package com.packing.algo;
 
-import com.packing.algo.AbstractAlgorithm;
+import com.packing.models.Data;
+import com.packing.models.Rectangle;
+import com.packing.models.Solution;
 import com.packing.sorting.*;
 import com.packing.utils.DisjointArrayList;
 
@@ -18,7 +20,7 @@ public class SkySolution extends AbstractAlgorithm {
     @Override
     public Solution solve() {
         int maxH;
-        if (input.isRotationsAllowed()){
+        if (input.isRotationsAllowed()) {
             maxH = Math.max(input.getMaxHeight(), input.getMaxWidth());
         } else {
             maxH = input.getMaxWidth();
@@ -52,30 +54,29 @@ public class SkySolution extends AbstractAlgorithm {
 //
             Collections.sort(input.getRectangles(), new SquareComparator());
             bestSol = executeAlgo(input, bestSol, maxH);
-            maxH += maxH + (maxH/8);
+            maxH += maxH + (maxH / 8);
         }
-
 
 
         return bestSol;
-}
+    }
 
-    Solution executeAlgo(Data input, Solution bestSol, int maxSpread){
+    Solution executeAlgo(Data input, Solution bestSol, int maxSpread) {
         SkylineStripFaster inst = new SkylineStripFaster(input);
-        if (maxSpread != 0){
+        if (maxSpread != 0) {
             inst.setMaxSpread(maxSpread);
         }
         Solution sol = inst.solve();
-        if (sol == null){
+        if (sol == null) {
             return bestSol;
         }
         int solWidth = sol.getMaxWidth();
-        if (solWidth < bestWidth){
+        if (solWidth < bestWidth) {
             bestWidth = solWidth;
             ArrayList<Rectangle> check = new DisjointArrayList();
-            for (Rectangle r : sol.rectangles){
+            for (Rectangle r : sol.rectangles) {
                 boolean c = check.add(r);
-                if (!c){
+                if (!c) {
                     throw new IllegalStateException("Solution is wrong");
                 }
             }

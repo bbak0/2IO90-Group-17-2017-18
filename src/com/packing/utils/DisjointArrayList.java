@@ -1,6 +1,7 @@
 package com.packing.utils;
 
 import com.packing.models.Rectangle;
+import com.packing.models.Solution;
 
 import java.util.ArrayList;
 
@@ -32,5 +33,15 @@ public class DisjointArrayList extends ArrayList<Rectangle> {
             return true;
         }
         return false;
+    }
+
+    public static void checkSolution(Solution sol){
+        ArrayList<Rectangle> check = new DisjointArrayList();
+        for (Rectangle r : sol.rectangles){
+            boolean c = check.add(r);
+            if (!c){
+                throw new IllegalStateException("Solution is wrong");
+            }
+        }
     }
 }

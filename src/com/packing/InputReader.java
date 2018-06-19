@@ -9,20 +9,20 @@ public class InputReader {
     Scanner sc = new Scanner(System.in);
 
 
-
-    public InputReader(String input){
+    public InputReader(String input) {
         sc = new Scanner(input);
     }
 
-    public InputReader(){}
+    public InputReader() {
+    }
 
-    public Data read(){
+    public Data read() {
         Data result = new Data();
         String cHeight = sc.nextLine();
         String cRotations = sc.nextLine();
         String cRectangles = sc.nextLine();
 
-        if (cHeight.contains("free")){
+        if (cHeight.contains("free")) {
             result.setContainerHeightFixed(false);
         } else {
             result.setContainerHeightFixed(true);
@@ -31,7 +31,7 @@ public class InputReader {
             result.setContainerHeight(h);
         }
 
-        if (cRotations.contains("yes")){
+        if (cRotations.contains("yes")) {
             result.setRotationsAllowed(true);
         } else {
             result.setRotationsAllowed(false);
@@ -40,7 +40,7 @@ public class InputReader {
         int n = Integer.valueOf(cRectangles.substring(i + "rectangles: ".length()));
         result.setRectangleAmount(n);
 
-        for (int j = 0; j < n; j++){
+        for (int j = 0; j < n; j++) {
             result.addRectangle(new Rectangle(j, sc.nextInt(), sc.nextInt()));
         }
         return result;

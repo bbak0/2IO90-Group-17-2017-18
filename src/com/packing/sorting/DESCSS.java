@@ -11,7 +11,7 @@ public class DESCSS implements Comparator<Rectangle> {
         int shortO2 = Math.min(o2.width, o2.height);
         int longO1 = Math.max(o1.width, o1.height);
         int longO2 = Math.max(o2.width, o2.height);
-        if (shortO1 == shortO2){
+        if (shortO1 == shortO2) {
             return longO2 - longO1;
         } else {
             return shortO2 - shortO1;

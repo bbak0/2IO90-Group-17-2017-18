@@ -51,7 +51,7 @@ public class Data {
         this.rectangleAmount = rectangleAmount;
     }
 
-    public void addRectangle(Rectangle r){
+    public void addRectangle(Rectangle r) {
         totalWidth += r.width;
         totalHeight += r.height;
         maxWidth = Math.max(maxWidth, r.width);
@@ -76,7 +76,7 @@ public class Data {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "container height:" + this.containerHeight + "\n" +
                 "rotations allowed: " + this.rotationsAllowed + "\n" +
                 "number of rectangles: " + this.rectangleAmount;

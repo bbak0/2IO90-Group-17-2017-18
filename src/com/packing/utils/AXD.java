@@ -3,21 +3,16 @@ package com.packing.utils;
 import com.packing.InputReader;
 import com.packing.algo.*;
 import com.packing.models.*;
-import com.packing.models.Rectangle;
-import com.packing.sorting.SkylineStrip;
-import com.packing.sorting.SkylineStripFaster;
-import com.packing.sorting.SkylineStripSlower;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 
 public class AXD extends JFrame{
     JButton button;
     static JTextArea tf;
-    String[] algoChoices = {"BinaryTree", "Skyline Slower", "Simulated Annealing", "RandomSky", "SmallCase"};
+    String[] algoChoices = {"BinaryTree", "Simulated Annealing", "RandomSky", "SmallCase"};
     JComboBox<String> algopicker = new JComboBox<>(algoChoices);
 
     public void openNewCanvas(Solution sol, int mul){
@@ -61,9 +56,6 @@ public class AXD extends JFrame{
                 AbstractAlgorithm solver;
                 //solver = new SkylineStripFaster(input);
                 switch ((String)algopicker.getSelectedItem()){
-                    case("Skyline Slower"):
-                        solver = new SkylineStripSlower(input);
-                        break;
                     case ("Simulated Annealing"):
                         solver = new SimulatedAnnealing(input);
                         break;

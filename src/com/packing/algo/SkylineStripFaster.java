@@ -1,12 +1,17 @@
-package com.packing.sorting;
+package com.packing.algo;
 
 import com.packing.algo.AbstractAlgorithm;
-import com.packing.models.*;
+import com.packing.models.BestValues;
+import com.packing.models.Data;
+import com.packing.models.Rectangle;
+import com.packing.models.SkylineNode;
+import com.packing.models.SkylineSolution;
+import com.packing.models.Solution;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 
-public class SkylineStripSlower extends AbstractAlgorithm {
+public class SkylineStripFaster extends AbstractAlgorithm {
 
     ArrayList<Rectangle> rectangles = new ArrayList<>(input.getRectangles());
     ArrayList<Rectangle> freeRectangles = new ArrayList<>(input.getRectangles());
@@ -21,8 +26,7 @@ public class SkylineStripSlower extends AbstractAlgorithm {
     int minSkylineX = 0;
 
 
-
-    public SkylineStripSlower(Data in) {
+    public SkylineStripFaster(Data in) {
         super(in);
     }
 
@@ -37,7 +41,7 @@ public class SkylineStripSlower extends AbstractAlgorithm {
 
         init();
         boolean successful = algoLoop();
-        if (!successful){
+        if (!successful) {
             return null;
         }
         binWidth = maxWidth;
@@ -48,50 +52,36 @@ public class SkylineStripSlower extends AbstractAlgorithm {
 
     }
 
-    void init(){
-        if (input.getContainerHeight() != Integer.MAX_VALUE){
+    void init() {
+        if (input.getContainerHeight() != Integer.MAX_VALUE) {
             binHeight = input.getContainerHeight();
             binWidth = Integer.MAX_VALUE;
         } else {
             throw new InputMismatchException("Algorithm meant to work with strip packing");
         }
         //freeRectangles.sort(new HeightComparator());
-        SkylineNode newNode = new SkylineNode(0,0, binHeight);
+        SkylineNode newNode = new SkylineNode(0, 0, binHeight);
         skyline.add(newNode);
+
     }
 
-    boolean algoLoop(){
+    boolean algoLoop() {
 
-            while(rectangles.size() > 0){
-                BestValues globalBest = new BestValues();
-                for (int i = 0; i < rectangles.size(); i++){
-                    BestValues b = FindMWPosition(rectangles.get(0));
-                    int x = b.bestX;
-                    Rectangle r = b.getBestRectangle();
-                    int wasted = b.getBestWastedArea();
-                    int globalbestarea = 0;
-                    if (globalBest.getBestRectangle() != null){
-                        globalbestarea = globalBest.getBestRectangle().area;
-                    }
-                    if (x + r.width + Math.sqrt(wasted) - Math.sqrt(r.area) < globalBest.getBestWidth() + Math.sqrt(globalBest.getBestWastedArea()) - Math.sqrt(globalbestarea) ||
-                            (x + r.width + Math.sqrt(wasted) - Math.sqrt(r.area)== globalBest.getBestWidth() + Math.sqrt(globalBest.getBestWastedArea()) - Math.sqrt(globalbestarea)) && (x + r.width < globalBest.getBestWidth())){
-                        globalBest = b;
-                    }
-                }
-
-                Rectangle bestR = globalBest.getBestRectangle();
-                if (bestR == null){
-                    return false;
-                }
-                bestR.x = globalBest.bestX;
-                bestR.y = skyline.get(globalBest.getBestSkylineIndex()).y;
-                rectangles.remove(bestR);
-                freeRectangles.remove(bestR);
-                //with true param it tries to add a rectangle to wasted area
-                computeWastedArea(globalBest.getBestSkylineIndex(), bestR, bestR.x,true);
-                addSkylineLevel(globalBest.getBestSkylineIndex(), bestR);
-                boolean debug = solRect.add(bestR);
-                //following code used in debugging
+        while (rectangles.size() > 0) {
+            BestValues globalBest = FindMWPosition(rectangles.get(0));
+            Rectangle bestR = globalBest.getBestRectangle();
+            if (bestR == null) {
+                return false;
+            }
+            bestR.x = globalBest.bestX;
+            bestR.y = skyline.get(globalBest.getBestSkylineIndex()).y;
+            rectangles.remove(bestR);
+            freeRectangles.remove(bestR);
+            //with true param it tries to add a rectangle to wasted area
+            computeWastedArea(globalBest.getBestSkylineIndex(), bestR, bestR.x, true);
+            addSkylineLevel(globalBest.getBestSkylineIndex(), bestR);
+            boolean debug = solRect.add(bestR.copyOf());
+            //following code used in debugging
 //                if(!debug){
 //                    SkylineSolution debugSol = new SkylineSolution(solRect, false);
 //                    debugSol.setSkyline(skyline);
@@ -100,26 +90,27 @@ public class SkylineStripSlower extends AbstractAlgorithm {
 //                    throw new RuntimeException();
 //                }
 
-                areaUsed += bestR.area;
-                maxWidth = Math.max(maxWidth, bestR.width + bestR.x);
-                inserted++;
-            }
-            return true;
+            areaUsed += bestR.area;
+            maxWidth = Math.max(maxWidth, bestR.width + bestR.x);
+            inserted++;
+        }
+        return true;
     }
-//done
-    void addSkylineLevel(int skylineNodeIndex, Rectangle r){
+
+    //done
+    void addSkylineLevel(int skylineNodeIndex, Rectangle r) {
         SkylineNode newNode = new SkylineNode(r.x + r.width, r.y, r.height);
         skyline.add(skylineNodeIndex, newNode);
 
-        for (int i = skylineNodeIndex + 1; i < skyline.size(); i++){
+        for (int i = skylineNodeIndex + 1; i < skyline.size(); i++) {
             SkylineNode current = skyline.get(i);
-            SkylineNode previous = skyline.get(i-1);
-            if (current.y < previous.y + previous.length){
+            SkylineNode previous = skyline.get(i - 1);
+            if (current.y < previous.y + previous.length) {
                 int shrink = previous.y + previous.length - current.y;
                 current.y += shrink;
                 current.length -= shrink;
 
-                if(current.length <= 0){
+                if (current.length <= 0) {
                     skyline.remove(current);
                     i--;
                 } else {
@@ -134,11 +125,11 @@ public class SkylineStripSlower extends AbstractAlgorithm {
         updateMinNode();
     }
 
-    void mergeSkylines(){
-        for (int i = 0; i < skyline.size() -  1; i++){
+    void mergeSkylines() {
+        for (int i = 0; i < skyline.size() - 1; i++) {
             SkylineNode current = skyline.get(i);
-            SkylineNode next = skyline.get(i+1);
-            if (current.x == next.x){
+            SkylineNode next = skyline.get(i + 1);
+            if (current.x == next.x) {
                 current.length += next.length;
                 skyline.remove(next);
                 i--;
@@ -146,24 +137,24 @@ public class SkylineStripSlower extends AbstractAlgorithm {
         }
     }
 
-    BestValues FindMWPosition(Rectangle r){
+    BestValues FindMWPosition(Rectangle r) {
         BestValues b = new BestValues();
-        for (int i = 0; i < skyline.size(); i++){
-            int x = RectangleFits(i,r);
-            if (x - minSkylineX > maxSpread){
+        for (int i = 0; i < skyline.size(); i++) {
+            int x = RectangleFits(i, r);
+            if (x - minSkylineX > maxSpread) {
                 continue;
             }
-            if (x >= 0){
+            if (x >= 0) {
                 FindMWPositionHelper2(i, x, r, b);
             }
             boolean check = false;
-            if (input.isRotationsAllowed()){
+            if (input.isRotationsAllowed()) {
                 r.rotate();
                 x = RectangleFits(i, r);
                 if (x >= 0) {
                     check = FindMWPositionHelper2(i, x, r, b);
                 }
-                if (!check){
+                if (!check) {
                     r.rotate();
                 }
 
@@ -174,10 +165,10 @@ public class SkylineStripSlower extends AbstractAlgorithm {
     }
 
     //not used in current version
-    boolean FindMWPositionHelper(int i, int x, Rectangle r, BestValues b){
+    boolean FindMWPositionHelper(int i, int x, Rectangle r, BestValues b) {
         int wasted = computeWastedArea(i, r, x, false);
         if (wasted < b.getBestWastedArea() ||
-                (wasted == b.getBestWastedArea()) && (x + r.width < b.getBestWidth())){
+                (wasted == b.getBestWastedArea()) && (x + r.width < b.getBestWidth())) {
             b.setBestWidth(x + r.width);
             b.setBestSkylineIndex(i);
             b.setBestWastedArea(wasted);
@@ -188,15 +179,10 @@ public class SkylineStripSlower extends AbstractAlgorithm {
         return false;
     }
 
-    boolean FindMWPositionHelper2(int i, int x, Rectangle r, BestValues b){
+    boolean FindMWPositionHelper2(int i, int x, Rectangle r, BestValues b) {
         int wasted = computeWastedArea(i, r, x, false);
-        Rectangle bestRectangle = b.getBestRectangle();
-        int bestArea = 0;
-        if (bestRectangle != null){
-            bestArea = bestRectangle.area;
-        }
-        if (x + r.width + Math.sqrt(wasted) - Math.sqrt(r.area) < b.getBestWidth() + Math.sqrt(b.getBestWastedArea()) - Math.sqrt(bestArea) ||
-                (x + r.width + Math.sqrt(wasted) == b.getBestWidth() + Math.sqrt(b.getBestWastedArea())) && (x + r.width < b.getBestWidth())){
+        if (x + r.width + Math.sqrt(wasted) < b.getBestWidth() + Math.sqrt(b.getBestWastedArea()) ||
+                (x + r.width + Math.sqrt(wasted) == b.getBestWidth() + Math.sqrt(b.getBestWastedArea())) && (x + r.width < b.getBestWidth())) {
             b.setBestWidth(x + r.width);
             b.setBestSkylineIndex(i);
             b.setBestWastedArea(wasted);
@@ -206,23 +192,24 @@ public class SkylineStripSlower extends AbstractAlgorithm {
         }
         return false;
     }
-//conversion done
-    int RectangleFits(int skyLineIndex, Rectangle r){
+
+    //conversion done
+    int RectangleFits(int skyLineIndex, Rectangle r) {
         int y = skyline.get(skyLineIndex).y;
-        if (y + r.height > binHeight){
+        if (y + r.height > binHeight) {
             return -1;
         }
         int remainingHeight = r.height;
         int i = skyLineIndex;
         int x = skyline.get(skyLineIndex).x;
-        while (remainingHeight > 0){
+        while (remainingHeight > 0) {
             x = Math.max(x, skyline.get(i).x);
-            if (x + r.width > binWidth){
+            if (x + r.width > binWidth) {
                 return -1;
             }
             remainingHeight -= skyline.get(i).length;
             i++;
-            if (i >= skyline.size() && remainingHeight > 0){
+            if (i >= skyline.size() && remainingHeight > 0) {
                 return -1;
             }
         }
@@ -231,22 +218,22 @@ public class SkylineStripSlower extends AbstractAlgorithm {
         return x;
     }
 
-    int computeWastedArea(int skyLineIndex, Rectangle r, int x, boolean addWasteMap){
+    int computeWastedArea(int skyLineIndex, Rectangle r, int x, boolean addWasteMap) {
         int wasted = 0;
         SkylineNode current = skyline.get(skyLineIndex);
         int rectLeft = current.y;
         int rectRight = rectLeft + r.height;
         int leftSide = 0;
         int rightSide = 0;
-        for (;skyLineIndex < skyline.size() && skyline.get(skyLineIndex).y  < rectRight; skyLineIndex++){
+        for (; skyLineIndex < skyline.size() && skyline.get(skyLineIndex).y < rectRight; skyLineIndex++) {
             current = skyline.get(skyLineIndex);
-            if (current.y >= rectRight || current.y + current.length <=rectLeft ){
+            if (current.y >= rectRight || current.y + current.length <= rectLeft) {
                 break;
             }
             leftSide = current.y;
             rightSide = Math.min(rectRight, leftSide + current.length);
             wasted += (rightSide - leftSide) * (x - current.x);
-            if (addWasteMap){
+            if (addWasteMap) {
                 int width = x - current.x;
                 int height = rightSide - leftSide;
                 placeWasteRectangle(width, height, current.x, current.y, true);
@@ -259,9 +246,9 @@ public class SkylineStripSlower extends AbstractAlgorithm {
     }
 
 
-    void updateMinNode(){
+    void updateMinNode() {
         int x = Integer.MAX_VALUE;
-        for(SkylineNode s: skyline) {
+        for (SkylineNode s : skyline) {
             if (s.x < x) {
                 x = s.x;
             }
@@ -269,33 +256,33 @@ public class SkylineStripSlower extends AbstractAlgorithm {
         minSkylineX = x;
     }
 
-    void placeWasteRectangle(int width, int height, int x, int y, boolean recursive){
+    void placeWasteRectangle(int width, int height, int x, int y, boolean recursive) {
         Rectangle bestRectangle = null;
         int placementScore = 0;
-        for (Rectangle z : freeRectangles){
+        for (Rectangle z : freeRectangles) {
             int score = z.width * z.height;
-            if (z.width <= width && z.height <= height){
+            if (z.width <= width && z.height <= height) {
 
-                if (score > placementScore){
+                if (score > placementScore) {
                     bestRectangle = z;
                     placementScore = score;
                 }
-            } else if (input.isRotationsAllowed() && z.width <= height && z.height <= width){
+            } else if (input.isRotationsAllowed() && z.width <= height && z.height <= width) {
                 z.rotate();
-                if (score > placementScore){
+                if (score > placementScore) {
                     bestRectangle = z;
                     placementScore = score;
                 }
             }
         }
-        if (bestRectangle != null){
+        if (bestRectangle != null) {
             bestRectangle.x = x;
             bestRectangle.y = y;
-            solRect.add(bestRectangle);
+            solRect.add(bestRectangle.copyOf());
             freeRectangles.remove(bestRectangle);
             rectangles.remove(bestRectangle);
-            if (recursive == true){
-                if (width - bestRectangle.width > height - bestRectangle.width){
+            if (recursive == true) {
+                if (width - bestRectangle.width > height - bestRectangle.width) {
                     placeWasteRectangle(width - bestRectangle.width, height, x + bestRectangle.width, y, false);
                     placeWasteRectangle(bestRectangle.width, height - bestRectangle.height, x, y + bestRectangle.height, false);
                 } else {
@@ -305,4 +292,5 @@ public class SkylineStripSlower extends AbstractAlgorithm {
             }
         }
     }
+
 }

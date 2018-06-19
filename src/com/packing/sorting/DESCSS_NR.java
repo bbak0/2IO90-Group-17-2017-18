@@ -12,7 +12,7 @@ public class DESCSS_NR implements Comparator<Rectangle> {
         int shortO2 = Math.min(o2.width, o2.height);
         int longO1 = Math.max(o1.width, o1.height);
         int longO2 = Math.max(o2.width, o2.height);
-        if (longO1 == longO2){
+        if (longO1 == longO2) {
             return shortO2 - shortO1;
         } else {
             return longO2 - longO1;

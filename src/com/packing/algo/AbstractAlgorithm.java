@@ -7,7 +7,7 @@ public abstract class AbstractAlgorithm {
 
     protected Data input;
 
-    public AbstractAlgorithm(Data in){
+    public AbstractAlgorithm(Data in) {
         this.input = in;
     }
 

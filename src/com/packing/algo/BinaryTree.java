@@ -17,16 +17,17 @@ public class BinaryTree extends AbstractAlgorithm {
     ArrayList<Integer> freepointX = new ArrayList<Integer>(5005);
     ArrayList<Integer> freepointY = new ArrayList<Integer>(5005);
     ArrayList<Integer> Hlimit = new ArrayList<Integer>(5005);
-    int bigH = 0, bigW=0, k = 2;
+    int bigH = 0, bigW = 0, k = 2;
     double avgH = 0, avgW = 0;
     int firstForb = 0;
+
     public BinaryTree(Data in) {
         super(in);
         inputCopy = input;
     }
 
     @Override
-    public  Solution solve() {
+    public Solution solve() {
         Collections.sort(rectangleCollection, new WidthComparator());
         int n = rectangleCollection.size();
        /* rectangleCollection.get(0).placeRectangle(0, 0);
@@ -37,7 +38,7 @@ public class BinaryTree extends AbstractAlgorithm {
         Hlimit.add(0, rectangleCollection.get(0).getHeight());
         Hlimit.add(1, bigH);*/
 
-        for(Rectangle rectangle : rectangleCollection) {
+        for (Rectangle rectangle : rectangleCollection) {
             avgH += rectangle.getHeight();
             avgW += rectangle.getWidth();
         }
@@ -47,18 +48,18 @@ public class BinaryTree extends AbstractAlgorithm {
         bigW = (int) (avgW * Math.sqrt(n));
         System.out.println("\n**" + bigH + " " + bigW + "\n");
 
-        for(Rectangle rectangle : rectangleCollection){
+        for (Rectangle rectangle : rectangleCollection) {
             System.out.println(rectangle.getWidth() + " " + rectangle.getHeight());
         }
 
-        for(Rectangle rectangle : rectangleCollection) {
-            if(firstForb != 0){
-                for(int i=0; i<k; i++) {
+        for (Rectangle rectangle : rectangleCollection) {
+            if (firstForb != 0) {
+                for (int i = 0; i < k; i++) {
                     if (isFit(rectangle, freepointX.get(i), freepointY.get(i), Hlimit.get(i))) {
                         rectangle.placeRectangle(freepointX.get(i), freepointY.get(i));
-                        freepointX.add(i, freepointX.get(i)+rectangle.getWidth());
+                        freepointX.add(i, freepointX.get(i) + rectangle.getWidth());
                         freepointX.add(k, freepointX.get(i));
-                        freepointY.add(k, freepointY.get(i)+rectangle.getHeight());
+                        freepointY.add(k, freepointY.get(i) + rectangle.getHeight());
                         k++;
                         break;
                     }
@@ -72,7 +73,7 @@ public class BinaryTree extends AbstractAlgorithm {
     }
 
     boolean isFit(Rectangle rectangle, int wtemp, int htemp, int hlimit) {
-        if(rectangle.getWidth() + wtemp > bigW && rectangle.getHeight() + htemp > hlimit){
+        if (rectangle.getWidth() + wtemp > bigW && rectangle.getHeight() + htemp > hlimit) {
             return false;
         }
         return true;

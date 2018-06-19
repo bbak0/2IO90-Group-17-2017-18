@@ -22,15 +22,16 @@ public class BTRun extends AbstractAlgorithm {
         inputCopy = input;
         inputCopy2 = input;
     }
+
     boolean isFixedHeight = input.isContainerHeightFixed();
 
 
-    private  ArrayList<Rectangle> procedure(ArrayList<Rectangle> collection, int sortingIndex)
-    {
+    private ArrayList<Rectangle> procedure(ArrayList<Rectangle> collection, int sortingIndex) {
         boolean rotAllowed = input.isRotationsAllowed();
 
 
-        int rWidth = 0; int rHeight = 0;
+        int rWidth = 0;
+        int rHeight = 0;
         if (rotAllowed)
             for (Rectangle rectangle : collection) {
                 if (rectangle.height > rectangle.width) {
@@ -40,20 +41,19 @@ public class BTRun extends AbstractAlgorithm {
                     rectangle.isRotated = true;
                 }
             }
-        if(!isFixedHeight)
-        {  if(sortingIndex==1)
-            Collections.sort(collection, new HeightComparator());
-        else if (sortingIndex==2)
-            Collections.sort(collection, new WidthComparator());
-        else
-            Collections.sort(collection, new AreaComparator());
-        }
-        else
+        if (!isFixedHeight) {
+            if (sortingIndex == 1)
+                Collections.sort(collection, new HeightComparator());
+            else if (sortingIndex == 2)
+                Collections.sort(collection, new WidthComparator());
+            else
+                Collections.sort(collection, new AreaComparator());
+        } else
             Collections.sort(collection, new HeightComparator());
 
 
-        for(Rectangle rectangle :collection) {
-            rHeight+= rectangle.getHeight();
+        for (Rectangle rectangle : collection) {
+            rHeight += rectangle.getHeight();
             rWidth += rectangle.getWidth();
         }
         rHeight /= collection.size();
@@ -61,8 +61,7 @@ public class BTRun extends AbstractAlgorithm {
         int n = collection.size();
         int h = (int) (rHeight * Math.sqrt(n));
         int w = (int) (rWidth * Math.sqrt(n));
-        if(isFixedHeight==true)
-        {
+        if (isFixedHeight == true) {
             int fixedHeight = input.getContainerHeight();
             h = fixedHeight;
 
@@ -72,64 +71,44 @@ public class BTRun extends AbstractAlgorithm {
         try {
             collection = method(collection, w, h);
 
-        }
-        catch (IndexOutOfBoundsException e) {
+        } catch (IndexOutOfBoundsException e) {
 
             try {
-                if(isFixedHeight)
-                {
-                    w=w*3;
-                }
-                else
-                {
-                    w = w*2 + w/2;
-                    h = h*2 + h/2;
+                if (isFixedHeight) {
+                    w = w * 3;
+                } else {
+                    w = w * 2 + w / 2;
+                    h = h * 2 + h / 2;
                 }
                 collection = method(collection, w, h);
                 return collection;
-            }
-
-            catch(IndexOutOfBoundsException f)
-            {
+            } catch (IndexOutOfBoundsException f) {
                 try {
-                    if(isFixedHeight)
-                    {
-                        w = w*6;
-                    }
-                    else
-                    {
-                        w = w*4 ;
-                        h = h*4 ;
+                    if (isFixedHeight) {
+                        w = w * 6;
+                    } else {
+                        w = w * 4;
+                        h = h * 4;
                     }
                     collection = method(collection, w, h);
                     return collection;
-                }
-                catch(IndexOutOfBoundsException g)
-                {
+                } catch (IndexOutOfBoundsException g) {
                     try {
-                        if(isFixedHeight)
-                        {
-                            w=w*9;
-                        }
-                        else
-                        {
-                            w = w*6 + w/6;
-                            h = h*6 + h/6;
+                        if (isFixedHeight) {
+                            w = w * 9;
+                        } else {
+                            w = w * 6 + w / 6;
+                            h = h * 6 + h / 6;
                         }
 
                         collection = method(collection, w, h);
                         return collection;
-                    }
-                    catch(IndexOutOfBoundsException H)
-                    {
-                        if(isFixedHeight)
-                        {
-                            w=w*12;
-                        }
-                        else
-                        {
-                            w = w*8 + w/8;
-                            h = h*8 + h/8;
+                    } catch (IndexOutOfBoundsException H) {
+                        if (isFixedHeight) {
+                            w = w * 12;
+                        } else {
+                            w = w * 8 + w / 8;
+                            h = h * 8 + h / 8;
                         }
                         collection = method(collection, w, h);
                         return collection;
@@ -144,9 +123,8 @@ public class BTRun extends AbstractAlgorithm {
     }
 
 
-    public ArrayList<Rectangle> method(ArrayList<Rectangle> collection, int w, int h)
-    {
-        BTP packer = new BTP (w, h);
+    public ArrayList<Rectangle> method(ArrayList<Rectangle> collection, int w, int h) {
+        BTP packer = new BTP(w, h);
         packer.fit(collection);
         Iterator<Rectangle> rectangleIterator = collection.iterator();
         while (rectangleIterator.hasNext()) {
@@ -174,12 +152,12 @@ public class BTRun extends AbstractAlgorithm {
 
         rectangleCollection = procedure(rectangleCollection, 1);
         Solution sol1 = new Solution(rectangleCollection);
-        long heightWaste =  sol1.getWastedArea();
+        long heightWaste = sol1.getWastedArea();
 
-        secondRectangleCollection =  procedure(secondRectangleCollection, 2);
+        secondRectangleCollection = procedure(secondRectangleCollection, 2);
         sol1 = new Solution(secondRectangleCollection);
-        long widthWaste =  sol1.getWastedArea();
-        if(widthWaste > heightWaste) {
+        long widthWaste = sol1.getWastedArea();
+        if (widthWaste > heightWaste) {
             config = 1;
             rectangleCollection = procedure(rectangleCollection, 1);
             sol1 = new Solution(rectangleCollection);
@@ -190,15 +168,12 @@ public class BTRun extends AbstractAlgorithm {
         thirdRectangleCollection = procedure(thirdRectangleCollection, 3);
         sol1 = new Solution(thirdRectangleCollection);
         long maxSideWaste = sol1.getWastedArea();
-        if(maxSideWaste > hgwsWaste)
-            if(config==2)
-            {
-                secondRectangleCollection =  procedure(secondRectangleCollection, 2);
+        if (maxSideWaste > hgwsWaste)
+            if (config == 2) {
+                secondRectangleCollection = procedure(secondRectangleCollection, 2);
                 sol1 = new Solution(secondRectangleCollection);
                 return sol1;
-            }
-            else
-            {
+            } else {
                 rectangleCollection = procedure(rectangleCollection, 1);
                 sol1 = new Solution(rectangleCollection);
                 return sol1;

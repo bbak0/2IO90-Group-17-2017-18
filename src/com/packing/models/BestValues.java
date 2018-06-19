@@ -12,8 +12,8 @@ public class BestValues {
 
 
     public BestValues() {
-        bestWidth = Integer.MAX_VALUE /2;
-        bestHeight = Integer.MAX_VALUE /2;
+        bestWidth = Integer.MAX_VALUE / 2;
+        bestHeight = Integer.MAX_VALUE / 2;
         bestSkylineIndex = -1;
         bestRectIndex = -1;
         bestX = -1;

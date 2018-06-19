@@ -2,6 +2,7 @@ package com.packing.algo;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+
 import com.packing.models.*;
 
 public class BTP {
@@ -52,7 +53,6 @@ public class BTP {
         node.right = new Rectangle(node.x + w, node.y, node.width - w, h);
         return node;
     }
-
 
 
 }

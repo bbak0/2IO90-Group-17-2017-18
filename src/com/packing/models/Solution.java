@@ -56,26 +56,28 @@ public class Solution {
             }
         }
     }
-        public void calcRectangleArea () {
-            for (Rectangle r : rectangles) {
-                areaOfRectangles += r.area;
-            }
-        }
-        public long getWastedArea () {
-            update();
-            calcRectangleArea();
-            return area - areaOfRectangles;
-        }
 
-        public ArrayList<Rectangle> getRectangles () {
-            return rectangles;
-        }
-
-        public int getMaxHeight () {
-            return maxHeight;
-        }
-
-        public int getMaxWidth () {
-            return maxWidth;
+    public void calcRectangleArea() {
+        for (Rectangle r : rectangles) {
+            areaOfRectangles += r.area;
         }
     }
+
+    public long getWastedArea() {
+        update();
+        calcRectangleArea();
+        return area - areaOfRectangles;
+    }
+
+    public ArrayList<Rectangle> getRectangles() {
+        return rectangles;
+    }
+
+    public int getMaxHeight() {
+        return maxHeight;
+    }
+
+    public int getMaxWidth() {
+        return maxWidth;
+    }
+}

@@ -2,7 +2,9 @@ package com.packing;
 
 import com.packing.algo.*;
 import com.packing.models.*;
-import com.packing.utils.DisjointArrayList;
+import com.packing.sorting.IndexComparator;
+
+import java.util.Collections;
 
 public class PackingSolver {
 
@@ -24,13 +26,14 @@ public class PackingSolver {
             sol1.calcWidth();
             Solution sol2 = new SkySolution(input).solve();
             sol2.calcWidth();
-            if(sol1.maxWidth<sol2.maxWidth){
+            if (sol1.maxWidth < sol2.maxWidth) {
                 sol = sol1;
-            } else{
+            } else {
                 sol = sol2;
             }
 
         }
+        Collections.sort(sol.rectangles, new IndexComparator());
         print(input, sol);
     }
 
