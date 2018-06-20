@@ -51,7 +51,7 @@ public class Data {
         this.rectangleAmount = rectangleAmount;
     }
 
-    public void addRectangle(Rectangle r){
+    public void addRectangle(Rectangle r) {
         totalWidth += r.width;
         totalHeight += r.height;
         maxWidth = Math.max(maxWidth, r.width);
@@ -75,8 +75,26 @@ public class Data {
         return maxWidth;
     }
 
+    public Data copyOf(){
+        Data out = new Data();
+        ArrayList<Rectangle> temparray = new ArrayList<>();
+        for(Rectangle rect: rectangles) {
+            temparray.add(rect.copyOf());
+        }
+        out.rectangles = temparray;
+        out.containerHeight = this.containerHeight;
+        out.containerHeightFixed = this.containerHeightFixed;
+        out.maxHeight = this.maxHeight;
+        out.maxWidth = this.maxWidth;
+        out.rectangleAmount = this.rectangleAmount;
+        out.rotationsAllowed = this.rotationsAllowed;
+        out.totalWidth = this.totalWidth;
+        out.totalHeight = this.totalHeight;
+        return out;
+    }
+
     @Override
-    public String toString(){
+    public String toString() {
         return "container height:" + this.containerHeight + "\n" +
                 "rotations allowed: " + this.rotationsAllowed + "\n" +
                 "number of rectangles: " + this.rectangleAmount;

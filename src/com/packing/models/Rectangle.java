@@ -17,14 +17,14 @@ public class Rectangle {
     public int ratioR;
     public int ratio;
     public int heuristicRatio;
+    public boolean isRotatable = true;
 
 
     //coordinates
     public int x = 0;
     public int y = 0;
 
-    public Rectangle(int x, int y, int width, int height)
-    {
+    public Rectangle(int x, int y, int width, int height) {
         this.width = width;
         this.height = height;
         this.x = x;
@@ -35,28 +35,30 @@ public class Rectangle {
     }
 
 
-     public Rectangle(int index, int width, int height){
-         this.width = width;
-         this.height = height;
-         this.index = index;
-         area = width * height;
-         //ratio = height / width;
-         //ratioR = Math.max(height, width) / Math.min(height, width);
-         //heuristicRatio = ratioR * area;
-     }
+    public Rectangle(int index, int width, int height) {
+        this.width = width;
+        this.height = height;
+        this.index = index;
+        area = width * height;
+        //ratio = height / width;
+        //ratioR = Math.max(height, width) / Math.min(height, width);
+        //heuristicRatio = ratioR * area;
+    }
 
-     public boolean placeRectangle(int x, int y){
-         this.x = x;
-         this.y = y;
-         return false;
-     }
-     public void rotate(){
-         int temp = this.height;
-         height = width;
-         width = temp;
-         isRotated = !isRotated;
-     }
+    public boolean placeRectangle(int x, int y) {
+        this.x = x;
+        this.y = y;
+        return false;
+    }
 
+    public void rotate() {
+        int temp = this.height;
+        height = width;
+        width = temp;
+        isRotated = !isRotated;
+    }
+
+    public void isASquare(Rectangle rect) { isRotatable = !(rect.width == rect.height);}
 
     public int getIndex() {
         return index;
@@ -86,9 +88,16 @@ public class Rectangle {
         return y;
     }
 
+    public Rectangle copyOf() {
+        Rectangle copy = new Rectangle(this.x, this.y, this.width, this.height);
+        copy.index = this.index;
+        copy.isRotated = this.isRotated;
+        return copy;
+    }
+
     @Override
-    public String toString(){
-         return x + " " + y;
+    public String toString() {
+        return x + " " + y;
     }
 
 }

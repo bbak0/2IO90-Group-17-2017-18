@@ -3,8 +3,6 @@ package com.packing.utils;
 import com.packing.InputReader;
 import com.packing.algo.*;
 import com.packing.models.*;
-import com.packing.sorting.SkylineStrip;
-import com.packing.sorting.SkylineStripFaster;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +12,7 @@ import java.awt.event.MouseListener;
 public class AXD extends JFrame{
     JButton button;
     static JTextArea tf;
-    String[] algoChoices = {"BinaryTree", "Skyline Faster", "Simulated Annealing", "RandomSky", "SmallCase"};
+    String[] algoChoices = {"BinaryTree", "Simulated Annealing", "RandomSky", "SmallCase"};
     JComboBox<String> algopicker = new JComboBox<>(algoChoices);
 
     public void openNewCanvas(Solution sol, int mul){
@@ -58,9 +56,6 @@ public class AXD extends JFrame{
                 AbstractAlgorithm solver;
                 //solver = new SkylineStripFaster(input);
                 switch ((String)algopicker.getSelectedItem()){
-                    case("Skyline Faster"):
-                        solver = new SkylineStripFaster(input);
-                        break;
                     case ("Simulated Annealing"):
                         solver = new SimulatedAnnealing(input);
                         break;
@@ -77,7 +72,11 @@ public class AXD extends JFrame{
                         solver = new NFDHAlgo(input);
 
                 }
+                long startTime = System.nanoTime();
                 Solution sol = solver.solve();
+                long endTime   = System.nanoTime();
+                long totalTime = endTime - startTime;
+                System.out.println(totalTime);
                 int m = Integer.valueOf(mul.getText());
                 if (m == 0){
                     openNewCanvas(sol, 5);

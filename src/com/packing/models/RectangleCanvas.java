@@ -18,7 +18,9 @@ public class RectangleCanvas extends JPanel implements MouseListener {
     // private variables of GUI components
     // ......
 
-    /** Constructor to setup the GUI components */
+    /**
+     * Constructor to setup the GUI components
+     */
     public RectangleCanvas(Solution sol, int mul) {
 
         // "this" JPanel container sets layout
@@ -26,7 +28,7 @@ public class RectangleCanvas extends JPanel implements MouseListener {
         solution = sol;
         rect = sol.getRectangles();
         //setPreferredSize(new Dimension(sol.getMaxWidth(), sol.getMaxHeight()));
-        setPreferredSize(new Dimension(10000,10000 ));
+        setPreferredSize(new Dimension(10000, 10000));
         multiplier = mul;
         // Allocate the UI components
         // .....
@@ -37,26 +39,26 @@ public class RectangleCanvas extends JPanel implements MouseListener {
         // .....
     }
 
-    /** Custom painting codes on this JPanel */
+    /**
+     * Custom painting codes on this JPanel
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);  // paint background
         setBackground(Color.WHITE);
-        for (Rectangle r : rect){
+        for (Rectangle r : rect) {
             g.setColor(Color.ORANGE);
-            if (r.highlight){
-                g.setColor(new Color(1f,0f,0f,.3f ));
+            if (r.highlight) {
+                g.setColor(new Color(1f, 0f, 0f, .3f));
             }
-            g.fillRect(multiplier * r.x, multiplier * r.y, multiplier * r.width, multiplier *  r.height);
+            g.fillRect(multiplier * r.x, multiplier * r.y, multiplier * r.width, multiplier * r.height);
             g.setColor(Color.black);
-            g.drawRect(multiplier * r.x, multiplier * r.y, multiplier * r.width, multiplier *  r.height);
+            g.drawRect(multiplier * r.x, multiplier * r.y, multiplier * r.width, multiplier * r.height);
         }
-        g.setColor(Color.magenta);
-        g.fillRect(solution.customX, solution.customY,10,10);
-        if (solution instanceof SkylineSolution){
+        if (solution instanceof SkylineSolution) {
             g.setColor(Color.red);
             ArrayList<SkylineNode> skyline = ((SkylineSolution) solution).getSkyline();
-            for (SkylineNode node : skyline){
+            for (SkylineNode node : skyline) {
                 g.fillRect(node.x, node.y, 10, node.length);
             }
         }

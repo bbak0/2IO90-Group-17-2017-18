@@ -23,8 +23,8 @@ public class NFDHAlgo extends AbstractAlgorithm {
 
     @Override
     public Solution solve() {
-        for(Rectangle r: rectangleCollection){
-            if(r.height>r.width){
+        for (Rectangle r : rectangleCollection) {
+            if (r.height > r.width) {
                 r.rotate();
             }
         }
@@ -41,15 +41,13 @@ public class NFDHAlgo extends AbstractAlgorithm {
     }
 
 
-
-    boolean floor_feasible(Rectangle r){
-        if(currentFloorHeight == 0 && currentLevelWidth == 0){
+    boolean floor_feasible(Rectangle r) {
+        if (currentFloorHeight == 0 && currentLevelWidth == 0) {
             formerFirstRectangleWidth = r.getWidth();               //initialising variable manually to largest width rectangle
         }
-        if (r.getHeight() <= containerHeight - currentFloorHeight ){
+        if (r.getHeight() <= containerHeight - currentFloorHeight) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
