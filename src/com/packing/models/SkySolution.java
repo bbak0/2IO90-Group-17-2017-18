@@ -2,7 +2,9 @@ package com.packing.models;
 
 import com.packing.algo.AbstractAlgorithm;
 import com.packing.sorting.*;
+import com.packing.utils.DisjointArrayList;
 
+import java.util.ArrayList;
 import java.util.Collections;
 
 public class SkySolution extends AbstractAlgorithm {
@@ -21,13 +23,25 @@ public class SkySolution extends AbstractAlgorithm {
         } else {
             maxH = input.getMaxWidth();
         }
-        maxH = maxH * 2;
+
         int bestWidth = Integer.MAX_VALUE;
         Solution bestSol = null;
-        for (int i = 0; i < 5; i++){
+        for (int i = 0; i < 20000 / input.getRectangles().size(); i++){
             Collections.shuffle(input.getRectangles());
-            bestSol = executeAlgo(input, bestSol, 0);
+            bestSol = executeAlgo(input, bestSol, maxH);
         }
+        while (bestSol == null){
+            Collections.shuffle(input.getRectangles());
+            bestSol = executeAlgo(input, bestSol, maxH);
+            maxH = maxH + (maxH/10);
+        }
+
+        Collections.sort(input.getRectangles(), new RatioComparator());
+        bestSol = executeAlgo(input, bestSol, maxH);
+
+        Collections.reverse(input.getRectangles());
+        bestSol = executeAlgo(input, bestSol, maxH);
+
         Collections.sort(input.getRectangles(), new DESCSS());
         bestSol = executeAlgo(input, bestSol, maxH);
         Collections.sort(input.getRectangles(), new AreaComparator());
@@ -45,6 +59,8 @@ public class SkySolution extends AbstractAlgorithm {
         Collections.sort(input.getRectangles(), new SquareComparator());
         bestSol = executeAlgo(input, bestSol, maxH);
 
+
+
         return bestSol;
 }
 
@@ -59,8 +75,17 @@ public class SkySolution extends AbstractAlgorithm {
         }
         int solWidth = sol.getMaxWidth();
         if (solWidth < bestWidth){
+            bestWidth = solWidth;
+            ArrayList<Rectangle> check = new DisjointArrayList();
+            for (Rectangle r : sol.rectangles){
+                boolean c = check.add(r);
+                if (!c){
+                    throw new IllegalStateException("rectangles not disjoint");
+                }
+            }
             return sol;
+        } else {
+            return bestSol;
         }
-        return bestSol;
     }
 }

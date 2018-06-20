@@ -9,9 +9,13 @@ public class DisjointArrayList extends ArrayList<Rectangle> {
     public boolean add(Rectangle a){
         for (Rectangle b : this){
             if (!isDisjoint(a, b)){
-                throw new IllegalStateException("Overlap Detected");
+                b.highlight = true;
+                a.highlight = true;
+                //super.add(a);
+                return false;
+                //throw new IllegalStateException("Overlap Detected");
             }
-            System.out.println("insert a: " + a + " checking disjoint with " + b);
+            //System.out.println("insert a: " + a + " checking disjoint with " + b);
 
         }
         super.add(a);

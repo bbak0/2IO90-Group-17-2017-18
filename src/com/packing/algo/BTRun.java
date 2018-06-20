@@ -7,7 +7,7 @@ import com.packing.sorting.*;
 
 import java.util.ArrayList;
 
-import com.packing.models.BTP;
+import com.packing.algo.BTP;
 
 import java.util.Collections;
 import java.util.Iterator;

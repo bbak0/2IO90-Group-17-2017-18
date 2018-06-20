@@ -3,6 +3,7 @@ package com.packing.sorting;
 import com.packing.algo.AbstractAlgorithm;
 import com.packing.models.*;
 import com.packing.sorting.DESCSS;
+import com.packing.utils.AXD;
 import com.packing.utils.DisjointArrayList;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class SkylineStripFaster extends AbstractAlgorithm {
     ArrayList<SkylineNode> skyline = new ArrayList<SkylineNode>();
     int binHeight;
     int binWidth;
-    ArrayList<Rectangle> solRect = new DisjointArrayList();
+    ArrayList<Rectangle> solRect = new ArrayList();
     ArrayList<ArrayList<Rectangle>> wasteMap = new ArrayList<>();
     int areaUsed = 0;
     long inserted = 0;
@@ -44,12 +45,13 @@ public class SkylineStripFaster extends AbstractAlgorithm {
             return null;
         }
         //Collections.sort(solRect, new IndexComparator());
-        System.out.println("Area used:" + areaUsed + "Total area:" + binHeight * maxWidth);
+        //System.out.println("Area used:" + areaUsed + "Total area:" + binHeight * maxWidth);
         binWidth = maxWidth;
         long stopTime = System.currentTimeMillis();
         long elapsedTime = stopTime - startTime;
         System.out.println(elapsedTime/1000);
-        Solution returnSol = new Solution(solRect, false);
+        SkylineSolution returnSol = new SkylineSolution(solRect, false);
+        returnSol.setSkyline(skyline);
         returnSol.maxWidth = this.maxWidth;
         return returnSol;
 
@@ -75,20 +77,24 @@ public class SkylineStripFaster extends AbstractAlgorithm {
                 if (bestR == null){
                     return false;
                 }
-                bestR.x = skyline.get(globalBest.getBestSkylineIndex()).x;
+                bestR.x = globalBest.bestX;
                 bestR.y = skyline.get(globalBest.getBestSkylineIndex()).y;
                 addSkylineLevel(globalBest.getBestSkylineIndex(), bestR);
-                if(inserted == 134){
-                    System.out.println("debug");
-                }
-                solRect.add(bestR);
+                boolean debug = solRect.add(bestR);
+//                if(!debug){
+//                    SkylineSolution debugSol = new SkylineSolution(solRect, false);
+//                    debugSol.setSkyline(skyline);
+//                    new AXD().openNewCanvas(debugSol, 5);
+//                    System.out.println("aaaaa");
+//                    throw new RuntimeException();
+//                }
                 rectangles.remove(bestR);
 
                 areaUsed += bestR.area;
                 maxWidth = Math.max(maxWidth, bestR.width + bestR.x);
                 inserted++;
 
-                System.out.println("inserted:" + inserted);
+                //System.out.println("inserted:" + inserted);
             }
             return true;
     }
@@ -134,12 +140,11 @@ public class SkylineStripFaster extends AbstractAlgorithm {
 
     BestValues FindMWPosition(Rectangle r){
         BestValues b = new BestValues();
-
         for (int i = 0; i < skyline.size(); i++){
-            if (skyline.get(i).x > minSkylineX + maxSpread){
+            int x = RectangleFits(i,r);
+            if (x - minSkylineX > maxSpread){
                 continue;
             }
-            int x = RectangleFits(i,r);
             if (x >= 0){
                 FindMWPositionHelper(i, x, r, b);
             }
@@ -168,6 +173,7 @@ public class SkylineStripFaster extends AbstractAlgorithm {
             b.setBestSkylineIndex(i);
             b.setBestWastedArea(wasted);
             b.setBestRectangle(r);
+            b.bestX = x;
             return true;
         }
         return false;
@@ -228,7 +234,7 @@ public class SkylineStripFaster extends AbstractAlgorithm {
             leftSide = current.y;
             rightSide = Math.min(rectRight, leftSide + current.length);
             if ((rightSide - leftSide) * (x - current.x) < 0){
-                System.out.println("cos sie zjebalo");
+                //System.out.println("wrong");
             }
             wasted += (rightSide - leftSide) * (x - current.x);
            // wma.add(new WasteMapArea(x - current.x, x, leftSide, rightSide));
@@ -242,7 +248,7 @@ public class SkylineStripFaster extends AbstractAlgorithm {
 //        wastedRectangle.x = x;
 //        wastedRectangle.y = ;
         if (wasted < 0){
-            System.out.println("cos sie zjebalo");
+            //System.out.println("wrong");
         }
 
         return wasted;

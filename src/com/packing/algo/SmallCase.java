@@ -25,15 +25,25 @@ public class SmallCase extends AbstractAlgorithm {
         Solution temp = new Solution(null, false);
         temp.area = Integer.MAX_VALUE;
         finalSolution = temp;
-        if (input.isRotationsAllowed() && input.isContainerHeightFixed()) {
-            rectangleAssignerStripWithRotations(nodes, input.getRectangles(), new ArrayList<Rectangle>());
-        } else if (input.isRotationsAllowed()) { // && !isContainerHeightFixed()
-            rectangleAssignerWithRotations(nodes, input.getRectangles(), new ArrayList<Rectangle>());
-        } else if (input.isContainerHeightFixed()) { //&& !isRotationsAllowed()
-            rectangleAssignerStrip(nodes, input.getRectangles(), new ArrayList<Rectangle>());
+        if(input.getRectangleAmount() == 10) {
+            ArrayList<Rectangle> sortedRectangles = input.getRectangles();
+            if (input.isContainerHeightFixed()) { //&& !isRotationsAllowed()
+                rectangleAssignerStrip(nodes, input.getRectangles(), new ArrayList<Rectangle>());
+            } else {
+                rectangleAssigner(nodes, input.getRectangles(), new ArrayList<Rectangle>());
+            }
         } else {
-            rectangleAssigner(nodes, input.getRectangles(), new ArrayList<Rectangle>());
+            if (input.isRotationsAllowed() && input.isContainerHeightFixed()) {
+                rectangleAssignerStripWithRotations(nodes, input.getRectangles(), new ArrayList<Rectangle>());
+            } else if (input.isRotationsAllowed()) { // && !isContainerHeightFixed()
+                rectangleAssignerWithRotations(nodes, input.getRectangles(), new ArrayList<Rectangle>());
+            } else if (input.isContainerHeightFixed()) { //&& !isRotationsAllowed()
+                rectangleAssignerStrip(nodes, input.getRectangles(), new ArrayList<Rectangle>());
+            } else {
+                rectangleAssigner(nodes, input.getRectangles(), new ArrayList<Rectangle>());
+            }
         }
+
         return finalSolution;
     }
 
@@ -64,16 +74,12 @@ public class SmallCase extends AbstractAlgorithm {
     }
 
     void rectangleAssignerStrip(ArrayList<BLnode> nodes, ArrayList<Rectangle> rectangles, ArrayList<Rectangle> placedRectangles) {
-        int counter = 1;
         if (rectangles.isEmpty()) {
             updateSolutionStrip(rectangles, placedRectangles);
         } else {
             for (BLnode node : nodes) {
                 for (Rectangle rect : rectangles) {
                     putRectangleFixedHeight(rect, node, rectangles, placedRectangles, nodes);
-                    if (nodes.size() == 1) {
-                        System.out.println(counter++);
-                    }
                 }
             }
         }
@@ -97,11 +103,9 @@ public class SmallCase extends AbstractAlgorithm {
 
         ArrayList<Rectangle> placedRectanglesTemp = (ArrayList<Rectangle>) placedRectangles.clone();
         Solution finalSolutionTemp = new Solution(placedRectanglesTemp, true);
-        System.out.println(finalSolutionTemp.area);
 
         if (finalSolutionTemp.area <= finalSolution.area) {
             finalSolution = finalSolutionTemp;
-            System.out.println("Found it");
             return;
         }
 
@@ -111,15 +115,9 @@ public class SmallCase extends AbstractAlgorithm {
 
         ArrayList<Rectangle> placedRectanglesTemp = (ArrayList<Rectangle>) placedRectangles.clone();
         Solution finalSolutionTemp = new Solution(placedRectanglesTemp, input.getContainerHeight());
-        System.out.println(finalSolutionTemp.area);
-        if (finalSolutionTemp.area == 1080) {
-            AXD axd = new AXD();
-            axd.run();
-            axd.openNewCanvas(finalSolutionTemp, 30);
-        }
+
         if (finalSolutionTemp.area <= finalSolution.area) {
             finalSolution = finalSolutionTemp;
-            System.out.println("Found it");
             return;
         }
 
@@ -139,8 +137,6 @@ public class SmallCase extends AbstractAlgorithm {
 
             rectangleAssigner(nodesTemp, rectanglesTemp, placedRectanglesTemp);
         }
-        counter++;
-        System.out.println(counter);
     }
 
     void putRectangleWithRotations(Rectangle rect, BLnode node, ArrayList<Rectangle> rectangles, ArrayList<Rectangle> placedRectangles, ArrayList<BLnode> nodes) {

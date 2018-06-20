@@ -13,6 +13,10 @@ public class Rectangle {
     public Rectangle down = null;
     public Rectangle fit = null;
     public boolean isroot = false;
+    public boolean highlight = false;
+    public int ratioR;
+    public int ratio;
+    public int heuristicRatio;
 
 
     //coordinates
@@ -25,6 +29,9 @@ public class Rectangle {
         this.height = height;
         this.x = x;
         this.y = y;
+        //ratio = height / width;
+        //ratioR = Math.max(height, width) / Math.min(height, width);
+        //heuristicRatio = ratioR * area;
     }
 
 
@@ -33,6 +40,9 @@ public class Rectangle {
          this.height = height;
          this.index = index;
          area = width * height;
+         //ratio = height / width;
+         //ratioR = Math.max(height, width) / Math.min(height, width);
+         //heuristicRatio = ratioR * area;
      }
 
      public boolean placeRectangle(int x, int y){
