@@ -29,6 +29,7 @@ public class Rectangle {
         this.height = height;
         this.x = x;
         this.y = y;
+        area = width * height;
         //ratio = height / width;
         //ratioR = Math.max(height, width) / Math.min(height, width);
         //heuristicRatio = ratioR * area;

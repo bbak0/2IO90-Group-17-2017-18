@@ -48,6 +48,7 @@ public class SkylineStripFaster extends AbstractAlgorithm {
         SkylineSolution returnSol = new SkylineSolution(solRect, false);
         returnSol.setSkyline(skyline);
         returnSol.maxWidth = this.maxWidth;
+        returnSol.maxHeight = input.getMaxHeight();
         return returnSol;
 
     }

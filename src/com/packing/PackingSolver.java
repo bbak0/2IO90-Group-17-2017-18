@@ -22,15 +22,15 @@ public class PackingSolver {
             sol = solver.solve();
         }
         if (input.getRectangleAmount() > 10 && input.isContainerHeightFixed()) {
-            Solution sol1 = new SkySolution(input).solve();
-            sol1.calcWidth();
-            Solution sol2 = new SimulatedAnnealing(input).solve();
-            sol2.calcWidth();
-            if (sol2.maxWidth < sol1.maxWidth) {
-                sol = sol2;
-            } else {
-                sol = sol1;
-            }
+            sol = new SkySolution(input).solve();
+//            sol1.calcWidth();
+//            Solution sol2 = new SimulatedAnnealing(input).solve();
+//            sol2.calcWidth();
+//            if (sol2.maxWidth < sol1.maxWidth) {
+//                sol = sol2;
+//            } else {
+//                sol = sol1;
+//            }
 
         }
         Collections.sort(sol.rectangles, new IndexComparator());
@@ -85,6 +85,10 @@ public class PackingSolver {
                 System.out.println(r);
             }
         }
+        System.out.println("max: " + sol.getMaxWidth() * sol.maxHeight);
+        sol.calcRectangleArea();
+        System.out.println("used: " + sol.areaOfRectangles);
+        System.out.println((double)sol.areaOfRectangles / (sol.getMaxWidth() * sol.maxHeight) * 100);
 
     }
 
